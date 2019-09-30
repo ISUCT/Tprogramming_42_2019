@@ -19,12 +19,12 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <CodeAnalysisRuleSet>../stylecop/stylecop.ruleset</CodeAnalysisRuleSet> 
+    <CodeAnalysisRuleSet>../_stylecop/stylecop.ruleset</CodeAnalysisRuleSet> 
     <GenerateFullPaths>true</GenerateFullPaths>
   </PropertyGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="../stylecop/stylecop.json" />
+    <AdditionalFiles Include="../_stylecop/stylecop.json" />
   </ItemGroup>
 
 </Project>
