@@ -2,13 +2,12 @@
 
 namespace CourseApp
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var a = 5;
-            Console.WriteLine(a);
             Console.WriteLine("Hello World!");
+            Console.ReadLine();
         }
     }
 }
