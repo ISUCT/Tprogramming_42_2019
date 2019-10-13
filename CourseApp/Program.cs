@@ -27,13 +27,19 @@ namespace CourseApp
             return result;
         }
 
+        public static double[] FuncthionForMass(double[] x)
+        {
+            var y = new double[x.Length];
+            for (var i = 0; i < x.Length; i++)
+            {
+                y[i] = FuncthionZnach(x[i]);
+            }
+
+            return y;
+        }
+
         public static void Main(string[] args)
         {
-            double x1 = 1.84;
-            double x2 = 2.71;
-            double x3 = 3.81;
-            double x4 = 4.56;
-            double x5 = 5.62;
             Console.WriteLine($"Задание A:");
             foreach (double element in FuncthionForShag(1.25, 3.25, 0.4))
             {
@@ -41,11 +47,12 @@ namespace CourseApp
             }
 
             Console.WriteLine($"\nЗадание B:");
-            Console.WriteLine($"y[{x1}] = {FuncthionZnach(1.84)}");
-            Console.WriteLine($"y[{x2}] = {FuncthionZnach(2.71)}");
-            Console.WriteLine($"y[{x3}] = {FuncthionZnach(3.81)}");
-            Console.WriteLine($"y[{x4}] = {FuncthionZnach(4.56)}");
-            Console.WriteLine($"y[{x5}] = {FuncthionZnach(5.62)}");
+            var x = new double[] { 1.84, 2.71, 3.81, 4.56, 5.62 };
+            foreach (var element in FuncthionForMass(x))
+            {
+                Console.WriteLine($"y = {element}");
+            }
+
             Console.ReadLine();
         }
     }
