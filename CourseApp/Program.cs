@@ -11,18 +11,13 @@ namespace CourseApp
 
         public static double[] TaskA(double a, double b, double xn, double xk, double dx)
         {
-            int sizee = 0;
-            for (double i = xn; i < (xk + 0.1); i += dx)
+            int size = (int)Math.Floor((xk - xn) / dx);
+            double[] rtrn = new double[size + 1];
+            size = 0;
+            for (double x = xn; x < (xk + 0.1); x += dx)
             {
-                sizee++;
-            }
-
-            double[] rtrn = new double[sizee];
-            sizee = 0;
-            for (double i = xn; i < (xk + 0.1); i += dx)
-            {
-                rtrn[sizee] = Equat(a, b, i);
-                sizee++;
+                rtrn[size] = Equat(a, b, x);
+                size++;
             }
 
             return rtrn;
@@ -43,12 +38,6 @@ namespace CourseApp
         {
             double a = 4.1;
             double b = 2.7;
-            /*Equat(a, b, 1.9);
-            Equat(a, b, 2.15);
-            Equat(a, b, 2.34);
-            Equat(a, b, 2.73);
-            Equat(a, b, 3.16);*/
-
             double[] mass = TaskA(a, b, 1.2, 5.2, 0.8);
             foreach (var item in mass)
             {
@@ -61,6 +50,8 @@ namespace CourseApp
             {
                 Console.WriteLine(item);
             }
+
+            Console.ReadKey();
         }
     }
 }
