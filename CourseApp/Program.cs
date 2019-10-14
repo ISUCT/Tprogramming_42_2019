@@ -6,13 +6,31 @@ namespace CourseApp
     {
         public static double MyFunction(double a, double b, double x)
         {
-            var y = (a * Math.Pow(x, 2)) + (b * x);
+            double upper = a - (b * x);
+            upper = Math.Abs(upper);
+
+            double lower = Math.Log10(x);
+            lower = Math.Pow(lower, 3);
+
+            double y;
+            y = upper / lower;
+            y = Math.Pow(y, -2);
             return y;
         }
 
         public static double[] TaskA(double a, double b, double xn, double xk, double dx)
         {
-            return new double[0];
+            double mas = (xk - xn) / dx;
+            double[] y = new double[(int)mas];
+
+            int i = 0;
+            for (double x = xn; x <= xk; x += dx)
+            {
+                y[i] = MyFunction(a, b, x);
+                i++;
+            }
+
+            return y;
         }
 
         public static double[] TaskB(double a, double b, double[] x)
@@ -29,8 +47,8 @@ namespace CourseApp
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            const double a = 2.2;
-            const double b = 3.8;
+            const double a = 7.2;
+            const double b = 4.2;
             var resSingle = MyFunction(a, b, 4);
             Console.WriteLine(resSingle);
             var x = new double[] { 1, 2, 3, 4, 5 };
