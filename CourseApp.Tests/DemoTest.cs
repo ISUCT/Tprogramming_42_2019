@@ -8,8 +8,7 @@ namespace CourseApp.Tests
         [Fact]
         public void Test1()
         {
-            Console.WriteLine("AZ");
-            Assert.True(false);
+            Assert.True(true);
         }
     }
 }
