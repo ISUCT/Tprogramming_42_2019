@@ -31,8 +31,22 @@ namespace CourseApp.Tests
             double[] e = new double[0];
             var res = Program.TaskB(a, b, e);
             Assert.Equal(res, new double[0]);
+        }
 
-            // Assert.Equal(exp, res, 3);
+        [Theory]
+        [InlineData(4.1, 2.7)]
+        public void TestTaskBWork(double a, double b)
+        {
+            double[] mass = new double[5] { 1.9, 2.15, 2.34, 2.73, 3.16 };
+            var res = Program.TaskB(a, b, mass);
+            int[] resMass = new int[mass.Length];
+            for (int i = 0; i < mass.Length; i++)
+            {
+                resMass[i] = (int)Math.Floor(res[i]);
+            }
+
+            int[] exp = new int[5] { -100, 77, 38, 21, 16 };
+            Assert.Equal(resMass, exp);
         }
     }
 }

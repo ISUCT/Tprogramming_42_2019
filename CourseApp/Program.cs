@@ -51,6 +51,7 @@ namespace CourseApp
                 Console.WriteLine(item);
             }
 
+            Console.WriteLine("AZAZ");
             double[] mass2 = new double[5] { 1.9, 2.15, 2.34, 2.73, 3.16 };
             mass2 = TaskB(a, b, mass2);
             foreach (var item in mass2)
