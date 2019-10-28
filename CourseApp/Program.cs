@@ -11,16 +11,23 @@ namespace CourseApp
 
         public static double[] TaskA(double a, double b, double xn, double xk, double dx)
         {
-            int size = (int)Math.Floor((xk - xn) / dx);
-            double[] rtrn = new double[size + 1];
-            size = 0;
-            for (double x = xn; x < (xk + 0.1); x += dx)
+            if (xk < xn)
             {
-                rtrn[size] = Equat(a, b, x);
-                size++;
+                return new double[0];
             }
+            else
+            {
+                int size = (int)Math.Floor((xk - xn) / dx);
+                double[] rtrn = new double[size + 1];
+                size = 0;
+                for (double x = xn; x < (xk + 0.1); x += dx)
+                {
+                    rtrn[size] = Equat(a, b, x);
+                    size++;
+                }
 
-            return rtrn;
+                return rtrn;
+            }
         }
 
         public static double[] TaskB(double a, double b, double[] xm)
