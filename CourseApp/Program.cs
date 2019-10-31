@@ -32,7 +32,6 @@ namespace CourseApp
 
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             const double a = 2.0;
             const double xn = 1.2;
             const double xk = 4.2;
@@ -44,11 +43,11 @@ namespace CourseApp
                 Console.WriteLine($"y = {item}");
             }
 
-            var x = new double[] { 1, 2, 3, 4, 5 };
+            var x = new double[] { 1.16, 1.32, 1.47, 1.65, 1.93 };
             var taskBRes = TaskB(a, x);
             foreach (var item in taskBRes)
             {
-                Console.WriteLine($"y = {item}");
+                Console.WriteLine($"y1 = {item}");
             }
 
             Console.ReadLine();
