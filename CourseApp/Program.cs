@@ -53,7 +53,12 @@ namespace CourseApp
             {
                 Console.WriteLine($"y = {item}");
             }
-
+            var t = TaskB(a, b, x);
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(t[i]);
+               // NUnit.Framework.Assert.AreEqual(x[i], res[i], 0.00001);
+            }
             Console.ReadLine();
         }
     }
