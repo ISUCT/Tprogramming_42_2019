@@ -11,18 +11,14 @@ namespace CourseApp.Tests
             Assert.True(true);
         }
 
-        [Fact]
-        public void TestSummPositive()
+        [Theory]
+        [InlineData(0, 0, 0, 0)]
+        [InlineData(0, 2, 1, 2)]
+        [InlineData(1, 2, 1, 3)]
+        public void TestFunctionCalculationVal(double a, double b, double x, double exp)
         {
-            var res = Program.Summ(2, 3);
-            Assert.Equal(5, res);
-        }
-
-        [Fact]
-        public void TestSummPositiveNegative()
-        {
-            var actualRes = Program.Summ(-2, 2);
-            Assert.Equal(0, actualRes);
+            var res = Program.MyFunction(a, b, x);
+            Assert.Equal(exp, res, 3);
         }
     }
 }
