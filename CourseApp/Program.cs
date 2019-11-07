@@ -52,6 +52,7 @@ namespace CourseApp
             {
                 Console.WriteLine($"y = {element}");
             }
+
             Console.WriteLine();
             Console.ReadLine();
         }
