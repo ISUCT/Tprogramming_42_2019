@@ -15,7 +15,7 @@ namespace CourseApp
         }
 
         public Pig(string name)
-        : this(name, 3)
+        : this(name, 0)
         {
         }
 
