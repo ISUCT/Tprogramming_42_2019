@@ -6,11 +6,11 @@ namespace CourseApp.Tests
     public class DemoTest
     {
         [Theory]
-        [InlineData(2.0, 1.2, 4.2, 0.6)]
+        [InlineData(2.0, 5.2, 4.2, 0.6)]
         public void TestTaskA(double a, double xn, double xk, double dx)
         {
             var res = Program.TaskA(a, xn, xk, dx);
-            Assert.Equal(res, new double[0]);
+            Assert.Equal(res, new double[5]);
         }
 
         [Theory]
