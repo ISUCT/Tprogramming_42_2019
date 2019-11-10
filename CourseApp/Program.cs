@@ -50,6 +50,10 @@ namespace CourseApp
                 Console.WriteLine($"y1 = {item}");
             }
 
+            // Mouse instance
+            var mouse = new Mouse(2, "Rat", true);
+            Console.WriteLine($"{mouse.Age}");
+
             Console.ReadLine();
         }
     }
