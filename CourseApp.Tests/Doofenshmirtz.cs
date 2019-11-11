@@ -5,7 +5,7 @@ namespace CourseApp.Tests
 {
     public class Doofenshmirtz
     {
-        [Fact]
+       /* [Fact]
         public void TestEmptyConstructor()
         {
             var item = new Platypus();
@@ -50,6 +50,6 @@ namespace CourseApp.Tests
             item.Age = 10;
             item.Age = -5;
             Assert.Equal(10, item.Age);
-        }
+        }*/
     }
 }
