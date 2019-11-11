@@ -11,6 +11,14 @@ namespace CourseApp.Tests
             Assert.True(true);
         }
 
+        [Theory]
+        [InlineData(0.7, 0.7, 5, 2.85745641603801)]
+        [InlineData(1, 0.7, 5, 2.78360690322881)]
+        public void TestMyFunction(double a, double b, double x, double exp)
+        {
+            Assert.Equal(Program.MyFunction(a, b, x), exp, 3);
+        }
+
         [Fact]
         public void TestMyFunctionZeros()
         {

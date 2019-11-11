@@ -41,6 +41,7 @@ namespace CourseApp
             const double xn = 1.23;
             const double xk = 7.23;
             const double dx = 1.2;
+            Console.WriteLine(MyFunction(1, 0.7, 5));
             Console.WriteLine("Задание А:");
             foreach (var item in TaskA(a, b, xn, xk, dx))
             {
