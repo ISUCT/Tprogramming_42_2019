@@ -14,7 +14,7 @@ namespace CourseApp
         {
             int i = 0;
             var y = new double[(int)((xk - xn) / dx)];
-            for (double x = xn; x < xk; x += dx)
+            for (double x = xn; x < xk - 0.1; x += dx)
             {
                 y[i] = MyFunction(a, b, x);
                 i++;

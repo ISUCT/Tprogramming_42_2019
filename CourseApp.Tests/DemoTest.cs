@@ -5,20 +5,47 @@ namespace CourseApp.Tests
 {
     public class DemoTest
     {
-        [Fact]
-        public void Test1()
+        [Theory]
+        [InlineData(2.0, 0.95, 2.8, -1)]
+        [InlineData(2.0, 0.95, 3.6, -1)]
+        public void TestMyFunction(double a, double b, double x, double exp)
         {
-            Assert.True(true);
+            int res = (int)Math.Floor(Program.MyFunction(a, b, x));
+            Assert.Equal(res, exp);
         }
 
         [Theory]
-        [InlineData(0, 0, 0, 0)]
-        [InlineData(0, 2, 1, 2)]
-        [InlineData(1, 2, 1, 3)]
-        public void TestFunctionCalculationVal(double a, double b, double x, double exp)
+        [InlineData(2.0, 0.95, 5.2, 5.1, 0.8)]
+        public void TestTaskA(double a, double b, double xn, double xk, double dx)
         {
-            var res = Program.MyFunction(a, b, x);
-            Assert.Equal(exp, res, 3);
+            var res = Program.TaskA(a, b, xn, xk, dx);
+            Assert.Equal(res, new double[0]);
+        }
+
+        [Theory]
+        [InlineData(2.0, 0.95)]
+        public void TestTaskB(double a, double b)
+        {
+            double[] e = new double[0];
+            var res = Program.TaskB(a, b, e);
+            Assert.Equal(res, new double[0]);
+        }
+
+        [Theory]
+        [InlineData(2.0, 0.95)]
+        public void TestTaskBWork(double a, double b)
+        {
+            double[] mass = new double[5] { 2.2, 3.78, 4.51, 6.58, 1.2 };
+            var res = Program.TaskB(a, b, mass);
+            double[] resMass = new double[mass.Length];
+
+            for (int i = 0; i < mass.Length; i++)
+            {
+                resMass[i] = res[i];
+            }
+
+            double[] exp = new double[5] { -0.487, -0.189, -0.131, -0.048, -1.203 };
+            Assert.Equal(resMass, exp, 3);
         }
     }
 }
