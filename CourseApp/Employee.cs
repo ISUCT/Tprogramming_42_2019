@@ -5,19 +5,29 @@ namespace CourseApp
     public class Employee
     {
         private int age;
-        DateTime dateOfEmploy = new DateTime();
+        private DateTime dateOfEmploy;
+
         public Employee()
-        : this(14, "Untitled", true)
+        : this(14)
         {
         }
-        public Employee(int age) : this(age, "Untitled", true)
+
+        public Employee(int age)
+        : this(age, "Untitled")
         {
         }
+
+        public Employee(int age, string name)
+        : this(age, name, true)
+        {
+        }
+
         public Employee(int age, string name, bool isMale)
         {
             Name = name;
             Age = age;
             IsMale = isMale;
+            dateOfEmploy = DateTime.Now;
         }
 
         public string Name { get; set; }
