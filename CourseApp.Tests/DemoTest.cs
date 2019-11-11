@@ -41,11 +41,11 @@ namespace CourseApp.Tests
 
             for (int i = 0; i < mass.Length; i++)
             {
-                resMass[i] = res[i];
+                resMass[i] = Math.Round(res[i], 3);
             }
 
-            double[] exp = new double[5] { -0.487, -0.189, -0.131, -0.048, -1.203 };
-            Assert.Equal(resMass, exp, 3);
+            double[] exp = new double[5] { -0.488, -0.19, -0.131, -0.049, -1.203 };
+            Assert.Equal(resMass, exp);
         }
     }
 }
