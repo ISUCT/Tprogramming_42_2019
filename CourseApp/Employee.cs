@@ -2,16 +2,18 @@ using System;
 
 namespace CourseApp
 {
-    public class Platypus
+    public class Employee
     {
         private int age;
-
-        public Platypus()
-        : this(0, "Untitled", true)
+        DateTime dateOfEmploy = new DateTime();
+        public Employee()
+        : this(14, "Untitled", true)
         {
         }
-
-        public Platypus(int age, string name, bool isMale)
+        public Employee(int age) : this(age, "Untitled", true)
+        {
+        }
+        public Employee(int age, string name, bool isMale)
         {
             Name = name;
             Age = age;
