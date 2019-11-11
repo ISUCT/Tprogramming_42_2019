@@ -1,6 +1,5 @@
 using System;
 using Xunit;
-using NUnit.Framework;
 
 namespace CourseApp.Tests
 {
@@ -9,14 +8,22 @@ namespace CourseApp.Tests
         [Fact]
         public void Test1()
         {
-            Xunit.Assert.True(true);
+            Assert.True(true);
+        }
+
+        [Theory]
+        [InlineData(1, 1.10668191970032)]
+        [InlineData(2, 1.95250809998776)]
+        public void TestFuncthionZnach(double x, double e)
+        {
+            Assert.Equal(e, Program.FuncthionZnach(x), 3);
         }
 
         [Fact]
         public void TestZeroFuncthionZnach()
         {
             var res = Program.FuncthionZnach(0.0);
-            Xunit.Assert.Equal(double.PositiveInfinity, res);
+            Assert.Equal(double.PositiveInfinity, res);
         }
 
         [Fact]
@@ -24,7 +31,7 @@ namespace CourseApp.Tests
         {
             var mass = new double[0];
             var res = Program.FuncthionForMass(mass);
-            Xunit.Assert.Equal(mass, res);
+            Assert.Equal(mass, res);
         }
 
         [Fact]
@@ -35,7 +42,7 @@ namespace CourseApp.Tests
             var expY = new double[] { 1.78088177902672, 2.43716358850851, 2.91258396550454, 3.16349459673976, 3.46531788233977 };
             for (int i = 0; i < 5; i++)
             {
-                NUnit.Framework.Assert.AreEqual(expY[i], res[i], 0.0001);
+                Assert.Equal(expY[i], res[i], 3);
             }
         }
     }

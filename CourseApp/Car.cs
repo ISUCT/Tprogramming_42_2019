@@ -24,7 +24,7 @@ namespace CourseApp
         {
         }
 
-        public Car(string brand, int nomer, int speed)
+        public Car(string brand, int age, int speed)
         {
             Brand = brand;
             Age = age;
@@ -42,13 +42,13 @@ namespace CourseApp
 
             set
             {
-                if (value > 0 && value < 100)
+                if (value > 0 && value < 20)
                 {
                     this.age = value;
                 }
                 else
                 {
-                    Console.WriteLine("Nomer should be > 0 and < than 100");
+                    Console.WriteLine("Age should be > 0 and < than 20");
                 }
             }
         }
@@ -83,7 +83,7 @@ namespace CourseApp
             Console.WriteLine("Врум!");
         }
 
-        public void Aging()
+        public void Use()
         {
             this.age++;
         }
