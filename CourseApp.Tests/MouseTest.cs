@@ -15,6 +15,15 @@ namespace CourseApp.Tests
         }
 
         [Fact]
+        public void TestConstructor()
+        {
+            var item = new Mouse(2, "Nancy", false);
+            Assert.Equal(2, item.Age);
+            Assert.Equal("Nancy", item.Name);
+            Assert.False(item.IsMale);
+        }
+
+        [Fact]
         public void TestView()
         {
             var item = new Mouse();
