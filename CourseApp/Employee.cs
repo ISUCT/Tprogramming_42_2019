@@ -23,11 +23,16 @@ namespace CourseApp
         }
 
         public Employee(int age, string name, bool isMale)
+        : this(age, name, true, DateTime.Now)
+        {
+        }
+
+        public Employee(int age, string name, bool isMale, DateTime date)
         {
             Name = name;
             Age = age;
             IsMale = isMale;
-            dateOfEmploy = DateTime.Now;
+            dateOfEmploy = date;
         }
 
         public string Name { get; set; }
@@ -41,13 +46,13 @@ namespace CourseApp
 
             set
             {
-                if (value >= 0 && value < 20)
+                if (value >= 14 && value < 100)
                 {
                     this.age = value;
                 }
                 else
                 {
-                    Console.WriteLine("Age should be > 0 and < than 20");
+                    Console.WriteLine("Age should be > 14 and < than 100");
                 }
             }
         }
@@ -67,6 +72,11 @@ namespace CourseApp
 (      -\.._,.;;'._ ,(   }        _`_-_,,    `, `,
  ``~~~~~~'   ((/'((((____/~~~~~~'(,(,___>      `~'
  ";
+        }
+
+        public DateTime GetDate()
+        {
+            return dateOfEmploy;
         }
     }
 }
