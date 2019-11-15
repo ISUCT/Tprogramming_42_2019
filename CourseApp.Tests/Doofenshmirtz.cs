@@ -52,14 +52,13 @@ namespace CourseApp.Tests
             Assert.Equal(20, item.Age);
         }
 
-        /* [Fact]
-         public void TestEmptyConstructor()
+         [Fact]
+         public void TestWork()
          {
-             var item = new Platypus();
-             Assert.Equal(0, item.Age);
-             Assert.Equal("Untitled", item.Name);
-             Assert.True(item.IsMale);
-         }
+             var item = new Employee();
+             item.Work(219);
+             Assert.Equal(15, item.Age);
+         }/*
 
          [Fact]
          public void TestView()

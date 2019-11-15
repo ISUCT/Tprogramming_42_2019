@@ -5,6 +5,7 @@ namespace CourseApp
     public class Employee
     {
         private int age;
+        private int workDays;
         private DateTime dateOfEmploy;
 
         public Employee()
@@ -33,6 +34,7 @@ namespace CourseApp
             Age = age;
             IsMale = isMale;
             dateOfEmploy = date;
+            workDays = 0;
         }
 
         public string Name { get; set; }
@@ -67,6 +69,16 @@ namespace CourseApp
         public DateTime GetDate()
         {
             return dateOfEmploy;
+        }
+
+        public void Work(int days)
+        {
+            workDays += days;
+            if (workDays >= 219)
+            {
+                age++;
+                workDays = 0;
+            }
         }
     }
 }
