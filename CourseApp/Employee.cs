@@ -64,16 +64,6 @@ namespace CourseApp
             get { return this.IsMale; }
         }
 
-        public string View()
-        {
-            return @"
-         _.-^~~^^^`~-,_,,~''''''```~,''``~'``~,
- ______,'  -o  :.  _    .          ;     ,'`,  `.
-(      -\.._,.;;'._ ,(   }        _`_-_,,    `, `,
- ``~~~~~~'   ((/'((((____/~~~~~~'(,(,___>      `~'
- ";
-        }
-
         public DateTime GetDate()
         {
             return dateOfEmploy;
