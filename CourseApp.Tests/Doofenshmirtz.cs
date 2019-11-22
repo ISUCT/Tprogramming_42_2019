@@ -87,44 +87,6 @@ namespace CourseApp.Tests
              var item = new Employee();
              item.Work(219);
              Assert.Equal(15, item.Age);
-         }/*
-
-         [Fact]
-         public void TestView()
-         {
-             var item = new Platypus();
-             var view = @"
-          _.-^~~^^^`~-,_,,~''''''```~,''``~'``~,
-  ______,'  -o  :.  _    .          ;     ,'`,  `.
- (      -\.._,.;;'._ ,(   }        _`_-_,,    `, `,
-  ``~~~~~~'   ((/'((((____/~~~~~~'(,(,___>      `~'
-  ";
-             Assert.Equal(view, item.View());
          }
-
-         [Fact]
-         public void TestSetAge()
-         {
-             var item = new Platypus();
-             item.Age = 5;
-             Assert.Equal(5, item.Age);
-         }
-
-         [Fact]
-         public void TestIncorrectSetAge()
-         {
-             var item = new Platypus();
-             item.Age = -5;
-             Assert.Equal(0, item.Age);
-         }
-
-         [Fact]
-         public void TestCorrectIncorrectSetAge()
-         {
-             var item = new Platypus();
-             item.Age = 10;
-             item.Age = -5;
-             Assert.Equal(10, item.Age);
-         }*/
     }
 }
