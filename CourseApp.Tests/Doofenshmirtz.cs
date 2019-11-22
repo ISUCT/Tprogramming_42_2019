@@ -22,7 +22,24 @@ namespace CourseApp.Tests
             Assert.Equal(dateExp, dateReal);
             Assert.Equal(14, item.Age);
             Assert.Equal("Untitled", item.Name);
+            Assert.Equal("Untitled", item.Surname);
             Assert.True(item.IsMale);
+        }
+
+        [Fact]
+        public void MarryTest()
+        {
+            Employee masha = new Employee(18, "Masha", "Romanoff", false);
+            masha.Marry("Pietroff");
+            Assert.Equal("Pietroff", masha.Surname);
+            Employee vasya = new Employee(22, "Vasya", "Vorobey", true);
+            masha.Marry(vasya);
+            Assert.Equal("Vorobey", masha.Surname);
+            vasya.Marry("Ivanoff");
+            Assert.Equal("Vorobey", vasya.Surname);
+            masha.Surname = "Romanoff";
+            vasya.Marry(masha);
+            Assert.Equal("Vorobey", vasya.Surname);
         }
 
         [Fact]

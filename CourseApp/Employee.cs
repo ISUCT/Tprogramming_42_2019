@@ -19,18 +19,24 @@ namespace CourseApp
         }
 
         public Employee(int age, string name)
-        : this(age, name, true)
+        : this(age, name, "Untitled")
         {
         }
 
-        public Employee(int age, string name, bool isMale)
-        : this(age, name, true, DateTime.Now)
+        public Employee(int age, string name, string surname)
+        : this(age, name, surname, true)
         {
         }
 
-        public Employee(int age, string name, bool isMale, DateTime date)
+        public Employee(int age, string name, string surname, bool isMale)
+        : this(age, name, surname, isMale, DateTime.Now)
+        {
+        }
+
+        public Employee(int age, string name, string surname, bool isMale, DateTime date)
         {
             Name = name;
+            Surname = surname;
             Age = age;
             IsMale = isMale;
             dateOfEmploy = date;
@@ -38,6 +44,8 @@ namespace CourseApp
         }
 
         public string Name { get; set; }
+
+        public string Surname { get; set; }
 
         public int Age
         {
@@ -78,6 +86,22 @@ namespace CourseApp
             {
                 age++;
                 workDays = 0;
+            }
+        }
+
+        public void Marry(string surname)
+        {
+            if (IsMale == false)
+            {
+                Surname = surname;
+            }
+        }
+
+        public void Marry(Employee worker)
+        {
+            if (IsMale == false)
+            {
+                Surname = worker.Surname;
             }
         }
     }
