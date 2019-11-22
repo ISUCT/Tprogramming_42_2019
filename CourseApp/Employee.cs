@@ -69,11 +69,6 @@ namespace CourseApp
 
         public bool IsMale { get; set; }
 
-        public bool IsPoisoned
-        {
-            get { return this.IsMale; }
-        }
-
         public DateTime GetDate()
         {
             return dateOfEmploy;
@@ -109,6 +104,21 @@ namespace CourseApp
                     Surname = worker.Surname;
                 }
             }
+        }
+
+        public string Report()
+        {
+            string s = $"Good day, sir! I am {Name} {Surname}. I am {Age} years old. I have started working here at {dateOfEmploy}. ";
+            if (IsMale)
+            {
+                s += "And also I am a male by the way.";
+            }
+            else
+            {
+                s += "And also I am a female by the way.";
+            }
+
+            return s;
         }
     }
 }
