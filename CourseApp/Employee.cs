@@ -108,7 +108,7 @@ namespace CourseApp
 
         public string Report()
         {
-            string s = $"Good day, sir! I am {Name} {Surname}. I am {Age} years old. I have started working here at {dateOfEmploy}. ";
+            string s = $"Good day, sir! I am {Name} {Surname}. I am {Age} years old. ";
             if (IsMale)
             {
                 s += "And also I am a male by the way.";

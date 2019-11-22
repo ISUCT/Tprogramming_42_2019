@@ -78,7 +78,7 @@ namespace CourseApp.Tests
         public void TestReport()
         {
             Employee masha = new Employee(18, "Masha", "Romanoff", false, DateTime.MinValue);
-            Assert.Equal("Good day, sir! I am Masha Romanoff. I am 18 years old. I have started working here at 01.01.0001 0:00:00. And also I am a female by the way.", masha.Report());
+            Assert.Equal("Good day, sir! I am Masha Romanoff. I am 18 years old. And also I am a female by the way.", masha.Report());
         }
 
         [Fact]
