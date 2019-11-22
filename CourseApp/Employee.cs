@@ -91,17 +91,23 @@ namespace CourseApp
 
         public void Marry(string surname)
         {
-            if (IsMale == false)
+            if (Age > 15)
             {
-                Surname = surname;
+                if (IsMale == false)
+                {
+                    Surname = surname;
+                }
             }
         }
 
         public void Marry(Employee worker)
         {
-            if (IsMale == false)
+            if (Age > 15)
             {
-                Surname = worker.Surname;
+                if (IsMale == false)
+                {
+                    Surname = worker.Surname;
+                }
             }
         }
     }

@@ -40,6 +40,11 @@ namespace CourseApp.Tests
             masha.Surname = "Romanoff";
             vasya.Marry(masha);
             Assert.Equal("Vorobey", vasya.Surname);
+            masha.Age = 15;
+            masha.Marry(vasya);
+            Assert.Equal("Romanoff", masha.Surname);
+            masha.Marry("Gorobets");
+            Assert.Equal("Romanoff", masha.Surname);
         }
 
         [Fact]
