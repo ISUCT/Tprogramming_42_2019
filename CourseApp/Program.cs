@@ -58,6 +58,7 @@ namespace CourseApp
                 Console.WriteLine(item);
             }
 
+            Console.WriteLine($"Adin = {(1 < 2 ? "1" : "0")}");
             Console.ReadKey();
         }
     }

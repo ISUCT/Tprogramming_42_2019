@@ -108,16 +108,7 @@ namespace CourseApp
 
         public string Report()
         {
-            string s = $"Good day, sir! I am {Name} {Surname}. I am {Age} years old. ";
-            if (IsMale)
-            {
-                s += "And also I am a male by the way.";
-            }
-            else
-            {
-                s += "And also I am a female by the way.";
-            }
-
+            string s = $"Good day, sir! I am {Name} {Surname}. I am {Age} years old. And also I am a {(IsMale ? "male" : "female")} by the way.";
             return s;
         }
     }

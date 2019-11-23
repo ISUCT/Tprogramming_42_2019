@@ -14,10 +14,24 @@ namespace CourseApp.Tests
         }
 
         [Fact]
-        public void TestTaskA()
+        public void TestTaskAempty()
         {
             var res = Program.TaskA(4.1, 2.7, 5.2, 5.1, 0.8);
             Assert.Equal(res, new double[0]);
+        }
+
+        [Fact]
+        public void TestTaskA()
+        {
+            var res = Program.TaskA(4.1, 2.7, 5.0, 5.9, 0.8).Length;
+            Assert.Equal(2, res);
+        }
+
+        [Fact]
+        public void TestTaskA2()
+        {
+            var res = Program.TaskA(4.1, 2.7, 5.0, 5.1, 6.0).Length;
+            Assert.Equal(1, res);
         }
 
         [Fact]
@@ -32,15 +46,8 @@ namespace CourseApp.Tests
         public void TestTaskBWork()
         {
             double[] mass = new double[5] { 1.9, 2.15, 2.34, 2.73, 3.16 };
-            var res = Program.TaskB(4.1, 2.7, mass);
-            int[] resMass = new int[mass.Length];
-            for (int i = 0; i < mass.Length; i++)
-            {
-                resMass[i] = (int)Math.Floor(res[i]);
-            }
-
-            int[] exp = new int[5] { -100, 77, 38, 21, 16 };
-            Assert.Equal(resMass, exp);
+            var res = Program.TaskB(4.1, 2.7, mass).Length;
+            Assert.Equal(5, res);
         }
     }
 }
