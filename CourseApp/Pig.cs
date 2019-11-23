@@ -68,7 +68,7 @@ namespace CourseApp
                 }
                 else
                 {
-                    Console.WriteLine("CountSalo should be > 0");
+                throw new System.Exception();
                 }
             }
         }

@@ -54,17 +54,33 @@ namespace CourseApp.Tests
         [Fact]
         public void TestIncorrectSetAge()
         {
-            var item = new Pig();
-            item.Age = -5;
-            Assert.Equal(0, item.Age);
+            try
+            {
+                var item = new Pig();
+                item.Age = -5;
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("CountSalo should be > 0");
+                Assert.True(true);
+            }
         }
 
         [Fact]
         public void TestCorrectIncorrectSetAge()
         {
             var item = new Pig();
-            item.Age = 10;
-            item.Age = -5;
+            try
+            {
+                item.Age = 10;
+                item.Age = -5;
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("CountSalo should be > 0");
+                Assert.True(true);
+            }
+
             Assert.Equal(10, item.Age);
         }
     }
