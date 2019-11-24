@@ -41,11 +41,14 @@ namespace CourseApp
             IsMale = isMale;
             dateOfEmploy = date;
             workDays = 0;
+            Products = 0;
         }
 
         public string Name { get; set; }
 
         public string Surname { get; set; }
+
+        public int Products { get; private set; }
 
         public int Age
         {
@@ -76,37 +79,44 @@ namespace CourseApp
 
         public void Work(int days)
         {
-            workDays += days;
-            if (workDays >= 219)
+            if (days < 6)
             {
-                age++;
-                workDays = 0;
+                workDays += days;
+                if (workDays > 4)
+                {
+                    workDays = 0;
+                    Products++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Working more than 5 days in a row is forbidden");
             }
         }
 
-        public void Marry(string surname)
+        public void Marry(string surname, bool change = false)
         {
             if (Age > 15)
             {
-                if (IsMale == false)
+                if ((IsMale == false) && change)
                 {
                     Surname = surname;
                 }
             }
         }
 
-        public void Marry(Employee worker)
+        public void Marry(Employee worker, bool change = false)
         {
             if (Age > 15)
             {
-                if (IsMale == false)
+                if ((IsMale == false) && change)
                 {
                     Surname = worker.Surname;
                 }
             }
         }
 
-        public string Report()
+        public override string ToString()
         {
             string s = $"Good day, sir! I am {Name} {Surname}. I am {Age} years old. And also I am a {(IsMale ? "male" : "female")} by the way.";
             return s;
