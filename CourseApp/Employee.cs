@@ -65,7 +65,7 @@ namespace CourseApp
                 }
                 else
                 {
-                    Console.WriteLine("Age should be > 14 and < than 100");
+                    throw new AgeException("Age should be > 14 and < than 100");
                 }
             }
         }
@@ -90,7 +90,7 @@ namespace CourseApp
             }
             else
             {
-                Console.WriteLine("Working more than 5 days in a row is forbidden");
+                throw new WorkException("Working more than 5 days in a row is forbidden");
             }
         }
 
@@ -113,6 +113,10 @@ namespace CourseApp
                 {
                     Surname = worker.Surname;
                 }
+            }
+            else
+            {
+                throw new AgeException("You can marry from 16 years in Russia");
             }
         }
 

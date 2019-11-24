@@ -81,7 +81,16 @@ namespace CourseApp.Tests
         {
             Employee masha = new Employee(15, "Masha", "Romanoff", false);
             Employee vasya = new Employee(22, "Vasya", "Vorobey", true);
-            masha.Marry(vasya, true);
+            try
+            {
+                masha.Marry(vasya, true);
+            }
+            catch (AgeException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Assert.True(true);
+            }
+
             Assert.Equal("Romanoff", masha.Surname);
         }
 
@@ -107,7 +116,16 @@ namespace CourseApp.Tests
         public void TestIncorrectSetAge(int age, int exp)
         {
             var item = new Employee();
-            item.Age = age;
+            try
+            {
+                item.Age = age;
+            }
+            catch (AgeException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Assert.True(true);
+            }
+
             Assert.Equal(exp, item.Age);
         }
 
@@ -116,7 +134,16 @@ namespace CourseApp.Tests
         {
             var item = new Employee();
             item.Age = 20;
-            item.Age = 13;
+            try
+            {
+                item.Age = 13;
+            }
+            catch (AgeException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Assert.True(true);
+            }
+
             Assert.Equal(20, item.Age);
         }
 
@@ -139,7 +166,16 @@ namespace CourseApp.Tests
         public void TestWork2()
         {
             var item = new Employee();
-            item.Work(10);
+            try
+            {
+                item.Work(10);
+            }
+            catch (WorkException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Assert.True(true);
+            }
+
             Assert.Equal(0, item.Products);
         }
     }
