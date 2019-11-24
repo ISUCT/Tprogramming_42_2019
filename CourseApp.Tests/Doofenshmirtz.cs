@@ -10,16 +10,8 @@ namespace CourseApp.Tests
         {
             var item = new Employee();
             DateTime dateExp = DateTime.Now;
-            double sec = dateExp.Ticks / 10000000;
-            var newSec = Math.Floor(sec / 60) * 60;
-            var newTicks = (long)newSec * 10000000;
-            dateExp = new DateTime(newTicks);
-            DateTime dateReal = item.GetDate();
-            sec = dateReal.Ticks / 10000000;
-            newSec = Math.Floor(sec / 60) * 60;
-            newTicks = (long)newSec * 10000000;
-            dateReal = new DateTime(newTicks);
-            Assert.Equal(dateExp, dateReal);
+            long a = Math.Abs(dateExp.Ticks - item.GetDate().Ticks);
+            Assert.True(a < 10000001);
             Assert.Equal(14, item.Age);
             Assert.Equal("Untitled", item.Name);
             Assert.Equal("Untitled", item.Surname);
