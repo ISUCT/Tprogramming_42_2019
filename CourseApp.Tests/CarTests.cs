@@ -35,6 +35,15 @@ namespace CourseApp.Tests
         }
 
         [Fact]
+        public void Test()
+        {
+            var item = new Car("Name3");
+            Assert.Equal(0, item.Age);
+            Assert.Equal("Name3", item.Brand);
+            Assert.Equal(0, item.Speed);
+        }
+
+        [Fact]
         public void TestEmptyConstructor()
         {
             var item = new Car();
@@ -54,17 +63,33 @@ namespace CourseApp.Tests
         [Fact]
         public void TestIncorrectSetAge()
         {
-            var item = new Car();
-            item.Age = -5;
-            Assert.Equal(0, item.Age);
+            try
+            {
+                var item = new Car();
+                item.Age = -5;
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("Speed should be > 0");
+                Assert.True(true);
+            }
         }
 
         [Fact]
         public void TestCorrectIncorrectSetAge()
         {
             var item = new Car();
-            item.Age = 10;
-            item.Age = -5;
+            try
+            {
+                item.Age = 10;
+                item.Age = -5;
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("Speed should be > 0");
+                Assert.True(true);
+            }
+
             Assert.Equal(10, item.Age);
         }
     }

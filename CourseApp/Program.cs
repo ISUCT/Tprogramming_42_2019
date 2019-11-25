@@ -14,23 +14,23 @@ namespace CourseApp
             return result;
         }
 
-        public static double[] FuncthionForShag(double x_natch, double x_konch, double x_shag)
+        public static List<double> FuncthionForShag(double x_natch, double x_konch, double x_shag)
         {
-            var result = new double[(int)((x_konch - x_natch) / x_shag) + 1];
+            List<double> result = new List<double>();
             int kolch = 0;
             for (double i = x_natch; i <= x_konch; i += x_shag)
             {
-                result[kolch] = FuncthionZnach(i);
+                result.Add = FuncthionZnach(i);
                 kolch++;
             }
 
             return result;
         }
 
-        public static double[] FuncthionForMass(double[] x)
+        public static List<double> FuncthionForMass(List<double> x)
         {
-            var y = new double[x.Length];
-            for (var i = 0; i < x.Length; i++)
+            List<double> y = new List<double>();
+            for (var i = 0; i < x.Count; i++)
             {
                 y[i] = FuncthionZnach(x[i]);
             }
@@ -47,7 +47,7 @@ namespace CourseApp
             }
 
             Console.WriteLine($"\nЗадание B:");
-            var x = new double[] { 1.84, 2.71, 3.81, 4.56, 5.62 };
+            List<double> x = new List<double> { 1.84, 2.71, 3.81, 4.56, 5.62 };
             foreach (var element in FuncthionForMass(x))
             {
                 Console.WriteLine($"y = {element}");

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace CourseApp.Tests
@@ -29,7 +30,7 @@ namespace CourseApp.Tests
         [Fact]
         public void TestNullMassFuncthionForMass()
         {
-            var mass = new double[0];
+            List<double> mass = new List<double>();
             var res = Program.FuncthionForMass(mass);
             Assert.Equal(mass, res);
         }
@@ -37,9 +38,9 @@ namespace CourseApp.Tests
         [Fact]
         public void TestFuncthionForShag()
         {
-            var x = new double[] { 1.84, 2.71, 3.81, 4.56, 5.62 };
-            var res = Program.FuncthionForMass(x);
-            var expY = new double[] { 1.78088177902672, 2.43716358850851, 2.91258396550454, 3.16349459673976, 3.46531788233977 };
+            List<double> x = new List<double> { 1.84, 2.71, 3.81, 4.56, 5.62 };
+            List<double> res = Program.FuncthionForMass(x);
+            List<double> expy = new List<double> { 1.78088177902672, 2.43716358850851, 2.91258396550454, 3.16349459673976, 3.46531788233977 };
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(expY[i], res[i], 3);

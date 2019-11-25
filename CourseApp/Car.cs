@@ -68,14 +68,14 @@ namespace CourseApp
                 }
                 else
                 {
-                    Console.WriteLine("Speed should be > 0");
+                    throw new System.Exception();
                 }
             }
         }
 
-        public void GetInfo()
+        public override string ToString()
         {
-            Console.WriteLine($"Бренд:{Brand}, Возраст:{Age}, Скорость:{Speed}");
+            return $"Бренд:{Brand}, Возраст:{Age}, Скорость:{Speed}";
         }
 
         public void Sound()
