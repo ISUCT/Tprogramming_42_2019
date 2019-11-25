@@ -17,11 +17,14 @@ namespace CourseApp
         public static List<double> FuncthionForShag(double x_natch, double x_konch, double x_shag)
         {
             List<double> result = new List<double>();
-            int kolch = 0;
             for (double i = x_natch; i <= x_konch; i += x_shag)
             {
                 result.Add(FuncthionZnach(i));
-                kolch++;
+            }
+
+            if (x_natch > x_konch)
+            {
+                throw new System.ArgumentOutOfRangeException();
             }
 
             return result;

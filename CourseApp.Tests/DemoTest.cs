@@ -7,7 +7,7 @@ namespace CourseApp.Tests
     public class DemoTest
     {
         [Fact]
-        public void Test1()
+        public void Test()
         {
             Assert.True(true);
         }
@@ -36,7 +36,7 @@ namespace CourseApp.Tests
         }
 
         [Fact]
-        public void TestFuncthionForShag1()
+        public void TestFuncthionForMass()
         {
             List<double> x = new List<double> { 1.84, 2.71, 3.81, 4.56, 5.62 };
             List<double> res = Program.FuncthionForMass(x);
@@ -48,11 +48,10 @@ namespace CourseApp.Tests
         }
 
         [Fact]
-        public void TestFuncthionForShag2()
+        public void TestFuncthionForShag()
         {
-            List<double> x = new List<double> { 1.84, 2.71, 3.81, 4.56, 5.62 };
-            List<double> res = Program.FuncthionForMass(x);
-            List<double> expY = new List<double> { 1.78088177902672, 2.43716358850851, 2.91258396550454, 3.16349459673976, 3.46531788233977 };
+            List<double> res = Program.FuncthionForShag(1.25, 3.25, 0.4);
+            List<double> expY = new List<double> { 1.56588571985763, 1.44658878557922, 1.99793116855463, 2.28865514120997, 2.50911171305746 };
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(expY[i], res[i], 3);
@@ -60,14 +59,37 @@ namespace CourseApp.Tests
         }
 
         [Fact]
-        public void TestFuncthionForShag3()
+        public void TestFuncthionForShagSupplement()
         {
-            List<double> x = new List<double> { 1.84, 2.71, 3.81, 4.56, 5.62 };
-            List<double> res = Program.FuncthionForMass(x);
-            List<double> expY = new List<double> { 1.78088177902672, 2.43716358850851, 2.91258396550454, 3.16349459673976, 3.46531788233977 };
-            for (int i = 0; i < 5; i++)
+            try
             {
-                Assert.Equal(expY[i], res[i], 3);
+                List<double> res = Program.FuncthionForShag(1.25, 3.25, 4);
+                List<double> expY = new List<double> { 1.56588571985763, 1.44658878557922, 1.99793116855463, 2.28865514120997, 2.50911171305746 };
+                for (int i = 0; i < 5; i++)
+                {
+                    Assert.Equal(expY[i], res[i], 3);
+                }
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("dx > xk-xn");
+                Assert.True(true);
+            }
+        }
+
+        [Fact]
+        public void TestFuncthionForShagError()
+        {
+            try
+            {
+                List<double> res = Program.FuncthionForShag(3.25, 1.25, 0.4);
+                List<double> expY = new List<double> { 1.56588571985763 };
+                Assert.Equal(expY[0], res[0], 3);
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("xn > xk");
+                Assert.True(true);
             }
         }
     }
