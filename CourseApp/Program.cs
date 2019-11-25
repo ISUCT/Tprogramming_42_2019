@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CourseApp
 {
@@ -9,33 +10,30 @@ namespace CourseApp
             return ((a * Math.Sqrt(x)) - (b * Math.Log(x, 5))) / Math.Log10(Math.Abs(x - 1));
         }
 
-        public static double[] TaskA(double a, double b, double xn, double xk, double dx)
+        public static List<double> TaskA(double a, double b, double xn, double xk, double dx)
         {
             if (xk < xn)
             {
-                return new double[0];
+                return new List<double>();
             }
             else
             {
-                int size = (int)Math.Floor((xk - xn) / dx);
-                double[] rtrn = new double[size + 1];
-                size = 0;
+                List<double> rtrn = new List<double>();
                 for (double x = xn; x < (xk + 0.1); x += dx)
                 {
-                    rtrn[size] = Equat(a, b, x);
-                    size++;
+                    rtrn.Add(Equat(a, b, x));
                 }
 
                 return rtrn;
             }
         }
 
-        public static double[] TaskB(double a, double b, double[] xm)
+        public static List<double> TaskB(double a, double b, List<double> xm)
         {
-            double[] rtrn = new double[xm.Length];
-            for (int i = 0; i < xm.Length; i++)
+            List<double> rtrn = new List<double>();
+            foreach (double item in xm)
             {
-                rtrn[i] = Equat(a, b, xm[i]);
+                rtrn.Add(Equat(a, b, item));
             }
 
             return rtrn;
@@ -45,13 +43,13 @@ namespace CourseApp
         {
             double a = 4.1;
             double b = 2.7;
-            double[] mass = TaskA(a, b, 1.2, 5.2, 0.8);
+            List<double> mass = TaskA(a, b, 1.2, 5.2, 0.8);
             foreach (var item in mass)
             {
                 Console.WriteLine(item);
             }
 
-            double[] mass2 = new double[5] { 1.9, 2.15, 2.34, 2.73, 3.16 };
+            List<double> mass2 = new List<double>() { 1.9, 2.15, 2.34, 2.73, 3.16 };
             mass2 = TaskB(a, b, mass2);
             foreach (var item in mass2)
             {
