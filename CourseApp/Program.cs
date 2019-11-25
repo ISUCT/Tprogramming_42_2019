@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CourseApp
 {
@@ -10,25 +11,25 @@ namespace CourseApp
             return y;
         }
 
-        public static double[] TaskA(double a, double b, double xn, double xk, double dx)
+        public static List<double> TaskA(double a, double b, double xn, double xk, double dx)
         {
             int i = 0;
-            var y = new double[(int)((xk - xn) / dx)];
+            List<double> y = new List<double>();
             for (double x = xn; x < xk; x += dx)
             {
-                y[i] = MyFunction(a, b, x);
+                y.Add(MyFunction(a, b, x));
                 i++;
             }
 
             return y;
         }
 
-        public static double[] TaskB(double a, double b, double[] x)
+        public static List<double> TaskB(double a, double b, List<double> x)
         {
-            var y = new double[x.Length];
-            for (var i = 0; i < x.Length; i++)
+            List<double> y = new List<double>();
+            for (var i = 0; i < x.Count; i++)
             {
-                y[i] = MyFunction(a, b, x[i]);
+                y.Add(MyFunction(a, b, x[i]));
             }
 
             return y;
@@ -41,6 +42,7 @@ namespace CourseApp
             const double xn = 1.23;
             const double xk = 7.23;
             const double dx = 1.2;
+            Console.WriteLine(MyFunction(1, 0.7, 5));
             Console.WriteLine("Задание А:");
             foreach (var item in TaskA(a, b, xn, xk, dx))
             {
@@ -48,7 +50,7 @@ namespace CourseApp
             }
 
             Console.WriteLine("Задание B:");
-            var x = new double[] { 1.88, 2.26, 3.84, 4.55, -6.21 };
+            List<double> x = new List<double> { 1.88, 2.26, 3.84, 4.55, -6.21 };
             foreach (var item in TaskB(a, b, x))
             {
                 Console.WriteLine($"y = {item}");
