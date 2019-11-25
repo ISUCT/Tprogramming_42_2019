@@ -20,7 +20,7 @@ namespace CourseApp
             int kolch = 0;
             for (double i = x_natch; i <= x_konch; i += x_shag)
             {
-                result.Add() = FuncthionZnach(i);
+                result.Add(FuncthionZnach(i));
                 kolch++;
             }
 
