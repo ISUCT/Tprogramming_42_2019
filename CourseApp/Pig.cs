@@ -73,9 +73,9 @@ namespace CourseApp
             }
         }
 
-        public void GetInfo()
+        public override string ToString()
         {
-            Console.WriteLine($"Имя:{Name},Возраст:{Age},Кол-во сало:{CountSalo}");
+            return $"Имя:{Name},Возраст:{Age},Кол-во сало:{CountSalo}";
         }
 
         public void Voice()
