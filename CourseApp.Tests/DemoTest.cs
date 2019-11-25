@@ -36,7 +36,31 @@ namespace CourseApp.Tests
         }
 
         [Fact]
-        public void TestFuncthionForShag()
+        public void TestFuncthionForShag1()
+        {
+            List<double> x = new List<double> { 1.84, 2.71, 3.81, 4.56, 5.62 };
+            List<double> res = Program.FuncthionForMass(x);
+            List<double> expY = new List<double> { 1.78088177902672, 2.43716358850851, 2.91258396550454, 3.16349459673976, 3.46531788233977 };
+            for (int i = 0; i < 5; i++)
+            {
+                Assert.Equal(expY[i], res[i], 3);
+            }
+        }
+
+        [Fact]
+        public void TestFuncthionForShag2()
+        {
+            List<double> x = new List<double> { 1.84, 2.71, 3.81, 4.56, 5.62 };
+            List<double> res = Program.FuncthionForMass(x);
+            List<double> expY = new List<double> { 1.78088177902672, 2.43716358850851, 2.91258396550454, 3.16349459673976, 3.46531788233977 };
+            for (int i = 0; i < 5; i++)
+            {
+                Assert.Equal(expY[i], res[i], 3);
+            }
+        }
+
+        [Fact]
+        public void TestFuncthionForShag3()
         {
             List<double> x = new List<double> { 1.84, 2.71, 3.81, 4.56, 5.62 };
             List<double> res = Program.FuncthionForMass(x);

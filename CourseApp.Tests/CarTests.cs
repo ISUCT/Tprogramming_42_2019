@@ -35,15 +35,6 @@ namespace CourseApp.Tests
         }
 
         [Fact]
-        public void Test()
-        {
-            var item = new Car("Name3");
-            Assert.Equal(0, item.Age);
-            Assert.Equal("Name3", item.Brand);
-            Assert.Equal(0, item.Speed);
-        }
-
-        [Fact]
         public void TestEmptyConstructor()
         {
             var item = new Car();

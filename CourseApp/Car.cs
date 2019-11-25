@@ -42,13 +42,13 @@ namespace CourseApp
 
             set
             {
-                if (value > 0 && value < 20)
+                if (value >= 0 && value <= 20)
                 {
                     this.age = value;
                 }
                 else
                 {
-                    Console.WriteLine("Age should be > 0 and < than 20");
+                    throw new System.Exception();
                 }
             }
         }

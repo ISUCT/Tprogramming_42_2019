@@ -32,7 +32,7 @@ namespace CourseApp
             List<double> y = new List<double>();
             for (var i = 0; i < x.Count; i++)
             {
-                y[i] = FuncthionZnach(x[i]);
+                y.Add(FuncthionZnach(x[i]));
             }
 
             return y;
