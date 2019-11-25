@@ -6,7 +6,6 @@ namespace CourseApp
     {
         private int age;
         private int workDays;
-        private DateTime dateOfEmploy;
 
         public Employee()
         : this(14)
@@ -39,7 +38,7 @@ namespace CourseApp
             Surname = surname;
             Age = age;
             IsMale = isMale;
-            dateOfEmploy = date;
+            DateOfEmploy = date;
             workDays = 0;
             Products = 0;
         }
@@ -49,6 +48,8 @@ namespace CourseApp
         public string Surname { get; set; }
 
         public int Products { get; private set; }
+
+        public DateTime DateOfEmploy { get; private set; }
 
         public int Age
         {
@@ -71,11 +72,6 @@ namespace CourseApp
         }
 
         public bool IsMale { get; set; }
-
-        public DateTime GetDate()
-        {
-            return dateOfEmploy;
-        }
 
         public void Work(int days)
         {

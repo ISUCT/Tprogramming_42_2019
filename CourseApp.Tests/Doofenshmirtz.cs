@@ -10,7 +10,7 @@ namespace CourseApp.Tests
         {
             var item = new Employee();
             DateTime dateExp = DateTime.Now;
-            long a = Math.Abs(dateExp.Ticks - item.GetDate().Ticks);
+            long a = Math.Abs(dateExp.Ticks - item.DateOfEmploy.Ticks);
             Assert.True(a < 10000001);
             Assert.Equal(14, item.Age);
             Assert.Equal("Untitled", item.Name);
