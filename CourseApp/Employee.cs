@@ -2,7 +2,7 @@ using System;
 
 namespace CourseApp
 {
-    public class Employee
+    public class Employee : Person
     {
         private int age;
         private int workDays;
