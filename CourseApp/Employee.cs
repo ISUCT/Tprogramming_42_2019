@@ -9,21 +9,33 @@ namespace CourseApp
         public Employee()
         : base()
         {
+            DateOfEmploy = DateTime.Now;
+            workDays = 0;
+            Products = 0;
         }
 
         public Employee(int age)
         : base(age)
         {
+            DateOfEmploy = DateTime.Now;
+            workDays = 0;
+            Products = 0;
         }
 
         public Employee(int age, string name)
         : base(age, name)
         {
+            DateOfEmploy = DateTime.Now;
+            workDays = 0;
+            Products = 0;
         }
 
         public Employee(int age, string name, string surname)
         : base(age, name, surname)
         {
+            DateOfEmploy = DateTime.Now;
+            workDays = 0;
+            Products = 0;
         }
 
         public Employee(int age, string name, string surname, bool isMale)
