@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CourseApp
 {
-    public class Pig
+    public class Pig:Animal
     {
         private int countSalo;
         private int age;
@@ -12,6 +12,7 @@ namespace CourseApp
         public Pig()
         : this("Неизвестно")
         {
+
         }
 
         public Pig(string name)
@@ -25,9 +26,8 @@ namespace CourseApp
         }
 
         public Pig(string name, int age, int countSalo)
+        : base(name,age)
         {
-            Name = name;
-            Age = age;
             CountSalo = countSalo;
         }
 
@@ -78,7 +78,7 @@ namespace CourseApp
             return $"Имя:{Name},Возраст:{Age},Кол-во сало:{CountSalo}";
         }
 
-        public void Voice()
+        public override void Voice()
         {
             Console.WriteLine("Хрю");
         }
