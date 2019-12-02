@@ -75,9 +75,9 @@ namespace CourseApp
             }
         }
 
-        public override void Relax()
+        public override string Relax()
         {
-            Console.WriteLine("Yeee");
+            return "Zzz....";
         }
     }
 }

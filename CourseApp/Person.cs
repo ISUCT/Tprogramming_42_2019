@@ -92,6 +92,6 @@ namespace CourseApp
             return s;
         }
 
-        public abstract void Relax();
+        public abstract string Relax();
     }
 }
