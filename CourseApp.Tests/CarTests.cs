@@ -83,5 +83,75 @@ namespace CourseApp.Tests
 
             Assert.Equal(10, item.Age);
         }
+
+        [Fact]
+        public void TestCorectToString()
+        {
+            var item = new Car();
+            try
+            {
+                item.Sound();
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("Error toString");
+                Assert.True(true);
+            }
+
+            Assert.Equal($"Бренд:{item.Brand}, Возраст:{item.Age}, Скорость:{item.Speed}", item.ToString());
+        }
+
+        [Fact]
+        public void TestCorectSound()
+        {
+            var item = new Car();
+            try
+            {
+                item.Sound();
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("Error sound");
+                Assert.True(true);
+            }
+
+            Assert.True(true);
+        }
+
+        [Fact]
+        public void TestCorrectUse()
+        {
+            var item = new Car();
+            int currAge = item.Age;
+            try
+            {
+                item.Use();
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("Error use");
+                Assert.True(true);
+            }
+
+            Assert.Equal(item.Age, currAge + 1);
+        }
+
+        [Fact]
+        public void TestCorrectBraking()
+        {
+            var item = new Car();
+            int currSpeed = item.Speed;
+            try
+            {
+                item.Braking();
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("Error braking");
+                Assert.True(true);
+            }
+
+            Assert.Equal(item.Speed, currSpeed - 1);
+        }
     }
 }
