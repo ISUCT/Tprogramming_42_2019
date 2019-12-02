@@ -63,5 +63,7 @@ namespace CourseApp
             string s = $"Good day, sir! I am {Name} {Surname}. I am {Age} years old. And also I am a {(IsMale ? "male" : "female")} by the way.";
             return s;
         }
+
+        public abstract void Relax();
     }
 }

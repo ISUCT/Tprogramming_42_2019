@@ -62,5 +62,10 @@ namespace CourseApp
                 throw new WorkException("Working more than 5 days in a row is forbidden");
             }
         }
+
+        public override void Relax()
+        {
+            Console.WriteLine("Yeee");
+        }
     }
 }
