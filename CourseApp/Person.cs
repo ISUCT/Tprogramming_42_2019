@@ -6,6 +6,34 @@ namespace CourseApp
     {
         private int age;
 
+        public Person()
+        : this(14)
+        {
+        }
+
+        public Person(int age)
+        : this(age, "Untitled")
+        {
+        }
+
+        public Person(int age, string name)
+        : this(age, name, "Untitled")
+        {
+        }
+
+        public Person(int age, string name, string surname)
+        : this(age, name, surname, true)
+        {
+        }
+
+        public Person(int age, string name, string surname, bool isMale)
+        {
+            Name = name;
+            Surname = surname;
+            Age = age;
+            IsMale = isMale;
+        }
+
         public int Age
         {
             get

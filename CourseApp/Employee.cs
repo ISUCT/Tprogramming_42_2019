@@ -7,22 +7,22 @@ namespace CourseApp
         private int workDays;
 
         public Employee()
-        : this(14)
+        : base()
         {
         }
 
         public Employee(int age)
-        : this(age, "Untitled")
+        : base(age)
         {
         }
 
         public Employee(int age, string name)
-        : this(age, name, "Untitled")
+        : base(age, name)
         {
         }
 
         public Employee(int age, string name, string surname)
-        : this(age, name, surname, true)
+        : base(age, name, surname)
         {
         }
 
