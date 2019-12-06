@@ -90,7 +90,16 @@ namespace CourseApp.Tests
         public void MarryTest6()
         {
             Employee masha = new Employee(15, "Masha", "Romanoff", false);
-            masha.Marry("Gorobets", true);
+            try
+            {
+                masha.Marry("Gorobets", true);
+            }
+            catch (AgeException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Assert.True(true);
+            }
+
             Assert.Equal("Romanoff", masha.Surname);
         }
 

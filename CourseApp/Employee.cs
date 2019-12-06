@@ -12,6 +12,7 @@ namespace CourseApp
             DateOfEmploy = DateTime.Now;
             workDays = 0;
             Products = 0;
+            Age = 14;
         }
 
         public Employee(int age)
@@ -54,6 +55,26 @@ namespace CourseApp
             Products = 0;
         }
 
+        public new int Age
+        {
+            get
+            {
+                return base.Age;
+            }
+
+            set
+            {
+                if (value >= 14 && value < 100)
+                {
+                    base.Age = value;
+                }
+                else
+                {
+                    throw new AgeException("Age should be > 14 and < than 100");
+                }
+            }
+        }
+
         public int Products { get; private set; }
 
         public DateTime DateOfEmploy { get; private set; }
@@ -77,7 +98,7 @@ namespace CourseApp
 
         public override string Relax()
         {
-            return "Zzz....";
+            return "Zzz...";
         }
     }
 }

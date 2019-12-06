@@ -7,7 +7,7 @@ namespace CourseApp
         private int age;
 
         public Person()
-        : this(14)
+        : this(0)
         {
         }
 
@@ -43,13 +43,13 @@ namespace CourseApp
 
             set
             {
-                if (value >= 14 && value < 100)
+                if (value >= 0 && value < 100)
                 {
                     this.age = value;
                 }
                 else
                 {
-                    throw new AgeException("Age should be > 14 and < than 100");
+                    throw new AgeException("Age should be > 0 and < than 100");
                 }
             }
         }
@@ -69,9 +69,13 @@ namespace CourseApp
                     Surname = surname;
                 }
             }
+            else
+            {
+                throw new AgeException("You can marry from 16 years in Russia");
+            }
         }
 
-        public void Marry(Employee worker, bool change = false)
+        public void Marry(Person worker, bool change = false)
         {
             if (Age > 15)
             {
