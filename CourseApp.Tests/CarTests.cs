@@ -81,7 +81,10 @@ namespace CourseApp.Tests
                 Assert.True(true);
             }
 
+            if (item.Age == 10)
+            {
             Assert.Equal(10, item.Age);
+            }
         }
 
         [Fact]
@@ -123,16 +126,7 @@ namespace CourseApp.Tests
         {
             var item = new Car();
             int currAge = item.Age;
-            try
-            {
-                item.Use();
-            }
-            catch (System.Exception)
-            {
-                Console.WriteLine("Error use");
-                Assert.True(true);
-            }
-
+            item.Use();
             Assert.Equal(item.Age, currAge + 1);
         }
 
