@@ -64,8 +64,12 @@ namespace CourseApp
                 Console.WriteLine(item.Relax());
             }
 
-            // int nu = (int)Console.ReadLine();
-            // string ss = "23";
+            Console.WriteLine(MyAge());
+            Console.ReadKey();
+        }
+
+        public static string MyAge()
+        {
             Console.WriteLine("Введите год своего рождения:");
             int years = int.Parse(Console.ReadLine());
             Console.WriteLine("Введите месяц своего рождения:");
@@ -73,11 +77,31 @@ namespace CourseApp
             Console.WriteLine("Введите день своего рождения:");
             int days = int.Parse(Console.ReadLine());
             DateTime dayOfBirth = new DateTime(years, months, days);
-            Console.WriteLine(dayOfBirth + " " + dayOfBirth.Year + " " + dayOfBirth.Month + " " + dayOfBirth.Day + " " + DateTime.Now);
             DateTime result = new DateTime(DateTime.Now.Ticks - dayOfBirth.Ticks);
-            Console.WriteLine(result);
-            Console.WriteLine($"Вам {result.Year - 1} лет, {result.Month - 1} месяцев и {result.Day} дня");
-            Console.ReadKey();
+            return $"Вам {result.Year - 1} лет, {result.Month - 1} месяцев и {result.Day - 1} дня";
+        }
+
+        public static string MyAge(int y, int m, int d)
+        {
+            DateTime dayOfBirth = new DateTime(y, m, d);
+            if (dayOfBirth.Ticks < DateTime.Now.Ticks)
+            {
+                DateTime result = new DateTime(DateTime.Now.Ticks - dayOfBirth.Ticks);
+                return $"Вам {result.Year - 1} лет, {result.Month - 1} месяцев и {result.Day - 1} дня";
+            }
+
+            throw new AgeException("Вы ещё не родились, ожидайте");
+        }
+
+        public static string MyAge(DateTime date)
+        {
+            if (date.Ticks < DateTime.Now.Ticks)
+            {
+                DateTime result = new DateTime(DateTime.Now.Ticks - date.Ticks);
+                return $"Вам {result.Year - 1} лет, {result.Month - 1} месяцев и {result.Day - 1} дня";
+            }
+
+            throw new AgeException("Вы ещё не родились, ожидайте");
         }
     }
 }
