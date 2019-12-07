@@ -4,27 +4,27 @@ using System.Text;
 
 namespace CourseApp
 {
-    public class Car : Vehicle
+    public class Plane : Vehicle
     {
         private int speed;
         private int age;
 
-        public Car()
+        public Plane()
         : this("Неизвестно")
         {
         }
 
-        public Car(string brand)
+        public Plane(string brand)
         : this(brand, 0)
         {
         }
 
-        public Car(string brand, int age)
+        public Plane(string brand, int age)
         : this(brand, age, 0)
         {
         }
 
-        public Car(string brand, int age, int speed)
+        public Plane(string brand, int age, int speed)
         {
             Brand = brand;
             Age = age;
@@ -42,7 +42,7 @@ namespace CourseApp
 
             set
             {
-                if (value >= 0 && value <= 20)
+                if (value >= 0 && value <= 1000)
                 {
                     this.age = value;
                 }
@@ -80,7 +80,7 @@ namespace CourseApp
 
         public void Sound()
         {
-            Console.WriteLine("Врум!");
+            Console.WriteLine("ШФРУХХТТТ!");
         }
 
         public void Use()
