@@ -4,21 +4,24 @@ namespace CourseApp
 {
     public abstract class Animal
     {
-        public string Name { get; set; }
         private int age;
 
         public Animal()
         : this("Неизвестно")
         {
         }
+
         public Animal(string name)
+        : this(name, 0)
         {
         }
+
         public Animal(string name, int age)
         {
             Name = name;
             Age = age;
         }
+
         public int Age
         {
             get
@@ -34,10 +37,18 @@ namespace CourseApp
                 }
                 else
                 {
-                    Console.WriteLine("Age should be > 0 and < than 20");
+                    throw new System.Exception();
                 }
             }
         }
+
+        public string Name { get; set; }
+
+        public void Aging()
+        {
+            this.age++;
+        }
+
         public abstract void Voice();
     }
 }

@@ -4,19 +4,17 @@ using System.Text;
 
 namespace CourseApp
 {
-    public class Pig:Animal
+    public class Pig : Animal
     {
         private int countSalo;
-        private int age;
 
         public Pig()
-        : this("Неизвестно")
+        : base("Неизвестно")
         {
-
         }
 
         public Pig(string name)
-        : this(name, 0)
+        : base(name, 0)
         {
         }
 
@@ -26,31 +24,10 @@ namespace CourseApp
         }
 
         public Pig(string name, int age, int countSalo)
-        : base(name,age)
         {
+            Name = name;
+            Age = age;
             CountSalo = countSalo;
-        }
-
-        public string Name { get; set; }
-
-        public int Age
-        {
-            get
-            {
-                return this.age;
-            }
-
-            set
-            {
-                if (value >= 0 && value < 20)
-                {
-                    this.age = value;
-                }
-                else
-                {
-                    Console.WriteLine("Age should be > 0 and < than 20");
-                }
-            }
         }
 
         public int CountSalo
@@ -81,11 +58,6 @@ namespace CourseApp
         public override void Voice()
         {
             Console.WriteLine("Хрю");
-        }
-
-        public void Aging()
-        {
-            this.age++;
         }
 
         public void EatSalo()
