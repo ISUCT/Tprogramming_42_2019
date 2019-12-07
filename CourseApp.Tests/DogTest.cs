@@ -9,7 +9,7 @@ namespace CourseApp.Tests
         public void TestEmptyConstructor()
         {
             var dog = new Dog();
-            Assert.Equal(0, item.Age);
+            Assert.Equal(0, dog.Age);
             Assert.Equal("Untitled", dog.Name);
             Assert.True(dog.IsMale);
         }
