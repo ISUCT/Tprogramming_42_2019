@@ -34,7 +34,7 @@ namespace CourseApp
             IsMale = isMale;
         }
 
-        public int Age
+        public virtual int Age
         {
             get
             {

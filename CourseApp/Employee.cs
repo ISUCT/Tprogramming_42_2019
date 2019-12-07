@@ -39,7 +39,7 @@ namespace CourseApp
             Products = 0;
         }
 
-        public new int Age
+        public override int Age
         {
             get
             {
