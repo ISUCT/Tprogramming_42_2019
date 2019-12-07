@@ -6,7 +6,7 @@ namespace CourseApp
     {
         void ICoder.Code()
         {
-            Console.WriteLine("Окей гугл, открой StackOverflow.");
+            Console.WriteLine("OK Google, open StackOverflow.");
         }
     }
 }
