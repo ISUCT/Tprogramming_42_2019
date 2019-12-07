@@ -7,36 +7,23 @@ namespace CourseApp
         private int workDays;
 
         public Employee()
-        : base()
+        : this(14)
         {
-            DateOfEmploy = DateTime.Now;
-            workDays = 0;
-            Products = 0;
-            Age = 14;
         }
 
         public Employee(int age)
-        : base(age)
+        : this(age, "Untitled")
         {
-            DateOfEmploy = DateTime.Now;
-            workDays = 0;
-            Products = 0;
         }
 
         public Employee(int age, string name)
-        : base(age, name)
+        : this(age, name, "Untitled")
         {
-            DateOfEmploy = DateTime.Now;
-            workDays = 0;
-            Products = 0;
         }
 
         public Employee(int age, string name, string surname)
-        : base(age, name, surname)
+        : this(age, name, surname, true)
         {
-            DateOfEmploy = DateTime.Now;
-            workDays = 0;
-            Products = 0;
         }
 
         public Employee(int age, string name, string surname, bool isMale)
@@ -45,11 +32,8 @@ namespace CourseApp
         }
 
         public Employee(int age, string name, string surname, bool isMale, DateTime date)
+        : base(age, name, surname, isMale)
         {
-            Name = name;
-            Surname = surname;
-            Age = age;
-            IsMale = isMale;
             DateOfEmploy = date;
             workDays = 0;
             Products = 0;

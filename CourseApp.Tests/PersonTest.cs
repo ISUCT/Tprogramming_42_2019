@@ -25,7 +25,7 @@ namespace CourseApp.Tests
         }
 
         [Fact]
-        public void MarryTest1_1()
+        public void MarryTest1i1()
         {
             Student masha = new Student(18, "Masha", "Romanoff", false);
             masha.Marry("Pietroff");
@@ -33,7 +33,7 @@ namespace CourseApp.Tests
         }
 
         [Fact]
-        public void MarryTest1_2()
+        public void MarryTest1i2()
         {
             Student masha = new Student(18, "Masha", "Romanoff", false);
             masha.Marry("Pietroff", false);

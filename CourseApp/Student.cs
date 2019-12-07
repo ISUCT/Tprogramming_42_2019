@@ -5,33 +5,28 @@ namespace CourseApp
     public class Student : Person
     {
         public Student()
-        : base()
+        : this(0)
         {
-            this.Scholarship = 0;
         }
 
         public Student(int age)
-        : base(age)
+        : this(age, "Untitled")
         {
-            this.Scholarship = 0;
         }
 
         public Student(int age, string name)
-        : base(age, name)
+        : this(age, name, "Untitled")
         {
-            this.Scholarship = 0;
         }
 
         public Student(int age, string name, string surname)
-        : base(age, name, surname)
+        : this(age, name, surname, true)
         {
-            this.Scholarship = 0;
         }
 
         public Student(int age, string name, string surname, bool isMale)
-        : base(age, name, surname, isMale)
+        : this(age, name, surname, isMale, 0)
         {
-            this.Scholarship = 0;
         }
 
         public Student(int age, string name, string surname, bool isMale, int scholarship)
