@@ -8,10 +8,10 @@ namespace CourseApp.Tests
         [Fact]
         public void TestEmptyConstructor()
         {
-            var item = new Dog();
+            var dog = new Dog();
             Assert.Equal(0, item.Age);
-            Assert.Equal("Untitled", item.Name);
-            Assert.True(item.IsMale);
+            Assert.Equal("Untitled", dog.Name);
+            Assert.True(dog.IsMale);
         }
 
         [Fact]
