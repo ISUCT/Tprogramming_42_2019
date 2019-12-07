@@ -64,6 +64,19 @@ namespace CourseApp
                 Console.WriteLine(item.Relax());
             }
 
+            // int nu = (int)Console.ReadLine();
+            // string ss = "23";
+            Console.WriteLine("Введите год своего рождения:");
+            int years = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите месяц своего рождения:");
+            int months = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите день своего рождения:");
+            int days = int.Parse(Console.ReadLine());
+            DateTime dayOfBirth = new DateTime(years, months, days);
+            Console.WriteLine(dayOfBirth + " " + dayOfBirth.Year + " " + dayOfBirth.Month + " " + dayOfBirth.Day + " " + DateTime.Now);
+            DateTime result = new DateTime(DateTime.Now.Ticks - dayOfBirth.Ticks);
+            Console.WriteLine(result);
+            Console.WriteLine($"Вам {result.Year - 1} лет, {result.Month - 1} месяцев и {result.Day} дня");
             Console.ReadKey();
         }
     }
