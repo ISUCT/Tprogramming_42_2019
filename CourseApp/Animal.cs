@@ -22,7 +22,7 @@ namespace CourseApp
             Age = age;
         }
 
-        public int Age
+        public virtual int Age
         {
             get
             {
@@ -31,14 +31,7 @@ namespace CourseApp
 
             set
             {
-                if (value >= 0 && value < 20)
-                {
-                    this.age = value;
-                }
-                else
-                {
-                    throw new System.Exception();
-                }
+                this.age = value;
             }
         }
 

@@ -63,7 +63,6 @@ namespace CourseApp
             {
                 item.Voice();
             }
-            
         }
     }
 }

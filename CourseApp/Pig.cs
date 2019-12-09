@@ -30,6 +30,21 @@ namespace CourseApp
             CountSalo = countSalo;
         }
 
+        public override int Age
+        {
+            set
+            {
+                if (value >= 0 && value < 20)
+                {
+                    base.Age = value;
+                }
+                else
+                {
+                    throw new System.Exception();
+                }
+            }
+        }
+
         public int CountSalo
         {
             get

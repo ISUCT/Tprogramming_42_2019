@@ -27,6 +27,21 @@ namespace CourseApp
             Brood = brood;
         }
 
+        public override int Age
+        {
+            set
+            {
+                if (value >= 0 && value < 16)
+                {
+                    base.Age = value;
+                }
+                else
+                {
+                    throw new System.Exception();
+                }
+            }
+        }
+
         public string Brood { get; set; }
 
         public override string ToString()
