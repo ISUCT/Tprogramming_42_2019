@@ -37,6 +37,11 @@ namespace CourseApp
 
         public string Name { get; set; }
 
+        public override string ToString()
+        {
+            return $"Имя:{Name},Возраст:{Age}";
+        }
+
         public void Aging()
         {
             this.age++;
