@@ -13,7 +13,7 @@ namespace CourseApp
             int months = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Введите день своего рождения:");
             int days = Convert.ToInt32(Console.ReadLine());
-            DateTime result = DateCompare(new DateTime(days, months, years), DateTime.Now);
+            DateTime result = DateCompare(new DateTime(years, months, days), DateTime.Now);
             return $"Вам {result.Year - 1} лет, {result.Month - 1} месяцев и {result.Day - 1} дня";
         }
 
@@ -27,7 +27,7 @@ namespace CourseApp
         {
             if (date1.Ticks < date2.Ticks)
             {
-                var res = new DateTime(date2.Ticks - date1.Ticks);
+                DateTime res = new DateTime(date2.Ticks - date1.Ticks);
                 return res;
             }
 
