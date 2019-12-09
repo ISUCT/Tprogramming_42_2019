@@ -6,12 +6,12 @@ namespace CourseApp.Tests
     public class CarTests
     {
         [Theory]
-        [InlineData("Name", 1, 2)]
-        [InlineData("Name1", 5, 6)]
-        public void TestConstructorThreeParametrs(string brand, int age, int speed)
+        [InlineData("Model", 1, 2)]
+        [InlineData("Model1", 5, 6)]
+        public void TestConstructorThreeParametrs(string model, int age, int speed)
         {
-            var item = new Car(brand, age, speed);
-            Assert.Equal(brand, item.Brand);
+            var item = new Car(model, age, speed);
+            Assert.Equal(model, item.Model);
             Assert.Equal(age, item.Age);
             Assert.Equal(speed, item.Speed);
         }
@@ -19,18 +19,18 @@ namespace CourseApp.Tests
         [Fact]
         public void TestConstructorTwoParametrs()
         {
-            var item = new Car("Name2", 3);
+            var item = new Car("Model2", 3);
             Assert.Equal(3, item.Age);
-            Assert.Equal("Name2", item.Brand);
+            Assert.Equal("Model2", item.Model);
             Assert.Equal(0, item.Speed);
         }
 
         [Fact]
         public void TestConstructorOneParametrs()
         {
-            var item = new Car("Name3");
+            var item = new Car("Model3");
             Assert.Equal(0, item.Age);
-            Assert.Equal("Name3", item.Brand);
+            Assert.Equal("Model3", item.Model);
             Assert.Equal(0, item.Speed);
         }
 
@@ -39,7 +39,7 @@ namespace CourseApp.Tests
         {
             var item = new Car();
             Assert.Equal(0, item.Age);
-            Assert.Equal("Неизвестно", item.Brand);
+            Assert.Equal("Неизвестно", item.Model);
             Assert.Equal(0, item.Speed);
         }
 
@@ -101,7 +101,7 @@ namespace CourseApp.Tests
                 Assert.True(true);
             }
 
-            Assert.Equal($"Бренд:{item.Brand}, Возраст:{item.Age}, Скорость:{item.Speed}", item.ToString());
+            Assert.Equal($"Модель:{item.Model}, Возраст:{item.Age}, Скорость:{item.Speed}", item.ToString());
         }
 
         [Fact]

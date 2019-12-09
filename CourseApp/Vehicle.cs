@@ -1,50 +1,52 @@
 ﻿using System;
 
-public abstract class Vehicle
+namespace CourseApp
 {
-    private int age;
-    public Vehicle()
-    : this("Неизвестно")
+    public abstract class Vehicle
     {
-    }
+        private int age;
 
-    public Animal(string name)
-        : this(name, 0)
-    {
-    }
-
-    public Animal(string name, int age)
-    {
-        Name = name;
-        Age = age;
-    }
-
-    public int Age
-    {
-        get
+        public Vehicle()
+        : this("Неизвестно")
         {
-            return this.age;
         }
 
-        set
+        public Vehicle(string model)
+            : this(model, 0)
         {
-            if (value >= 0 && value < 20)
+        }
+
+        public Vehicle(string model, int age)
+        {
+            Model = model;
+            Age = age;
+        }
+
+        public virtual int Age
+        {
+            get
+            {
+                return this.age;
+            }
+
+            set
             {
                 this.age = value;
             }
-            else
-            {
-                throw new System.Exception();
-            }
         }
+
+        public string Model { get; set; }
+
+        public override string ToString()
+        {
+            return $"Модель:{Model},Возраст:{Age}";
+        }
+
+        public void Use()
+        {
+            this.age++;
+        }
+
+        public abstract void Sound();
     }
-
-    public string Name { get; set; }
-
-    public void Aging()
-    {
-        this.age++;
-    }
-
-    public abstract void Voice();
 }
