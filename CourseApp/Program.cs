@@ -63,6 +63,8 @@ namespace CourseApp
             {
                 item.Voice();
             }
+
+            Console.WriteLine(AgeClass.Age());
         }
     }
 }
