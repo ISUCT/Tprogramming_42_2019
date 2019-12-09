@@ -6,7 +6,7 @@ namespace CourseApp
 {
     public class Plane : Vehicle
     {
-        private int speed;
+        private int passenger_place;
         private int age;
 
         public Plane()
@@ -24,11 +24,11 @@ namespace CourseApp
         {
         }
 
-        public Plane(string brand, int age, int speed)
+        public Plane(string brand, int age, int passenger_place)
         {
             Brand = brand;
             Age = age;
-            Speed = speed;
+            Passenger_place = passenger_place;
         }
 
         public string Brand { get; set; }
@@ -42,7 +42,7 @@ namespace CourseApp
 
             set
             {
-                if (value >= 0 && value <= 1000)
+                if (value >= 0 && value <= 20)
                 {
                     this.age = value;
                 }
