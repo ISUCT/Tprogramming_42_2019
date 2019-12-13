@@ -9,11 +9,14 @@ namespace RPG_autoBattler
             {
                 Lvl = 1;
                 StunTimer = 0;
+            Spells = new List<Spell>();
             }
 
         public List<Spell> Spells { get; set; }
 
         public string Name { get; set; }
+
+        public string Class { get; set; }
 
         public string Surname { get; set; }
 

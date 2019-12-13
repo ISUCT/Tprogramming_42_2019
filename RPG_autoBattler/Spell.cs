@@ -8,8 +8,14 @@ namespace RPG_autoBattler
 
     public class Spell
     {
-        private TrigReal trigger;
-        private CastDel cast;
+        public Spell(int count)
+        {
+            SpecVal = new float[count];
+        }
+
+        public TrigReal Triggerr { get; set; }
+
+        public CastDel Castt { get; set; }
 
         public bool IsRanged { get; set; }
 
@@ -25,12 +31,12 @@ namespace RPG_autoBattler
 
         public void Trigger(string triggerType, Char attacker, Char victim, float[] specValue)
         {
-            trigger(triggerType, attacker, victim, specValue);
+            Triggerr(triggerType, attacker, victim, specValue);
         }
 
         public void Cast(Char caster, Char victim)
         {
-            cast(caster, victim, SpecVal);
+            Castt(caster, victim, SpecVal);
         }
     }
 }
