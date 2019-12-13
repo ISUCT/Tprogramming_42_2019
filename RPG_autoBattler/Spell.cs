@@ -2,9 +2,9 @@
 
 namespace RPG_autoBattler
 {
-    public delegate void TrigReal(string triggerType, Char attacker, Char victim, float specVal);
+    public delegate void TrigReal(string triggerType, Char attacker, Char victim, float[] specVal);
 
-    public delegate void CastDel(Char caster, Char victim, float specVal);
+    public delegate void CastDel(Char caster, Char victim, float[] specVal);
 
     public class Spell
     {
@@ -19,14 +19,18 @@ namespace RPG_autoBattler
 
         public float MPcost { get; set; }
 
-        public void Trigger(string triggerType, Char attacker, Char victim, float specVal)
+        public float[] SpecVal { get; set; }
+
+        public int Lvl { get; set; }
+
+        public void Trigger(string triggerType, Char attacker, Char victim, float[] specValue)
         {
-            trigger(triggerType, attacker, victim, specVal);
+            trigger(triggerType, attacker, victim, specValue);
         }
 
-        public void Cast(Char caster, Char victim, float specVal)
+        public void Cast(Char caster, Char victim)
         {
-            cast(caster, victim, specVal);
+            cast(caster, victim, SpecVal);
         }
     }
 }
