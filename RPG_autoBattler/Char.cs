@@ -69,5 +69,17 @@ namespace RPG_autoBattler
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public void Heal(float hp)
+        {
+            if (hp < MaxHP - CurHP)
+            {
+                CurHP += hp;
+            }
+            else
+            {
+                CurHP = MaxHP;
+            }
+        }
     }
 }
