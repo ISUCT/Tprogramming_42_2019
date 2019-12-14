@@ -110,6 +110,7 @@ namespace RPG_autoBattler
             vict.ActSpells.Add(ninjaSpells[1]);
             vict.ActSpells.Add(ninjaSpells[2]);
             vict.PasSpells.Add(ninjaSpells[2]);
+            vict.ActSpells.Add(ninjaSpells[3]);
             vict.Name = "Mikey";
             vict.Surname = "Splinterson";
             vict.CurHP = 45;
@@ -139,6 +140,12 @@ namespace RPG_autoBattler
             {
                 victim.TakeDamage(caster, specVal[0]);
             }
+        }
+
+        public static void PierceFunc(Char caster, Char victim, ref float[] specVal)
+        {
+            victim.CurHP -= specVal[0];
+            Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) takes {specVal[0]} damage! {victim.CurHP} HP left!");
         }
 
         public static void HealFunc(Char caster, Char victim, ref float[] specVal)
@@ -256,6 +263,14 @@ namespace RPG_autoBattler
             ninjaFog.SpecVal[1] = 26;
             ninjaFog.SpecVal[2] = 3;
             ninjSpells.Add(ninjaFog);
+            Spell ninjaPierce = new Spell(1);
+            ninjaPierce.IsRanged = false;
+            ninjaPierce.Lvl = 1;
+            ninjaPierce.Name = "Piercing Slash";
+            ninjaPierce.Castt = PierceFunc;
+            ninjaPierce.Triggerr = TrigEmpty;
+            ninjaPierce.SpecVal[0] = 19;
+            ninjSpells.Add(ninjaPierce);
             return ninjSpells;
         }
     }
