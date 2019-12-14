@@ -2,7 +2,7 @@
 
 namespace RPG_autoBattler
 {
-    public delegate void TrigReal(string triggerType, Char attacker, Char victim, float[] specVal, float[] innerVal);
+    public delegate void TrigReal(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal);
 
     public delegate void CastDel(Char caster, Char victim, ref float[] specVal);
 
@@ -40,7 +40,7 @@ namespace RPG_autoBattler
 
         public void Trigger(string triggerType, Char attacker, Char victim, float[] specValue)
         {
-            Triggerr(triggerType, attacker, victim, specValue, SpecVal);
+            Triggerr(triggerType, attacker, victim, specValue, ref specVal);
         }
 
         public void Cast(Char caster, Char victim)

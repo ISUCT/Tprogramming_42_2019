@@ -81,6 +81,7 @@ namespace RPG_autoBattler
         public static void Main()
         {
             palaSpells = RetPalSpells();
+            ninjaSpells = RetNinjaSpells();
 
             // palSpells.Add(palBaseAttack);
             Console.WriteLine("Welcome to the Battle for Glory Arena. Press any key to start");
@@ -95,8 +96,8 @@ namespace RPG_autoBattler
 
             Char player = new Char();
             player.Class = playerClass;
-            player.CurHP = 30;
-            player.MaxHP = 30;
+            player.CurHP = 70;
+            player.MaxHP = 70;
             player.ActSpells.Add(palaSpells[0]);
             player.ActSpells.Add(palaSpells[1]);
             player.PasSpells.Add(palaSpells[2]);
@@ -104,15 +105,15 @@ namespace RPG_autoBattler
             player.Name = "Arthas";
             player.Surname = "Menethil";
             Char vict = new Char();
-            vict.Class = playerClass;
-            vict.ActSpells.Add(palaSpells[0]);
-            vict.ActSpells.Add(palaSpells[1]);
-            vict.PasSpells.Add(palaSpells[2]);
-            vict.ActSpells.Add(palaSpells[3]);
-            vict.Name = "Bolvar";
-            vict.Surname = "Fordragon";
-            vict.CurHP = 30;
-            vict.MaxHP = 30;
+            vict.Class = "Ninja";
+            vict.ActSpells.Add(ninjaSpells[0]);
+            vict.ActSpells.Add(ninjaSpells[1]);
+            vict.ActSpells.Add(ninjaSpells[2]);
+            vict.PasSpells.Add(ninjaSpells[2]);
+            vict.Name = "Mikey";
+            vict.Surname = "Splinterson";
+            vict.CurHP = 45;
+            vict.MaxHP = 45;
             Battle(player, vict);
             /*Console.WriteLine($"Victim has {vict.CurHP} HP");
             vict.HitBySpell(player, player.Spells[0]);
@@ -148,10 +149,11 @@ namespace RPG_autoBattler
 
         public static void FogFunc(Char caster, Char victim, ref float[] specVal)
         {
-            specVal[1] = 1;
+            specVal[0] = specVal[2];
+            Console.WriteLine($"{caster.Name} {caster.Surname} ({caster.Class}) is hidden in the Smoke Screen for {specVal[0]} enemy attacks!");
         }
 
-        public static void TrigEmpty(string triggerType, Char attacker, Char victim, float[] specVal, float[] innerVal)
+        public static void TrigEmpty(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
         {
         }
 
@@ -159,12 +161,29 @@ namespace RPG_autoBattler
         {
         }
 
-        public static void PalBlockTrig(string triggerType, Char attacker, Char victim, float[] specVal, float[] innerVal)
+        public static void PalBlockTrig(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
         {
             if (triggerType == "TakeDamage")
             {
                 victim.CurHP -= specVal[0] * innerVal[0];
                 throw new ProtectException($"{victim.Name} {victim.Surname} ({victim.Class}) takes {specVal[0] * innerVal[0]} damage! {victim.CurHP} HP left!");
+            }
+        }
+
+        public static void FogTrig(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
+        {
+            if (triggerType == "HitBySpell")
+            {
+                if (innerVal[0] > 0)
+                {
+                    Random rnd = new Random();
+                    innerVal[0]--;
+                    if (rnd.Next(0, 100) < innerVal[1])
+                    {
+                        Console.WriteLine($"{attacker.Name} {attacker.Surname} ({attacker.Class}) tries to attack!");
+                        throw new ProtectException($"Miss! {victim.Name} {victim.Surname} ({victim.Class}) hides in the smoke screen and takes no damage!");
+                    }
+                }
             }
         }
 
@@ -227,13 +246,15 @@ namespace RPG_autoBattler
             ninjaShurikens.SpecVal[0] = 7;
             ninjaShurikens.SpecVal[1] = 3;
             ninjSpells.Add(ninjaShurikens);
-            Spell ninjaFog = new Spell(2);
+            Spell ninjaFog = new Spell(3);
             ninjaFog.IsRanged = false;
             ninjaFog.Lvl = 1;
             ninjaFog.Name = "Smoke Screen";
-            ninjaFog.Castt = BaseAttackFunc;
-            ninjaFog.Triggerr = TrigEmpty;
-            ninjaFog.SpecVal[0] = 17;
+            ninjaFog.Castt = FogFunc;
+            ninjaFog.Triggerr = FogTrig;
+            ninjaFog.SpecVal[0] = 0;
+            ninjaFog.SpecVal[1] = 26;
+            ninjaFog.SpecVal[2] = 3;
             ninjSpells.Add(ninjaFog);
             return ninjSpells;
         }
