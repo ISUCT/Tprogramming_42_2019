@@ -230,7 +230,7 @@ namespace RPG_autoBattler
 
         public static void FireTrig(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
         {
-            if ((triggerType == "TurnEnd") && (specVal[0] == 1) && (innerVal[3] > 0))
+            if ((triggerType == "TurnEnd") && (specVal[0] > 0) && (innerVal[3] > 0))
             {
                 Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire!");
                 victim.TakeDamage(attacker, innerVal[1]);
