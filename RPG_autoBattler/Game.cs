@@ -47,7 +47,7 @@ namespace RPG_autoBattler
                     foreach (Spell item in b.PasSpells)
                     {
                         float[] f = new float[1] { 1 };
-                        item.Trigger("TurnEnd", a, b, f);
+                        item.Trigger("TurnEnd", b, a, f);
                     }
                 }
                 else
@@ -81,7 +81,7 @@ namespace RPG_autoBattler
                     foreach (Spell item in a.PasSpells)
                     {
                         float[] f = new float[1] { 1 };
-                        item.Trigger("TurnEnd", a, b, f);
+                        item.Trigger("TurnEnd", b, a, f);
                     }
                 }
 
@@ -133,7 +133,7 @@ namespace RPG_autoBattler
             vict.Class = "Mage";
             vict.ActSpells.Add(mageSpells[0]);
             vict.ActSpells.Add(mageSpells[1]);
-            vict.PasSpells.Add(ninjaSpells[1]);
+            vict.PasSpells.Add(mageSpells[1]);
             vict.Name = "Jaina";
             vict.Surname = "Proudmoore";
             vict.CurHP = 45;
@@ -230,6 +230,16 @@ namespace RPG_autoBattler
 
         public static void FireTrig(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
         {
+            if (triggerType == "TurnEnd")
+            {
+                Console.WriteLine("FireTrig");
+            }
+
+            if ((triggerType == "TurnEnd") && (specVal[0] > 0))
+            {
+                Console.WriteLine("FireTrig enemy");
+            }
+
             if ((triggerType == "TurnEnd") && (specVal[0] > 0) && (innerVal[3] > 0))
             {
                 Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire!");
