@@ -40,12 +40,14 @@ namespace RPG_autoBattler
 
                     foreach (Spell item in a.PasSpells)
                     {
-                        item.Trigger("TurnEnd", a, b, new float[1] { 0 });
+                        float[] f = new float[1] { 0 };
+                        item.Trigger("TurnEnd", a, b, f);
                     }
 
                     foreach (Spell item in b.PasSpells)
                     {
-                        item.Trigger("TurnEnd", a, b, new float[1] { 1 });
+                        float[] f = new float[1] { 1 };
+                        item.Trigger("TurnEnd", a, b, f);
                     }
                 }
                 else
@@ -72,12 +74,14 @@ namespace RPG_autoBattler
 
                     foreach (Spell item in b.PasSpells)
                     {
-                        item.Trigger("TurnEnd", a, b, new float[1] { 0 });
+                        float[] f = new float[1] { 0 };
+                        item.Trigger("TurnEnd", a, b, f);
                     }
 
                     foreach (Spell item in a.PasSpells)
                     {
-                        item.Trigger("TurnEnd", a, b, new float[1] { 1 });
+                        float[] f = new float[1] { 1 };
+                        item.Trigger("TurnEnd", a, b, f);
                     }
                 }
 
@@ -102,20 +106,21 @@ namespace RPG_autoBattler
         {
             palaSpells = RetPalSpells();
             ninjaSpells = RetNinjaSpells();
+            mageSpells = RetMageSpells();
 
             // palSpells.Add(palBaseAttack);
             Console.WriteLine("Welcome to the Battle for Glory Arena. Press any key to start");
-            Console.ReadKey();
+            /*Console.ReadKey();
             Console.WriteLine("Choose your class, type 'Paladin', 'Ninja' or 'Mage' here: ");
             string playerClass = Console.ReadLine();
             while ((playerClass != "Paladin") && (playerClass != "Ninja") && (playerClass != "Mage"))
             {
                 Console.WriteLine("Error recognizing class, try to write again or copy and paste class name here: ");
                 playerClass = Console.ReadLine();
-            }
+            }*/
 
             Char player = new Char();
-            player.Class = playerClass;
+            player.Class = "Paladin";
             player.CurHP = 70;
             player.MaxHP = 70;
             player.ActSpells.Add(palaSpells[0]);
@@ -125,14 +130,12 @@ namespace RPG_autoBattler
             player.Name = "Arthas";
             player.Surname = "Menethil";
             Char vict = new Char();
-            vict.Class = "Ninja";
-            vict.ActSpells.Add(ninjaSpells[0]);
-            vict.ActSpells.Add(ninjaSpells[1]);
-            vict.ActSpells.Add(ninjaSpells[2]);
-            vict.PasSpells.Add(ninjaSpells[2]);
-            vict.ActSpells.Add(ninjaSpells[3]);
-            vict.Name = "Mikey";
-            vict.Surname = "Splinterson";
+            vict.Class = "Mage";
+            vict.ActSpells.Add(mageSpells[0]);
+            vict.ActSpells.Add(mageSpells[1]);
+            vict.PasSpells.Add(ninjaSpells[1]);
+            vict.Name = "Jaina";
+            vict.Surname = "Proudmoore";
             vict.CurHP = 45;
             vict.MaxHP = 45;
             Battle(player, vict);
