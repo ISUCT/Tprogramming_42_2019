@@ -168,6 +168,13 @@ namespace RPG_autoBattler
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) takes {specVal[0]} damage! {victim.CurHP} HP left!");
         }
 
+        public static void FireballFunc(Char caster, Char victim, ref float[] specVal)
+        {
+            victim.TakeDamage(caster, specVal[0]);
+            specVal[3] = specVal[2];
+            Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire for {specVal[3]} turns!");
+        }
+
         public static void HealFunc(Char caster, Char victim, ref float[] specVal)
         {
             caster.Heal(specVal[0]);
@@ -215,6 +222,16 @@ namespace RPG_autoBattler
             if ((triggerType == "TurnEnd") && (specVal[0] == 1))
             {
                 innerVal[0]--;
+            }
+        }
+
+        public static void FireTrig(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
+        {
+            if ((triggerType == "TurnEnd") && (specVal[0] == 1) && (innerVal[3] > 0))
+            {
+                Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire!");
+                victim.TakeDamage(attacker, innerVal[1]);
+                innerVal[3]--;
             }
         }
 
@@ -309,6 +326,17 @@ namespace RPG_autoBattler
             mageBaseAttack.Triggerr = TrigEmpty;
             mageBaseAttack.SpecVal[0] = 5;
             magSpells.Add(mageBaseAttack);
+            Spell mageFireball = new Spell(4);
+            mageFireball.IsRanged = true;
+            mageFireball.Lvl = 1;
+            mageFireball.Name = "Fireball Toss";
+            mageFireball.Castt = FireballFunc;
+            mageFireball.Triggerr = FireTrig;
+            mageFireball.SpecVal[0] = 15;
+            mageFireball.SpecVal[1] = 5;
+            mageFireball.SpecVal[2] = 3;
+            mageFireball.SpecVal[3] = 0;
+            magSpells.Add(mageFireball);
             return magSpells;
         }
     }
