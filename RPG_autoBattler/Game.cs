@@ -37,6 +37,16 @@ namespace RPG_autoBattler
                         a.StunTimer--;
                         Console.WriteLine($"{a.Name} {a.Surname} ({a.Class}) is stunned! {a.StunTimer} turn(s) left.");
                     }
+
+                    foreach (Spell item in a.PasSpells)
+                    {
+                        item.Trigger("TurnEnd", a, b, new float[1] { 0 });
+                    }
+
+                    foreach (Spell item in b.PasSpells)
+                    {
+                        item.Trigger("TurnEnd", a, b, new float[1] { 1 });
+                    }
                 }
                 else
                 {
@@ -58,6 +68,16 @@ namespace RPG_autoBattler
                     {
                         b.StunTimer--;
                         Console.WriteLine($"{b.Name} {b.Surname} ({b.Class}) is stunned! {b.StunTimer} turn(s) left.");
+                    }
+
+                    foreach (Spell item in b.PasSpells)
+                    {
+                        item.Trigger("TurnEnd", a, b, new float[1] { 0 });
+                    }
+
+                    foreach (Spell item in a.PasSpells)
+                    {
+                        item.Trigger("TurnEnd", a, b, new float[1] { 1 });
                     }
                 }
 
@@ -157,7 +177,7 @@ namespace RPG_autoBattler
         public static void FogFunc(Char caster, Char victim, ref float[] specVal)
         {
             specVal[0] = specVal[2];
-            Console.WriteLine($"{caster.Name} {caster.Surname} ({caster.Class}) is hidden in the Smoke Screen for {specVal[0]} enemy attacks!");
+            Console.WriteLine($"{caster.Name} {caster.Surname} ({caster.Class}) is hidden in the Smoke Screen for {specVal[0]} enemy turns!");
         }
 
         public static void TrigEmpty(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
@@ -184,13 +204,17 @@ namespace RPG_autoBattler
                 if (innerVal[0] > 0)
                 {
                     Random rnd = new Random();
-                    innerVal[0]--;
                     if (rnd.Next(0, 100) < innerVal[1])
                     {
                         Console.WriteLine($"{attacker.Name} {attacker.Surname} ({attacker.Class}) tries to attack!");
                         throw new ProtectException($"Miss! {victim.Name} {victim.Surname} ({victim.Class}) hides in the smoke screen and takes no damage!");
                     }
                 }
+            }
+
+            if ((triggerType == "TurnEnd") && (specVal[0] == 1))
+            {
+                innerVal[0]--;
             }
         }
 
@@ -200,7 +224,7 @@ namespace RPG_autoBattler
             Spell palBaseAttack = new Spell(1);
             palBaseAttack.IsRanged = false;
             palBaseAttack.Lvl = 1;
-            palBaseAttack.Name = "Base Attack";
+            palBaseAttack.Name = "Shield Bash";
             palBaseAttack.Castt = BaseAttackFunc;
             palBaseAttack.Triggerr = TrigEmpty;
             palBaseAttack.SpecVal[0] = 10;
@@ -239,7 +263,7 @@ namespace RPG_autoBattler
             Spell ninjaBaseAttack = new Spell(1);
             ninjaBaseAttack.IsRanged = false;
             ninjaBaseAttack.Lvl = 1;
-            ninjaBaseAttack.Name = "Base Attack";
+            ninjaBaseAttack.Name = "Katana Slash";
             ninjaBaseAttack.Castt = BaseAttackFunc;
             ninjaBaseAttack.Triggerr = TrigEmpty;
             ninjaBaseAttack.SpecVal[0] = 17;
@@ -272,6 +296,20 @@ namespace RPG_autoBattler
             ninjaPierce.SpecVal[0] = 19;
             ninjSpells.Add(ninjaPierce);
             return ninjSpells;
+        }
+
+        public static List<Spell> RetMageSpells()
+        {
+            List<Spell> magSpells = new List<Spell>();
+            Spell mageBaseAttack = new Spell(1);
+            mageBaseAttack.IsRanged = false;
+            mageBaseAttack.Lvl = 1;
+            mageBaseAttack.Name = "Staff Strike";
+            mageBaseAttack.Castt = BaseAttackFunc;
+            mageBaseAttack.Triggerr = TrigEmpty;
+            mageBaseAttack.SpecVal[0] = 5;
+            magSpells.Add(mageBaseAttack);
+            return magSpells;
         }
     }
 }
