@@ -19,8 +19,6 @@ namespace RPG_autoBattler
 
         public bool IsRanged { get; set; }
 
-        public bool IsActive { get; set; }
-
         public string Name { get; set; }
 
         public float MPcost { get; set; }
@@ -36,6 +34,7 @@ namespace RPG_autoBattler
 
         public void Cast(Char caster, Char victim)
         {
+            Console.WriteLine($"{caster.Name} {caster.Surname} ({caster.Class}) uses {Name}!");
             Castt(caster, victim, SpecVal);
         }
     }

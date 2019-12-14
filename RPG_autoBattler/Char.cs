@@ -66,6 +66,7 @@ namespace RPG_autoBattler
                 }
 
                 CurHP -= dmg;
+                Console.WriteLine($"{Name} {Surname} ({Class}) takes {dmg} damage! {CurHP} HP left!");
             }
             catch (ProtectException ex)
             {
