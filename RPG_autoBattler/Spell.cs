@@ -2,12 +2,14 @@
 
 namespace RPG_autoBattler
 {
-    public delegate void TrigReal(string triggerType, Char attacker, Char victim, float[] specVal);
+    public delegate void TrigReal(string triggerType, Char attacker, Char victim, float[] specVal, float[] innerVal);
 
-    public delegate void CastDel(Char caster, Char victim, float[] specVal);
+    public delegate void CastDel(Char caster, Char victim, ref float[] specVal);
 
     public class Spell
     {
+        private float[] specVal;
+
         public Spell(int count)
         {
             SpecVal = new float[count];
@@ -21,21 +23,30 @@ namespace RPG_autoBattler
 
         public string Name { get; set; }
 
-        public float MPcost { get; set; }
+        public float[] SpecVal
+        {
+            get
+            {
+                return this.specVal;
+            }
 
-        public float[] SpecVal { get; set; }
+            set
+            {
+                    this.specVal = value;
+            }
+        }
 
         public int Lvl { get; set; }
 
         public void Trigger(string triggerType, Char attacker, Char victim, float[] specValue)
         {
-            Triggerr(triggerType, attacker, victim, specValue);
+            Triggerr(triggerType, attacker, victim, specValue, SpecVal);
         }
 
         public void Cast(Char caster, Char victim)
         {
             Console.WriteLine($"{caster.Name} {caster.Surname} ({caster.Class}) uses {Name}!");
-            Castt(caster, victim, SpecVal);
+            Castt(caster, victim, ref specVal);
         }
     }
 }

@@ -9,10 +9,13 @@ namespace RPG_autoBattler
             {
                 Lvl = 1;
                 StunTimer = 0;
-            Spells = new List<Spell>();
+            ActSpells = new List<Spell>();
+            PasSpells = new List<Spell>();
             }
 
-        public List<Spell> Spells { get; set; }
+        public List<Spell> ActSpells { get; set; }
+
+        public List<Spell> PasSpells { get; set; }
 
         public string Name { get; set; }
 
@@ -32,17 +35,13 @@ namespace RPG_autoBattler
 
         public float MaxHP { get; set; }
 
-        public float MaxMP { get; set; }
-
         public float CurHP { get; set; }
-
-        public float CurMP { get; set; }
 
         public void HitBySpell(Char caster, Spell spell)
         {
             try
             {
-                foreach (var item in Spells)
+                foreach (var item in PasSpells)
                 {
                     item.Trigger("HitBySpell", caster, this, spell.SpecVal);
                 }
@@ -59,7 +58,7 @@ namespace RPG_autoBattler
         {
             try
             {
-                foreach (var item in Spells)
+                foreach (var item in PasSpells)
                 {
                     var mass = new float[1] { dmg };
                     item.Trigger("TakeDamage", attacker, this, mass);
