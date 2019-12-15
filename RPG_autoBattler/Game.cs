@@ -202,20 +202,20 @@ namespace RPG_autoBattler
             chars.Add(vict);
             chars.Add(player2);
             chars.Add(vict2);
-            Char winner = Tournament(RetFighters(2));
+            Char winner = Tournament(RetFighters(4));
             Console.WriteLine($"{winner.Name} {winner.Surname} ({winner.Class}) won the tournament!");
             Console.ReadKey();
         }
 
         public static void BaseAttackFunc(Char caster, Char victim, ref float[] specVal)
         {
-            victim.TakeDamage(caster, specVal[0]);
+            victim.TakeDamage(caster, caster.Agi);
         }
 
         public static void HammerStrikeFunc(Char caster, Char victim, ref float[] specVal)
         {
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is stunned for {(int)specVal[1]} turn(s)!");
-            victim.TakeDamage(caster, specVal[0]);
+            victim.TakeDamage(caster, caster.Agi);
             victim.StunTimer += (int)specVal[1];
         }
 
@@ -229,13 +229,13 @@ namespace RPG_autoBattler
 
         public static void PierceFunc(Char caster, Char victim, ref float[] specVal)
         {
-            victim.CurHP -= specVal[0];
-            Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) takes {specVal[0]} damage! {victim.CurHP} HP left!");
+            victim.CurHP -= caster.Agi + specVal[0];
+            Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) takes {caster.Agi + specVal[0]} damage! {victim.CurHP} HP left!");
         }
 
         public static void FireballFunc(Char caster, Char victim, ref float[] specVal)
         {
-            victim.TakeDamage(caster, specVal[0]);
+            victim.TakeDamage(caster, caster.Int);
             specVal[3] = specVal[2];
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire for {specVal[3]} turns!");
         }
@@ -243,7 +243,7 @@ namespace RPG_autoBattler
         public static void IceBlastFunc(Char caster, Char victim, ref float[] specVal)
         {
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is frozen for {(int)specVal[1]} turn(s)!");
-            victim.TakeDamage(caster, specVal[0]);
+            victim.TakeDamage(caster, caster.Int - specVal[0]);
             victim.StunTimer += (int)specVal[1];
         }
 
@@ -351,6 +351,7 @@ namespace RPG_autoBattler
             Spell palBaseAttack = new Spell(1);
             palBaseAttack.IsRanged = false;
             palBaseAttack.Lvl = 1;
+            palBaseAttack.IsPassive = 0;
             palBaseAttack.Name = "Shield Bash";
             palBaseAttack.Castt = BaseAttackFunc;
             palBaseAttack.Triggerr = TrigEmpty;
@@ -359,6 +360,7 @@ namespace RPG_autoBattler
             Spell palHammerStrike = new Spell(2);
             palHammerStrike.IsRanged = false;
             palHammerStrike.Lvl = 1;
+            palHammerStrike.IsPassive = 0;
             palHammerStrike.Name = "Hammer Strike";
             palHammerStrike.Castt = HammerStrikeFunc;
             palHammerStrike.Triggerr = TrigEmpty;
@@ -368,6 +370,7 @@ namespace RPG_autoBattler
             Spell palDef = new Spell(1);
             palDef.IsRanged = false;
             palDef.Lvl = 1;
+            palDef.IsPassive = 1;
             palDef.Name = "Shield";
             palDef.Castt = CastEmpty;
             palDef.Triggerr = PalBlockTrig;
@@ -376,6 +379,7 @@ namespace RPG_autoBattler
             Spell palHeal = new Spell(1);
             palHeal.IsRanged = false;
             palHeal.Lvl = 1;
+            palHeal.IsPassive = 0;
             palHeal.Name = "Faith in the Light";
             palHeal.Castt = HealFunc;
             palHeal.Triggerr = TrigEmpty;
@@ -390,6 +394,7 @@ namespace RPG_autoBattler
             Spell ninjaBaseAttack = new Spell(1);
             ninjaBaseAttack.IsRanged = false;
             ninjaBaseAttack.Lvl = 1;
+            ninjaBaseAttack.IsPassive = 0;
             ninjaBaseAttack.Name = "Katana Slash";
             ninjaBaseAttack.Castt = BaseAttackFunc;
             ninjaBaseAttack.Triggerr = TrigEmpty;
@@ -398,6 +403,7 @@ namespace RPG_autoBattler
             Spell ninjaShurikens = new Spell(2);
             ninjaShurikens.IsRanged = true;
             ninjaShurikens.Lvl = 1;
+            ninjaShurikens.IsPassive = 0;
             ninjaShurikens.Name = "Shurikens Throw";
             ninjaShurikens.Castt = ShurikensFunc;
             ninjaShurikens.Triggerr = TrigEmpty;
@@ -407,6 +413,7 @@ namespace RPG_autoBattler
             Spell ninjaFog = new Spell(3);
             ninjaFog.IsRanged = false;
             ninjaFog.Lvl = 1;
+            ninjaFog.IsPassive = 2;
             ninjaFog.Name = "Smoke Screen";
             ninjaFog.Castt = FogFunc;
             ninjaFog.Triggerr = FogTrig;
@@ -420,7 +427,7 @@ namespace RPG_autoBattler
             ninjaPierce.Name = "Piercing Slash";
             ninjaPierce.Castt = PierceFunc;
             ninjaPierce.Triggerr = TrigEmpty;
-            ninjaPierce.SpecVal[0] = 25;
+            ninjaPierce.SpecVal[0] = 5;
             ninjSpells.Add(ninjaPierce);
             return ninjSpells;
         }
@@ -431,6 +438,7 @@ namespace RPG_autoBattler
             Spell mageBaseAttack = new Spell(1);
             mageBaseAttack.IsRanged = false;
             mageBaseAttack.Lvl = 1;
+            mageBaseAttack.IsPassive = 0;
             mageBaseAttack.Name = "Staff Strike";
             mageBaseAttack.Castt = BaseAttackFunc;
             mageBaseAttack.Triggerr = TrigEmpty;
@@ -439,6 +447,7 @@ namespace RPG_autoBattler
             Spell mageFireball = new Spell(4);
             mageFireball.IsRanged = true;
             mageFireball.Lvl = 1;
+            mageFireball.IsPassive = 2;
             mageFireball.Name = "Fireball Toss";
             mageFireball.Castt = FireballFunc;
             mageFireball.Triggerr = FireTrig;
@@ -450,15 +459,17 @@ namespace RPG_autoBattler
             Spell mageIceBlast = new Spell(2);
             mageIceBlast.IsRanged = true;
             mageIceBlast.Lvl = 1;
+            mageIceBlast.IsPassive = 0;
             mageIceBlast.Name = "Ice Blast";
             mageIceBlast.Castt = IceBlastFunc;
             mageIceBlast.Triggerr = TrigEmpty;
-            mageIceBlast.SpecVal[0] = 20;
+            mageIceBlast.SpecVal[0] = 7;
             mageIceBlast.SpecVal[1] = 2;
             magSpells.Add(mageIceBlast);
             Spell mageShield = new Spell(2);
             mageShield.IsRanged = false;
             mageShield.Lvl = 1;
+            mageShield.IsPassive = 3;
             mageShield.Name = "Magic Shield";
             mageShield.Castt = MagicShieldFunc;
             mageShield.Triggerr = MageShieldTrig;
@@ -555,7 +566,7 @@ namespace RPG_autoBattler
 
                 a.Name = RetNames()[rnd.Next(0, RetNames().Count)];
                 a.Surname = RetSurnames()[rnd.Next(0, RetSurnames().Count)];
-                a.MaxHP = a.Str * 20;
+                a.MaxHP = a.Str * 10;
                 a.CurHP = a.MaxHP;
                 fighters.Add(a);
             }
