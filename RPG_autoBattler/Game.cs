@@ -130,7 +130,12 @@ namespace RPG_autoBattler
             palaSpells = RetPalSpells();
             ninjaSpells = RetNinjaSpells();
             mageSpells = RetMageSpells();
+            List<string> names = RetNames();
+            List<string> surnames = RetSurnames();
+            List<Char> fighters = new List<Char>();
 
+            // List<string> names;
+            // RetNames().CopyTo(names);
             // palSpells.Add(palBaseAttack);
             Console.WriteLine("Welcome to the Battle for Glory Arena. Press any key to start");
             /*Console.ReadKey();
@@ -197,7 +202,7 @@ namespace RPG_autoBattler
             chars.Add(vict);
             chars.Add(player2);
             chars.Add(vict2);
-            Char winner = Tournament(chars);
+            Char winner = Tournament(RetFighters(2));
             Console.WriteLine($"{winner.Name} {winner.Surname} ({winner.Class}) won the tournament!");
             Console.ReadKey();
         }
@@ -461,6 +466,101 @@ namespace RPG_autoBattler
             mageShield.SpecVal[1] = 0;
             magSpells.Add(mageShield);
             return magSpells;
+        }
+
+        public static List<string> RetNames()
+        {
+            List<string> s = new List<string>();
+            s.Add("Arthas");
+            s.Add("Jaina");
+            s.Add("Bolvar");
+            s.Add("Mikey");
+            s.Add("Perry");
+            s.Add("Leonardo");
+            s.Add("Donatello");
+            s.Add("Raphael");
+            s.Add("Sylvanas");
+            s.Add("Alleria");
+            s.Add("Vlad");
+            s.Add("Vitaliy");
+            s.Add("Thrall");
+            s.Add("Geralt");
+            s.Add("Daelin");
+            return s;
+        }
+
+        public static List<string> RetSurnames()
+        {
+            List<string> s = new List<string>();
+            s.Add("Menethil");
+            s.Add("Proudmoore");
+            s.Add("Fordragon");
+            s.Add("Splinterson");
+            s.Add("the Platypus");
+            s.Add("Windrunner");
+            s.Add("Dracula");
+            s.Add("Tsal'");
+            s.Add("from Rivia");
+            s.Add("Gorobets");
+            return s;
+        }
+
+        public static List<Char> RetFighters(int count)
+        {
+            List<Char> fighters = new List<Char>();
+            for (int i = 0; i < count; i++)
+            {
+                Char a = new Char();
+                Random rnd = new Random();
+                int clas = rnd.Next(1, 3);
+                switch (clas)
+                {
+                    case 1:
+                        a.Class = "Paladin";
+
+                        // потом в каждом кейзе создавать нью лист и рандомно из него добавлять спеллы, а добавленные удалять. Так как создаётся новый на основе возвращения функции, то ничего не перезапишется
+                        foreach (Spell item in palaSpells)
+                        {
+                            a.GainSpell(item);
+                        }
+
+                        a.Str = rnd.Next(15, 25);
+                        a.Agi = rnd.Next(5, 15);
+                        a.Int = rnd.Next(1, 5);
+
+                        break;
+                    case 2:
+                        a.Class = "Ninja";
+                        foreach (Spell item in ninjaSpells)
+                        {
+                            a.GainSpell(item);
+                        }
+
+                        a.Str = rnd.Next(5, 15);
+                        a.Agi = rnd.Next(15, 25);
+                        a.Int = rnd.Next(1, 5);
+                        break;
+                    case 3:
+                        a.Class = "Mage";
+                        foreach (Spell item in mageSpells)
+                        {
+                            a.GainSpell(item);
+                        }
+
+                        a.Str = rnd.Next(5, 15);
+                        a.Agi = rnd.Next(1, 5);
+                        a.Int = rnd.Next(20, 30);
+                        break;
+                }
+
+                a.Name = RetNames()[rnd.Next(0, RetNames().Count)];
+                a.Surname = RetSurnames()[rnd.Next(0, RetSurnames().Count)];
+                a.MaxHP = a.Str * 20;
+                a.CurHP = a.MaxHP;
+                fighters.Add(a);
+            }
+
+            return fighters;
         }
     }
 }

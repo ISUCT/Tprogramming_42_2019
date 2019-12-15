@@ -84,5 +84,15 @@ namespace RPG_autoBattler
                 CurHP = MaxHP;
             }
         }
+
+        public void GainSpell(Spell spell)
+        {
+            switch (spell.IsPassive)
+            {
+                case 0: ActSpells.Add(spell); break;
+                case 1: PasSpells.Add(spell); break;
+                case 2: ActSpells.Add(spell); PasSpells.Add(spell); break;
+            }
+        }
     }
 }

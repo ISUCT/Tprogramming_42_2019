@@ -21,6 +21,8 @@ namespace RPG_autoBattler
 
         public bool IsRanged { get; set; }
 
+        public int IsPassive { get; set; }
+
         public string Name { get; set; }
 
         public float[] SpecVal
