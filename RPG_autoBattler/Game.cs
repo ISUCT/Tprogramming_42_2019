@@ -75,13 +75,13 @@ namespace RPG_autoBattler
                     foreach (Spell item in b.PasSpells)
                     {
                         float[] f = new float[1] { 0 };
-                        item.Trigger("TurnEnd", a, b, f);
+                        item.Trigger("TurnEnd", b, a, f);
                     }
 
                     foreach (Spell item in a.PasSpells)
                     {
                         float[] f = new float[1] { 1 };
-                        item.Trigger("TurnEnd", b, a, f);
+                        item.Trigger("TurnEnd", a, b, f);
                     }
                 }
 
@@ -92,14 +92,32 @@ namespace RPG_autoBattler
             {
                 Console.WriteLine($"{a.Name} {a.Surname} ({a.Class}) wins!");
                 a.Heal(a.MaxHP);
-                return 0;
+                return 1;
             }
             else
             {
                 Console.WriteLine($"{b.Name} {b.Surname} ({b.Class}) wins!");
                 b.Heal(b.MaxHP);
-                return 1;
+                return 0;
             }
+        }
+
+        public static Char Tournament(List<Char> charss)
+        {
+            List<Char> chars = charss;
+            while (chars.Count > 1)
+            {
+                int i = 0;
+                while (i < chars.Count)
+                {
+                    Console.WriteLine($"Let the battle between {chars[i].Name} {chars[i].Surname} ({chars[i].Class}) and {chars[i + 1].Name} {chars[i + 1].Surname} ({chars[i + 1].Class}) begin!");
+                    int r = Battle(chars[i], chars[i + 1]);
+                    chars.RemoveAt(r + i);
+                    i++;
+                }
+            }
+
+            return chars[0];
         }
 
         public static void Main()
@@ -129,6 +147,16 @@ namespace RPG_autoBattler
             player.ActSpells.Add(palaSpells[3]);
             player.Name = "Arthas";
             player.Surname = "Menethil";
+            Char player2 = new Char();
+            player2.Class = "Paladin";
+            player2.CurHP = 70;
+            player2.MaxHP = 70;
+            player2.ActSpells.Add(palaSpells[0]);
+            player2.ActSpells.Add(palaSpells[1]);
+            player2.PasSpells.Add(palaSpells[2]);
+            player2.ActSpells.Add(palaSpells[3]);
+            player2.Name = "Bolvar";
+            player2.Surname = "Fordragon";
             Char vict = new Char();
             vict.Class = "Mage";
             vict.ActSpells.Add(mageSpells[0]);
@@ -141,12 +169,31 @@ namespace RPG_autoBattler
             vict.Surname = "Proudmoore";
             vict.CurHP = 45;
             vict.MaxHP = 45;
+            Char vict2 = new Char();
+            vict2.Class = "Ninja";
+            vict2.ActSpells.Add(ninjaSpells[0]);
+            vict2.ActSpells.Add(ninjaSpells[1]);
+            vict2.PasSpells.Add(ninjaSpells[2]);
+            vict2.ActSpells.Add(ninjaSpells[2]);
+            vict2.ActSpells.Add(ninjaSpells[3]);
+            vict2.Name = "Mikey";
+            vict2.Surname = "Splinterson";
+            vict2.CurHP = 55;
+            vict2.MaxHP = 55;
 
             // player.HitBySpell(vict, vict.ActSpells[3]);
-            Battle(player, vict);
+
+            // Battle(player, vict);
             /*Console.WriteLine($"Victim has {vict.CurHP} HP");
             vict.HitBySpell(player, player.Spells[0]);
             Console.WriteLine($"And now he has {vict.CurHP} HP");*/
+            List<Char> chars = new List<Char>();
+            chars.Add(player);
+            chars.Add(vict);
+            chars.Add(player2);
+            chars.Add(vict2);
+            Char winner = Tournament(chars);
+            Console.WriteLine($"{winner.Name} {winner.Surname} ({winner.Class}) won the tournament!");
             Console.ReadKey();
         }
 
@@ -248,7 +295,7 @@ namespace RPG_autoBattler
 
         public static void FireTrig(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
         {
-            if ((triggerType == "TurnEnd") && ((int)specVal[0] > 0) && ((int)innerVal[3] > 0))
+            if ((triggerType == "TurnEnd") && ((int)specVal[0] == 1) && ((int)innerVal[3] > 0))
             {
                 Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire!");
                 victim.TakeDamage(attacker, innerVal[1]);
