@@ -134,10 +134,15 @@ namespace RPG_autoBattler
             vict.ActSpells.Add(mageSpells[0]);
             vict.ActSpells.Add(mageSpells[1]);
             vict.PasSpells.Add(mageSpells[1]);
+            vict.ActSpells.Add(mageSpells[2]);
+            vict.ActSpells.Add(mageSpells[3]);
+            vict.PasSpells.Add(mageSpells[3]);
             vict.Name = "Jaina";
             vict.Surname = "Proudmoore";
             vict.CurHP = 45;
             vict.MaxHP = 45;
+
+            // player.HitBySpell(vict, vict.ActSpells[3]);
             Battle(player, vict);
             /*Console.WriteLine($"Victim has {vict.CurHP} HP");
             vict.HitBySpell(player, player.Spells[0]);
@@ -178,6 +183,13 @@ namespace RPG_autoBattler
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire for {specVal[3]} turns!");
         }
 
+        public static void IceBlastFunc(Char caster, Char victim, ref float[] specVal)
+        {
+            Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is frozen for {(int)specVal[1]} turn(s)!");
+            victim.TakeDamage(caster, specVal[0]);
+            victim.StunTimer += (int)specVal[1];
+        }
+
         public static void HealFunc(Char caster, Char victim, ref float[] specVal)
         {
             caster.Heal(specVal[0]);
@@ -188,6 +200,12 @@ namespace RPG_autoBattler
         {
             specVal[0] = specVal[2];
             Console.WriteLine($"{caster.Name} {caster.Surname} ({caster.Class}) is hidden in the Smoke Screen for {specVal[0]} enemy turns!");
+        }
+
+        public static void MagicShieldFunc(Char caster, Char victim, ref float[] specVal)
+        {
+            specVal[1] = specVal[0];
+            Console.WriteLine($"{caster.Name} {caster.Surname} ({caster.Class}) is protected from any attacks for {specVal[0]} enemy turns!");
         }
 
         public static void TrigEmpty(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
@@ -211,7 +229,7 @@ namespace RPG_autoBattler
         {
             if (triggerType == "HitBySpell")
             {
-                if (innerVal[0] > 0)
+                if ((int)innerVal[0] > 0)
                 {
                     Random rnd = new Random();
                     if (rnd.Next(0, 100) < innerVal[1])
@@ -222,7 +240,7 @@ namespace RPG_autoBattler
                 }
             }
 
-            if ((triggerType == "TurnEnd") && (specVal[0] == 1))
+            if ((triggerType == "TurnEnd") && ((int)specVal[0] == 1))
             {
                 innerVal[0]--;
             }
@@ -230,21 +248,28 @@ namespace RPG_autoBattler
 
         public static void FireTrig(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
         {
-            if (triggerType == "TurnEnd")
-            {
-                Console.WriteLine("FireTrig");
-            }
-
-            if ((triggerType == "TurnEnd") && (specVal[0] > 0))
-            {
-                Console.WriteLine("FireTrig enemy");
-            }
-
-            if ((triggerType == "TurnEnd") && (specVal[0] > 0) && (innerVal[3] > 0))
+            if ((triggerType == "TurnEnd") && ((int)specVal[0] > 0) && ((int)innerVal[3] > 0))
             {
                 Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire!");
                 victim.TakeDamage(attacker, innerVal[1]);
                 innerVal[3]--;
+            }
+        }
+
+        public static void MageShieldTrig(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
+        {
+            if (triggerType == "HitBySpell")
+            {
+                if ((int)innerVal[1] > 0)
+                {
+                        Console.WriteLine($"{attacker.Name} {attacker.Surname} ({attacker.Class}) tries to attack!");
+                        throw new ProtectException($"Wow! Magic Shield of {victim.Name} {victim.Surname} ({victim.Class}) absorbs all incoming damage! No damage taken!");
+                }
+            }
+
+            if ((triggerType == "TurnEnd") && ((int)specVal[0] == 1))
+            {
+                innerVal[1]--;
             }
         }
 
@@ -350,6 +375,24 @@ namespace RPG_autoBattler
             mageFireball.SpecVal[2] = 3;
             mageFireball.SpecVal[3] = 0;
             magSpells.Add(mageFireball);
+            Spell mageIceBlast = new Spell(2);
+            mageIceBlast.IsRanged = true;
+            mageIceBlast.Lvl = 1;
+            mageIceBlast.Name = "Ice Blast";
+            mageIceBlast.Castt = IceBlastFunc;
+            mageIceBlast.Triggerr = TrigEmpty;
+            mageIceBlast.SpecVal[0] = 15;
+            mageIceBlast.SpecVal[1] = 2;
+            magSpells.Add(mageIceBlast);
+            Spell mageShield = new Spell(2);
+            mageShield.IsRanged = false;
+            mageShield.Lvl = 1;
+            mageShield.Name = "Magic Shield";
+            mageShield.Castt = MagicShieldFunc;
+            mageShield.Triggerr = MageShieldTrig;
+            mageShield.SpecVal[0] = 2;
+            mageShield.SpecVal[1] = 0;
+            magSpells.Add(mageShield);
             return magSpells;
         }
     }
