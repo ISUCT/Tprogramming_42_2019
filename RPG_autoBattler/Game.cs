@@ -20,7 +20,7 @@ namespace RPG_autoBattler
                 {
                     if (a.StunTimer == 0)
                     {
-                        if (rnd.Next(0, 100) > 75)
+                        if (rnd.Next(0, 100) > 65)
                         {
                             int ran = rnd.Next(1, a.ActSpells.Count);
 
@@ -54,7 +54,7 @@ namespace RPG_autoBattler
                 {
                     if (b.StunTimer == 0)
                     {
-                        if (rnd.Next(0, 100) > 75)
+                        if (rnd.Next(0, 100) > 65)
                         {
                             int ran = rnd.Next(1, b.ActSpells.Count);
 
@@ -92,6 +92,11 @@ namespace RPG_autoBattler
             {
                 Console.WriteLine($"{a.Name} {a.Surname} ({a.Class}) wins!");
                 a.Heal(a.MaxHP);
+                foreach (Spell item in a.PasSpells)
+                {
+                    item.Trigger("EndBattle", a, b, null);
+                }
+
                 return 1;
             }
             else
@@ -139,8 +144,8 @@ namespace RPG_autoBattler
 
             Char player = new Char();
             player.Class = "Paladin";
-            player.CurHP = 70;
-            player.MaxHP = 70;
+            player.CurHP = 60;
+            player.MaxHP = 60;
             player.ActSpells.Add(palaSpells[0]);
             player.ActSpells.Add(palaSpells[1]);
             player.PasSpells.Add(palaSpells[2]);
@@ -149,8 +154,8 @@ namespace RPG_autoBattler
             player.Surname = "Menethil";
             Char player2 = new Char();
             player2.Class = "Paladin";
-            player2.CurHP = 70;
-            player2.MaxHP = 70;
+            player2.CurHP = 60;
+            player2.MaxHP = 60;
             player2.ActSpells.Add(palaSpells[0]);
             player2.ActSpells.Add(palaSpells[1]);
             player2.PasSpells.Add(palaSpells[2]);
@@ -291,6 +296,11 @@ namespace RPG_autoBattler
             {
                 innerVal[0]--;
             }
+
+            if (triggerType == "BattleEnd")
+            {
+                innerVal[0] = 0;
+            }
         }
 
         public static void FireTrig(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
@@ -300,6 +310,11 @@ namespace RPG_autoBattler
                 Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire!");
                 victim.TakeDamage(attacker, innerVal[1]);
                 innerVal[3]--;
+            }
+
+            if (triggerType == "BattleEnd")
+            {
+                innerVal[3] = 0;
             }
         }
 
@@ -317,6 +332,11 @@ namespace RPG_autoBattler
             if ((triggerType == "TurnEnd") && ((int)specVal[0] == 1))
             {
                 innerVal[1]--;
+            }
+
+            if (triggerType == "BattleEnd")
+            {
+                innerVal[1] = 0;
             }
         }
 
@@ -368,7 +388,7 @@ namespace RPG_autoBattler
             ninjaBaseAttack.Name = "Katana Slash";
             ninjaBaseAttack.Castt = BaseAttackFunc;
             ninjaBaseAttack.Triggerr = TrigEmpty;
-            ninjaBaseAttack.SpecVal[0] = 17;
+            ninjaBaseAttack.SpecVal[0] = 20;
             ninjSpells.Add(ninjaBaseAttack);
             Spell ninjaShurikens = new Spell(2);
             ninjaShurikens.IsRanged = true;
@@ -376,7 +396,7 @@ namespace RPG_autoBattler
             ninjaShurikens.Name = "Shurikens Throw";
             ninjaShurikens.Castt = ShurikensFunc;
             ninjaShurikens.Triggerr = TrigEmpty;
-            ninjaShurikens.SpecVal[0] = 7;
+            ninjaShurikens.SpecVal[0] = 10;
             ninjaShurikens.SpecVal[1] = 3;
             ninjSpells.Add(ninjaShurikens);
             Spell ninjaFog = new Spell(3);
@@ -395,7 +415,7 @@ namespace RPG_autoBattler
             ninjaPierce.Name = "Piercing Slash";
             ninjaPierce.Castt = PierceFunc;
             ninjaPierce.Triggerr = TrigEmpty;
-            ninjaPierce.SpecVal[0] = 19;
+            ninjaPierce.SpecVal[0] = 25;
             ninjSpells.Add(ninjaPierce);
             return ninjSpells;
         }
@@ -417,8 +437,8 @@ namespace RPG_autoBattler
             mageFireball.Name = "Fireball Toss";
             mageFireball.Castt = FireballFunc;
             mageFireball.Triggerr = FireTrig;
-            mageFireball.SpecVal[0] = 15;
-            mageFireball.SpecVal[1] = 5;
+            mageFireball.SpecVal[0] = 30;
+            mageFireball.SpecVal[1] = 10;
             mageFireball.SpecVal[2] = 3;
             mageFireball.SpecVal[3] = 0;
             magSpells.Add(mageFireball);
@@ -428,7 +448,7 @@ namespace RPG_autoBattler
             mageIceBlast.Name = "Ice Blast";
             mageIceBlast.Castt = IceBlastFunc;
             mageIceBlast.Triggerr = TrigEmpty;
-            mageIceBlast.SpecVal[0] = 15;
+            mageIceBlast.SpecVal[0] = 20;
             mageIceBlast.SpecVal[1] = 2;
             magSpells.Add(mageIceBlast);
             Spell mageShield = new Spell(2);
