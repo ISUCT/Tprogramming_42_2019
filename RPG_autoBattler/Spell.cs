@@ -2,9 +2,9 @@
 
 namespace RPG_autoBattler
 {
-    public delegate void TrigReal(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal);
+    public delegate void TrigReal(string triggerType, Char attacker, Char victim, float[] specVal, float[] innerVal);
 
-    public delegate void CastDel(Char caster, Char victim, ref float[] specVal);
+    public delegate void CastDel(Char caster, Char victim, float[] specVal);
 
     public class Spell
     {
@@ -42,13 +42,13 @@ namespace RPG_autoBattler
 
         public void Trigger(string triggerType, Char attacker, Char victim, float[] specValue)
         {
-            Triggerr(triggerType, attacker, victim, specValue, ref specVal);
+            Triggerr(triggerType, attacker, victim, specValue, specVal);
         }
 
         public void Cast(Char caster, Char victim)
         {
             Console.WriteLine($"{caster.Name} {caster.Surname} ({caster.Class}) uses {Name}!");
-            Castt(caster, victim, ref specVal);
+            Castt(caster, victim, specVal);
         }
     }
 }

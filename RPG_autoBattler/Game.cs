@@ -15,7 +15,7 @@ namespace RPG_autoBattler
             int turn = 1;
             while ((a.CurHP > 0) && (b.CurHP > 0))
             {
-                Console.Write($"Turn {turn}: ");
+                Console.WriteLine($"Turn {turn}: ");
                 if ((turn % 2) == 0)
                 {
                     if (a.StunTimer == 0)
@@ -103,6 +103,11 @@ namespace RPG_autoBattler
             {
                 Console.WriteLine($"{b.Name} {b.Surname} ({b.Class}) wins!");
                 b.Heal(b.MaxHP);
+                foreach (Spell item in a.PasSpells)
+                {
+                    item.Trigger("EndBattle", a, b, null);
+                }
+
                 return 0;
             }
         }
@@ -207,19 +212,19 @@ namespace RPG_autoBattler
             Console.ReadKey();
         }
 
-        public static void BaseAttackFunc(Char caster, Char victim, ref float[] specVal)
+        public static void BaseAttackFunc(Char caster, Char victim, float[] specVal)
         {
             victim.TakeDamage(caster, caster.Agi);
         }
 
-        public static void HammerStrikeFunc(Char caster, Char victim, ref float[] specVal)
+        public static void HammerStrikeFunc(Char caster, Char victim, float[] specVal)
         {
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is stunned for {(int)specVal[1]} turn(s)!");
             victim.TakeDamage(caster, caster.Agi);
             victim.StunTimer += (int)specVal[1];
         }
 
-        public static void ShurikensFunc(Char caster, Char victim, ref float[] specVal)
+        public static void ShurikensFunc(Char caster, Char victim, float[] specVal)
         {
             for (int i = 0; i < specVal[1]; i++)
             {
@@ -227,53 +232,53 @@ namespace RPG_autoBattler
             }
         }
 
-        public static void PierceFunc(Char caster, Char victim, ref float[] specVal)
+        public static void PierceFunc(Char caster, Char victim, float[] specVal)
         {
             victim.CurHP -= caster.Agi + specVal[0];
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) takes {caster.Agi + specVal[0]} damage! {victim.CurHP} HP left!");
         }
 
-        public static void FireballFunc(Char caster, Char victim, ref float[] specVal)
+        public static void FireballFunc(Char caster, Char victim, float[] specVal)
         {
             victim.TakeDamage(caster, caster.Int);
             specVal[3] = specVal[2];
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire for {specVal[3]} turns!");
         }
 
-        public static void IceBlastFunc(Char caster, Char victim, ref float[] specVal)
+        public static void IceBlastFunc(Char caster, Char victim, float[] specVal)
         {
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is frozen for {(int)specVal[1]} turn(s)!");
             victim.TakeDamage(caster, caster.Int - specVal[0]);
             victim.StunTimer += (int)specVal[1];
         }
 
-        public static void HealFunc(Char caster, Char victim, ref float[] specVal)
+        public static void HealFunc(Char caster, Char victim, float[] specVal)
         {
             caster.Heal(specVal[0]);
             Console.WriteLine($"{caster.Name} {caster.Surname} ({caster.Class}) is healed by {specVal[0]}! {caster.CurHP} left!");
         }
 
-        public static void FogFunc(Char caster, Char victim, ref float[] specVal)
+        public static void FogFunc(Char caster, Char victim, float[] specVal)
         {
             specVal[0] = specVal[2];
             Console.WriteLine($"{caster.Name} {caster.Surname} ({caster.Class}) is hidden in the Smoke Screen for {specVal[0]} enemy turns!");
         }
 
-        public static void MagicShieldFunc(Char caster, Char victim, ref float[] specVal)
+        public static void MagicShieldFunc(Char caster, Char victim, float[] specVal)
         {
             specVal[1] = specVal[0];
             Console.WriteLine($"{caster.Name} {caster.Surname} ({caster.Class}) is protected from any attacks for {specVal[0]} enemy turns!");
         }
 
-        public static void TrigEmpty(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
+        public static void TrigEmpty(string triggerType, Char attacker, Char victim, float[] specVal, float[] innerVal)
         {
         }
 
-        public static void CastEmpty(Char caster, Char victim, ref float[] specVal)
+        public static void CastEmpty(Char caster, Char victim, float[] specVal)
         {
         }
 
-        public static void PalBlockTrig(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
+        public static void PalBlockTrig(string triggerType, Char attacker, Char victim, float[] specVal, float[] innerVal)
         {
             if (triggerType == "TakeDamage")
             {
@@ -282,7 +287,7 @@ namespace RPG_autoBattler
             }
         }
 
-        public static void FogTrig(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
+        public static void FogTrig(string triggerType, Char attacker, Char victim, float[] specVal, float[] innerVal)
         {
             if (triggerType == "HitBySpell")
             {
@@ -308,7 +313,7 @@ namespace RPG_autoBattler
             }
         }
 
-        public static void FireTrig(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
+        public static void FireTrig(string triggerType, Char attacker, Char victim, float[] specVal, float[] innerVal)
         {
             if ((triggerType == "TurnEnd") && ((int)specVal[0] == 1) && ((int)innerVal[3] > 0))
             {
@@ -323,7 +328,7 @@ namespace RPG_autoBattler
             }
         }
 
-        public static void MageShieldTrig(string triggerType, Char attacker, Char victim, float[] specVal, ref float[] innerVal)
+        public static void MageShieldTrig(string triggerType, Char attacker, Char victim, float[] specVal, float[] innerVal)
         {
             if (triggerType == "HitBySpell")
             {
