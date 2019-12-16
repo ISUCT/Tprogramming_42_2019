@@ -36,7 +36,8 @@ namespace CourseApp
 
         public static string Age(DateTime dat)
         {
-            return $"Тебе {DatComp(dat, DateTime.Now).Year - 1} лет, {DatComp(dat, DateTime.Now).Month - 1} месяцев и {DatComp(dat, DateTime.Now).Day - 1} дней";
+            var datComp = DatComp(dat, DateTime.Now);
+            return $"Тебе {datComp.Year - 1} лет, {datComp.Month - 1} месяцев и {datComp.Day - 1} дней";
         }
     }
 }

@@ -44,7 +44,7 @@ namespace CourseApp
 
         public void Use()
         {
-            this.age++;
+            this.Age++;
         }
 
         public abstract void Sound();

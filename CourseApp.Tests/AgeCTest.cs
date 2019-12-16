@@ -16,6 +16,14 @@ namespace CourseApp.Tests
             }
         }
 
+        [Theory]
+        [InlineData(2, 4, 2008)]
+        [InlineData(8, 12, 2016)]
+        public void TestAge(int days, int months, int years)
+        {
+            Assert.Equal($"Тебе {DateTime.Now.Year - years} лет, {DateTime.Now.Month - months} месяцев и {DateTime.Now.Day - days} дней", AgeC.Age(days, months, years));
+        }
+
         [Fact]
         public void TodayBirthdayTest()
         {
