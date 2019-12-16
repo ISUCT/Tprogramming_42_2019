@@ -17,11 +17,11 @@ namespace CourseApp.Tests
         }
 
         [Theory]
-        [InlineData(03, 12, 1999)]
-        [InlineData(05, 05, 2000)]
+        [InlineData(03, 8, 1999)]
+        [InlineData(11, 5, 1998)]
         public void TestAge(int days, int months, int years)
         {
-            Assert.Equal($"Вам {DateTime.Now.Year - years} лет, {DateTime.Now.Month - months} месяцев и {DateTime.Now.Day - days} дня", AgeClass.Age(days, months, years));
+            Assert.Equal($"Вам {DateTime.Now.Year - years} лет, {DateTime.Now.Month - months} месяцев и {DateTime.Now.Day - days + 2} дня", AgeClass.Age(days, months, years));
         }
 
         [Fact]
