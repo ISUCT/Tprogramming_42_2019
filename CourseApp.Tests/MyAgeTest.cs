@@ -14,6 +14,7 @@ namespace CourseApp.Tests
         [Fact]
         public void StrangeDate()
         {
+            bool isWorking = false;
             try
             {
                 MyAgeClass.DateCompar(DateTime.Now, DateTime.Now);
@@ -23,14 +24,17 @@ namespace CourseApp.Tests
                 if (ex.Message == "Автору 0 лет")
                 {
                     Console.WriteLine(ex.Message);
-                    Assert.True(true);
+                    isWorking = true;
                 }
             }
+
+            Assert.True(isWorking);
         }
 
         [Fact]
-        public void LowDateInt()
+        public void LowDate()
         {
+            bool isThrown = false;
             try
             {
                 MyAgeClass.MyAge(2037, 1, 1);
@@ -38,22 +42,10 @@ namespace CourseApp.Tests
             catch (AgeException ex)
             {
                 Console.WriteLine(ex.Message);
-                Assert.True(true);
+                isThrown = true;
             }
-        }
 
-        [Fact]
-        public void LowDateDate()
-        {
-            try
-            {
-                MyAgeClass.MyAge(new DateTime(2037, 1, 1));
-            }
-            catch (AgeException ex)
-            {
-                Console.WriteLine(ex.Message);
-                Assert.True(true);
-            }
+            Assert.True(isThrown);
         }
     }
 }
