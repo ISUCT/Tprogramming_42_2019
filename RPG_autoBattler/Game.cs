@@ -486,38 +486,13 @@ namespace RPG_autoBattler
 
         public static List<string> RetNames()
         {
-            List<string> s = new List<string>();
-            s.Add("Arthas");
-            s.Add("Jaina");
-            s.Add("Bolvar");
-            s.Add("Mikey");
-            s.Add("Perry");
-            s.Add("Leonardo");
-            s.Add("Donatello");
-            s.Add("Raphael");
-            s.Add("Sylvanas");
-            s.Add("Alleria");
-            s.Add("Vlad");
-            s.Add("Vitaliy");
-            s.Add("Thrall");
-            s.Add("Geralt");
-            s.Add("Daelin");
+            List<string> s = new List<string>() { "Arthas", "Jaina", "Bolvar", "Mikey", "Perry", "Leonardo", "Donatello", "Raphael", "Sylvanas", "Alleria", "Vlad", "Vitaliy", "Thrall", "Geralt", "Daelin" };
             return s;
         }
 
         public static List<string> RetSurnames()
         {
-            List<string> s = new List<string>();
-            s.Add("Menethil");
-            s.Add("Proudmoore");
-            s.Add("Fordragon");
-            s.Add("Splinterson");
-            s.Add("the Platypus");
-            s.Add("Windrunner");
-            s.Add("Dracula");
-            s.Add("Tsal'");
-            s.Add("from Rivia");
-            s.Add("Gorobets");
+            List<string> s = new List<string>() { "Menethil", "Proudmoore", "Fordragon", "Splinterson", "the Platypus", "Windrunner", "Dracula", "Tsal'", "from Rivia", "Gorobets" };
             return s;
         }
 
