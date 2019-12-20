@@ -94,5 +94,10 @@ namespace RPG_autoBattler
                 case 2: ActSpells.Add(spell); PasSpells.Add(spell); break;
             }
         }
+
+        public override string ToString()
+        {
+            return $"{Name} {Surname} ({Class})";
+        }
     }
 }
