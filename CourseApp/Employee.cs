@@ -2,9 +2,8 @@ using System;
 
 namespace CourseApp
 {
-    public class Employee
+    public class Employee : Person
     {
-        private int age;
         private int workDays;
 
         public Employee()
@@ -33,36 +32,25 @@ namespace CourseApp
         }
 
         public Employee(int age, string name, string surname, bool isMale, DateTime date)
+        : base(age, name, surname, isMale)
         {
-            Name = name;
-            Surname = surname;
-            Age = age;
-            IsMale = isMale;
             DateOfEmploy = date;
             workDays = 0;
             Products = 0;
         }
 
-        public string Name { get; set; }
-
-        public string Surname { get; set; }
-
-        public int Products { get; private set; }
-
-        public DateTime DateOfEmploy { get; private set; }
-
-        public int Age
+        public override int Age
         {
             get
             {
-                return this.age;
+                return base.Age;
             }
 
             set
             {
                 if (value >= 14 && value < 100)
                 {
-                    this.age = value;
+                    base.Age = value;
                 }
                 else
                 {
@@ -71,7 +59,9 @@ namespace CourseApp
             }
         }
 
-        public bool IsMale { get; set; }
+        public int Products { get; private set; }
+
+        public DateTime DateOfEmploy { get; private set; }
 
         public void Work(int days)
         {
@@ -90,36 +80,9 @@ namespace CourseApp
             }
         }
 
-        public void Marry(string surname, bool change = false)
+        public override string Relax()
         {
-            if (Age > 15)
-            {
-                if ((IsMale == false) && change)
-                {
-                    Surname = surname;
-                }
-            }
-        }
-
-        public void Marry(Employee worker, bool change = false)
-        {
-            if (Age > 15)
-            {
-                if ((IsMale == false) && change)
-                {
-                    Surname = worker.Surname;
-                }
-            }
-            else
-            {
-                throw new AgeException("You can marry from 16 years in Russia");
-            }
-        }
-
-        public override string ToString()
-        {
-            string s = $"Good day, sir! I am {Name} {Surname}. I am {Age} years old. And also I am a {(IsMale ? "male" : "female")} by the way.";
-            return s;
+            return "Zzz...";
         }
     }
 }

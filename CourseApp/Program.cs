@@ -56,6 +56,15 @@ namespace CourseApp
                 Console.WriteLine(item);
             }
 
+            Person[] masss = new Person[2];
+            masss[0] = new Student(18, "Vasya", "Ivanov");
+            masss[1] = new Employee(35, "Vasiliy", "Petrov");
+            foreach (var item in masss)
+            {
+                Console.WriteLine(item.Relax());
+            }
+
+            Console.WriteLine(MyAgeClass.DateCompar(new DateTime(2001, 2, 5), new DateTime(2019, 12, 9)));
             Console.ReadKey();
         }
     }

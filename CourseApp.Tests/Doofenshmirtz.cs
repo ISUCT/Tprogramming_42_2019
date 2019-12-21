@@ -27,7 +27,7 @@ namespace CourseApp.Tests
         }
 
         [Fact]
-        public void MarryTest1_1()
+        public void MarryTest1i1()
         {
             Employee masha = new Employee(18, "Masha", "Romanoff", false);
             masha.Marry("Pietroff");
@@ -35,7 +35,7 @@ namespace CourseApp.Tests
         }
 
         [Fact]
-        public void MarryTest1_2()
+        public void MarryTest1i2()
         {
             Employee masha = new Employee(18, "Masha", "Romanoff", false);
             masha.Marry("Pietroff", false);
@@ -90,7 +90,16 @@ namespace CourseApp.Tests
         public void MarryTest6()
         {
             Employee masha = new Employee(15, "Masha", "Romanoff", false);
-            masha.Marry("Gorobets", true);
+            try
+            {
+                masha.Marry("Gorobets", true);
+            }
+            catch (AgeException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Assert.True(true);
+            }
+
             Assert.Equal("Romanoff", masha.Surname);
         }
 
