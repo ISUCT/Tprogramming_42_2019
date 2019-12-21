@@ -5,7 +5,7 @@ namespace CourseApp
 {
     public class AgeC
     {
-        public static string Age()
+        public static DateTime ConsoleInputData()
         {
             Console.WriteLine("Напиши год своего рождения:");
             int year = Convert.ToInt32(Console.ReadLine());
@@ -14,7 +14,7 @@ namespace CourseApp
             Console.WriteLine("Напиши день своего рождения:");
             int day = Convert.ToInt32(Console.ReadLine());
             DateTime res = DatComp(new DateTime(year, month, day), DateTime.Now);
-            return $"Тебе {res.Year - 1} лет, {res.Month - 1} месяцев и {res.Day - 1} дней";
+            return res;
         }
 
         public static string Age(int day, int month, int year)
