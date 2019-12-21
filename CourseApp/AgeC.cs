@@ -34,6 +34,12 @@ namespace CourseApp
             throw new Exception();
         }
 
+        public static string Age(DateTime dat1, DateTime dat2)
+        {
+            var datComp = DatComp(dat1, dat2);
+            return $"Тебе {datComp.Year - 1} лет, {datComp.Month - 1} месяцев и {datComp.Day - 1} дней";
+        }
+
         public static string Age(DateTime dat)
         {
             var datComp = DatComp(dat, DateTime.Now);
