@@ -7,12 +7,6 @@
     <NoWarn>1573,1591,1701;1702;1705;</NoWarn>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Новая папка\**" />
-    <EmbeddedResource Remove="Новая папка\**" />
-    <None Remove="Новая папка\**" />
-  </ItemGroup>
-
    <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" PrivateAssets="all" />
   </ItemGroup>

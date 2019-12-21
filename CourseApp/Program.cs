@@ -65,8 +65,6 @@ namespace CourseApp
             }
 
             Console.WriteLine(MyAgeClass.DateCompar(new DateTime(2001, 2, 5), new DateTime(2019, 12, 9)));
-
-            // RPG_autoBattler::Game.GameStart();
             Console.ReadKey();
         }
     }
