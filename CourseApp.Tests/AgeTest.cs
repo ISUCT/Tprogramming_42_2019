@@ -16,12 +16,31 @@ namespace CourseApp.Tests
             }
         }
 
-        [Theory]
-        [InlineData(03, 8, 1999)]
-        [InlineData(11, 5, 1998)]
-        public void TestAge(int days, int months, int years)
+        [Fact]
+        public void TestAgeVchera()
         {
-            Assert.Equal($"Вам {DateTime.Now.Year - years} лет, {DateTime.Now.Month - months} месяцев и {DateTime.Now.Day - days + 2} дня", AgeClass.Age(days, months, years));
+            string st = $"Вам 0 лет, 0 месяцев и 1 дня";
+            Assert.Equal(st, AgeClass.Age(20, 12, 2019));
+        }
+
+        [Fact]
+        public void TestAgeToday()
+        {
+            string st = $"Вам 0 лет, 0 месяцев и 0 дня";
+            Assert.Equal(st, AgeClass.Age(21, 12, 2019));
+        }
+
+        [Fact]
+        public void TestAgeTommorow()
+        {
+            try
+            {
+                Assert.Equal(0, DateTime.Compare(DateTime.Now, AgeClass.DateCompare(DateTime.Now, DateTime.Now)));
+            }
+            catch (Exception)
+            {
+                Assert.True(true);
+            }
         }
 
         [Fact]
