@@ -42,7 +42,7 @@ namespace CourseApp.Tests
         {
             try
             {
-                Assert.Equal(0, DateTime.Compare(DateTime.Now, AgeClass.DateCompare(DateTime.Now, new DateTime(2048, 8, 16))));
+                Assert.Equal(0, DateTime.Compare(DateTime.Now, AgeClass.DateCompare(new DateTime(2019, 12, 21), new DateTime(2048, 8, 16))));
             }
             catch (Exception)
             {
