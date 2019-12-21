@@ -12,6 +12,13 @@ namespace CourseApp.Tests
         }
 
         [Fact]
+        public void StringNormDate()
+        {
+            string result = MyAgeClass.DateComparS(new DateTime(1999, 12, 1), new DateTime(2019, 11, 1));
+            Assert.Equal("Вам 19 лет, 11 месяцев и 1 дня", result);
+        }
+
+        [Fact]
         public void StrangeDate()
         {
             bool isWorking = false;
