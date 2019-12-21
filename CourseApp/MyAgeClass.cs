@@ -7,24 +7,39 @@ namespace CourseApp
     {
         public static DateTime DateCompar(DateTime date1, DateTime date2)
         {
+            long a = Math.Abs(date2.Ticks - date1.Ticks);
+            if (a < 10000001)
+            {
+                throw new AgeException("Автору 0 лет");
+            }
+
             if (date1.Ticks < date2.Ticks)
             {
                 var res = new DateTime(date2.Ticks - date1.Ticks);
                 return res;
             }
-            else
+
+            throw new AgeException("Вы ещё не родились, ожидайте");
+        }
+
+        public static string DateComparS(DateTime date1, DateTime date2)
+        {
+            long a = Math.Abs(date2.Ticks - date1.Ticks);
+            if (a < 10000001)
             {
-                long a = Math.Abs(date2.Ticks - date1.Ticks);
-                if (a < 10000001)
-                {
-                    throw new AgeException("Автору 0 лет");
-                }
+                throw new AgeException("Автору 0 лет");
+            }
+
+            if (date1.Ticks < date2.Ticks)
+            {
+                var res = new DateTime(date2.Ticks - date1.Ticks);
+                return $"Вам {res.Year - 1} лет, {res.Month - 1} месяцев и {res.Day - 1} дня";
             }
 
             throw new AgeException("Вы ещё не родились, ожидайте");
         }
 
-        public static string MyAge()
+        public static string MyAgesKlavy()
         {
             Console.WriteLine("Введите год своего рождения:");
             int years = int.Parse(Console.ReadLine());

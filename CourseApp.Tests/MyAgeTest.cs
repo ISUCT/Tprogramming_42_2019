@@ -12,8 +12,37 @@ namespace CourseApp.Tests
         }
 
         [Fact]
+        public void StringNormDate()
+        {
+            string result = MyAgeClass.DateComparS(new DateTime(1999, 12, 1), new DateTime(2019, 11, 1));
+            Assert.Equal("Вам 19 лет, 11 месяцев и 1 дня", result);
+        }
+
+        [Fact]
+        public void StringNormDateTomorrow()
+        {
+            string result = MyAgeClass.DateComparS(new DateTime(2000, 12, 2), new DateTime(2019, 12, 1));
+            Assert.Equal("Вам 18 лет, 11 месяцев и 30 дня", result);
+        }
+
+        [Fact]
+        public void StringNormDateToday()
+        {
+            string result = MyAgeClass.DateComparS(new DateTime(2000, 12, 1), new DateTime(2019, 12, 1));
+            Assert.Equal("Вам 19 лет, 0 месяцев и 0 дня", result);
+        }
+
+        [Fact]
+        public void StringNormDateYesterday()
+        {
+            string result = MyAgeClass.DateComparS(new DateTime(2000, 12, 1), new DateTime(2019, 12, 2));
+            Assert.Equal("Вам 19 лет, 0 месяцев и 1 дня", result);
+        }
+
+        [Fact]
         public void StrangeDate()
         {
+            bool isWorking = false;
             try
             {
                 MyAgeClass.DateCompar(DateTime.Now, DateTime.Now);
@@ -23,14 +52,17 @@ namespace CourseApp.Tests
                 if (ex.Message == "Автору 0 лет")
                 {
                     Console.WriteLine(ex.Message);
-                    Assert.True(true);
+                    isWorking = true;
                 }
             }
+
+            Assert.True(isWorking);
         }
 
         [Fact]
-        public void LowDateInt()
+        public void LowDate()
         {
+            bool isThrown = false;
             try
             {
                 MyAgeClass.MyAge(2037, 1, 1);
@@ -38,22 +70,10 @@ namespace CourseApp.Tests
             catch (AgeException ex)
             {
                 Console.WriteLine(ex.Message);
-                Assert.True(true);
+                isThrown = true;
             }
-        }
 
-        [Fact]
-        public void LowDateDate()
-        {
-            try
-            {
-                MyAgeClass.MyAge(new DateTime(2037, 1, 1));
-            }
-            catch (AgeException ex)
-            {
-                Console.WriteLine(ex.Message);
-                Assert.True(true);
-            }
+            Assert.True(isThrown);
         }
     }
 }
