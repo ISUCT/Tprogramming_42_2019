@@ -19,6 +19,27 @@ namespace CourseApp.Tests
         }
 
         [Fact]
+        public void StringNormDateTomorrow()
+        {
+            string result = MyAgeClass.DateComparS(new DateTime(2000, 12, 2), new DateTime(2019, 12, 1));
+            Assert.Equal("Вам 18 лет, 11 месяцев и 30 дня", result);
+        }
+
+        [Fact]
+        public void StringNormDateToday()
+        {
+            string result = MyAgeClass.DateComparS(new DateTime(2000, 12, 1), new DateTime(2019, 12, 1));
+            Assert.Equal("Вам 19 лет, 0 месяцев и 0 дня", result);
+        }
+
+        [Fact]
+        public void StringNormDateYesterday()
+        {
+            string result = MyAgeClass.DateComparS(new DateTime(2000, 12, 1), new DateTime(2019, 12, 2));
+            Assert.Equal("Вам 19 лет, 0 месяцев и 1 дня", result);
+        }
+
+        [Fact]
         public void StrangeDate()
         {
             bool isWorking = false;
