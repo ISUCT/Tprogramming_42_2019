@@ -38,19 +38,6 @@ namespace CourseApp.Tests
         }
 
         [Fact]
-        public void TodayBirthdayTest()
-        {
-            try
-            {
-                Assert.Equal(0, DateTime.Compare(DateTime.Now, AgeClass.DateCompare(DateTime.Now, DateTime.Now)));
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Birthday == Today");
-            }
-        }
-
-        [Fact]
         public void BirthdayAboveToday()
         {
             try
