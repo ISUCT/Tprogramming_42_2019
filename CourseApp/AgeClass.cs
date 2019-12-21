@@ -34,6 +34,12 @@ namespace CourseApp
             throw new Exception();
         }
 
+        public static string Age(DateTime date, DateTime date2)
+        {
+            var dateCompar = DateCompare(date, date2);
+            return $"Вам {dateCompar.Year - 1} лет, {dateCompar.Month - 1} месяцев и {dateCompar.Day - 1} дня";
+        }
+
         public static string Age(DateTime date)
         {
             var dateCompar = DateCompare(date, DateTime.Now);

@@ -19,28 +19,22 @@ namespace CourseApp.Tests
         [Fact]
         public void TestAgeVchera()
         {
-            string st = $"Вам 9 лет, 0 месяцев и 1 дня";
-            Assert.Equal(st, AgeClass.Age(20, 12, 2010));
+            string st = $"Вам 10 лет, 0 месяцев и 1 дня";
+            Assert.Equal(st, AgeClass.Age(new DateTime(2009, 12, 20), new DateTime(2019, 12, 21)));
         }
 
         [Fact]
         public void TestAgeToday()
         {
             string st = $"Вам 8 лет, 0 месяцев и 0 дня";
-            Assert.Equal(st, AgeClass.Age(21, 12, 2011));
+            Assert.Equal(st, AgeClass.Age(new DateTime(2011, 12, 21), new DateTime(2019, 12, 21)));
         }
 
         [Fact]
         public void TestAgeTommorow()
         {
-            try
-            {
-                Assert.Equal(0, DateTime.Compare(DateTime.Now, AgeClass.DateCompare(DateTime.Now, DateTime.Now)));
-            }
-            catch (Exception)
-            {
-                Assert.True(true);
-            }
+            string st = $"Вам 10 лет, 0 месяцев и 0 дня";
+            Assert.Equal(st, AgeClass.Age(new DateTime(2009, 12, 21), new DateTime(2019, 12, 21)));
         }
 
         [Fact]
