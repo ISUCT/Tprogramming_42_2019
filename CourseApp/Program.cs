@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace CourseApp
 {
@@ -54,6 +55,16 @@ namespace CourseApp
             foreach (var i in TaskB(a, b, x))
             {
                 Console.WriteLine($"x = {x[(int)count++]}, y = {i}");
+            }
+
+            Console.WriteLine();
+            Ship[] array = new Ship[2];
+            array[0] = new Cruiser("Sydney", 171.3, 6830);
+            array[1] = new Corvette("Guarding", 104.5, 2220);
+
+            for (int i = 0; i < 2; i++)
+            {
+                array[i].SayShip();
             }
 
             Console.ReadKey();
