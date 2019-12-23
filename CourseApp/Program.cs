@@ -56,8 +56,13 @@ namespace CourseApp
                 Console.WriteLine($"y = {element}");
             }
 
-            Console.WriteLine();
-            Console.ReadLine();
+            Vehicle[] objects = new Vehicle[2];
+            objects[0] = new Car("ModelCar", 3, 3);
+            objects[1] = new Airplane("ModelAirplane", 5, "Produced");
+            foreach (var item in objects)
+            {
+                item.Sound();
+            }
         }
     }
 }

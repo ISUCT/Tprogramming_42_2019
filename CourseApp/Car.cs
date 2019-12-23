@@ -4,47 +4,39 @@ using System.Text;
 
 namespace CourseApp
 {
-    public class Car
+    public class Car : Vehicle
     {
         private int speed;
-        private int age;
 
         public Car()
-        : this("Неизвестно")
+        : base("Неизвестно")
         {
         }
 
-        public Car(string brand)
-        : this(brand, 0)
+        public Car(string model)
+        : base(model, 0)
         {
         }
 
-        public Car(string brand, int age)
-        : this(brand, age, 0)
+        public Car(string model, int age)
+        : this(model, age, 0)
         {
         }
 
-        public Car(string brand, int age, int speed)
+        public Car(string model, int age, int speed)
         {
-            Brand = brand;
+            Model = model;
             Age = age;
             Speed = speed;
         }
 
-        public string Brand { get; set; }
-
-        public int Age
+        public override int Age
         {
-            get
-            {
-                return this.age;
-            }
-
             set
             {
                 if (value >= 0 && value <= 20)
                 {
-                    this.age = value;
+                    base.Age = value;
                 }
                 else
                 {
@@ -75,17 +67,12 @@ namespace CourseApp
 
         public override string ToString()
         {
-            return $"Бренд:{Brand}, Возраст:{Age}, Скорость:{Speed}";
+            return $"Модель:{Model}, Возраст:{Age}, Скорость:{Speed}";
         }
 
-        public void Sound()
+        public override void Sound()
         {
             Console.WriteLine("Врум!");
-        }
-
-        public void Use()
-        {
-            this.age++;
         }
 
         public void Braking()
