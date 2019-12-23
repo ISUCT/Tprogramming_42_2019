@@ -41,7 +41,7 @@ namespace CourseApp.Tests
         public void TestAge()
         {
             string st = $"Вам 13 лет, 11 месяцев и 22 дня";
-            Assert.Equal(st, AgeClass.Age(new DateTime(2000, 11, 20), new DateTime(2014, 11, 11)));
+            Assert.Equal(st, AgeC.Age(new DateTime(2000, 11, 20), new DateTime(2014, 11, 11)));
         }
 
         [Fact]
@@ -49,7 +49,7 @@ namespace CourseApp.Tests
         {
             try
             {
-                Assert.Equal(0, DateTime.Compare(DateTime.Now, AgeClass.DateCompare(new DateTime(2019, 12, 21), new DateTime(2048, 8, 16))));
+                Assert.Equal(0, DateTime.Compare(DateTime.Now, AgeC.DatComp(new DateTime(2019, 12, 21), new DateTime(2048, 8, 16))));
             }
             catch (Exception)
             {
