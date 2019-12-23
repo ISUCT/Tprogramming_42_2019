@@ -30,8 +30,8 @@ namespace CourseApp
 
         public static string Age(DateTime fromDate, DateTime toDate)
         {
-            var dateCompar = DateCompare(fromDate, toDate);
-            return $"Вам {dateCompar.Year - 1} лет, {dateCompar.Month - 1} месяцев и {dateCompar.Day - 1} дня";
+            var datCompar = DatComp(fromDate, toDate);
+            return $"Тебе {datCompar.Year - 1} лет, {datCompar.Month - 1} месяцев и {datCompar.Day - 1} дней";
         }
 
         public static string Age(DateTime dat)
