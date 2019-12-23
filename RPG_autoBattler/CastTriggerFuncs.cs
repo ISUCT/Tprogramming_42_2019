@@ -12,7 +12,7 @@ namespace RPG_autoBattler
 
         public static void HammerStrikeFunc(Char caster, Char victim, float[] specVal)
         {
-            Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is stunned for {(int)specVal[1]} turn(s)!");
+            Logger.StunM(victim, (int)specVal[1]);
             victim.TakeDamage(caster, caster.Agi);
             victim.StunTimer += (int)specVal[1];
         }
@@ -28,7 +28,7 @@ namespace RPG_autoBattler
         public static void PierceFunc(Char caster, Char victim, float[] specVal)
         {
             victim.CurHP -= caster.Agi + specVal[0];
-            Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) takes {caster.Agi + specVal[0]} damage! {victim.CurHP} HP left!");
+            Logger.TakeDamageM(victim, caster.Agi + specVal[0]);
         }
 
         public static void FireballFunc(Char caster, Char victim, float[] specVal)

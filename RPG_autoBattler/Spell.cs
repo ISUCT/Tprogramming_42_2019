@@ -47,7 +47,7 @@ namespace RPG_autoBattler
 
         public void Cast(Char caster, Char victim)
         {
-            Console.WriteLine($"{caster.Name} {caster.Surname} ({caster.Class}) uses {Name}!");
+            Logger.SpellCastM(caster, this);
             Castt(caster, victim, specVal);
         }
     }
