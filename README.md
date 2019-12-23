@@ -1,1 +1,1 @@
-# Tprogramming_42_2019
+# Nikita Bogomazov
