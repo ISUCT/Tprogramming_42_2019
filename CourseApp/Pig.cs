@@ -4,18 +4,17 @@ using System.Text;
 
 namespace CourseApp
 {
-    public class Pig
+    public class Pig : Animal
     {
         private int countSalo;
-        private int age;
 
         public Pig()
-        : this("Неизвестно")
+        : base("Неизвестно")
         {
         }
 
         public Pig(string name)
-        : this(name, 0)
+        : base(name, 0)
         {
         }
 
@@ -31,24 +30,17 @@ namespace CourseApp
             CountSalo = countSalo;
         }
 
-        public string Name { get; set; }
-
-        public int Age
+        public override int Age
         {
-            get
-            {
-                return this.age;
-            }
-
             set
             {
                 if (value >= 0 && value < 20)
                 {
-                    this.age = value;
+                    base.Age = value;
                 }
                 else
                 {
-                    Console.WriteLine("Age should be > 0 and < than 20");
+                    throw new System.Exception();
                 }
             }
         }
@@ -78,14 +70,9 @@ namespace CourseApp
             return $"Имя:{Name},Возраст:{Age},Кол-во сало:{CountSalo}";
         }
 
-        public void Voice()
+        public override void Voice()
         {
             Console.WriteLine("Хрю");
-        }
-
-        public void Aging()
-        {
-            this.age++;
         }
 
         public void EatSalo()

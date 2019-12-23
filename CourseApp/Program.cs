@@ -56,7 +56,13 @@ namespace CourseApp
                 Console.WriteLine($"y = {item}");
             }
 
-            Console.ReadLine();
+            Animal[] objects = new Animal[2];
+            objects[0] = new Pig("NamePig", 3, 3);
+            objects[1] = new Cat("NameCat", 5, "brood1");
+            foreach (var item in objects)
+            {
+                item.Voice();
+            }
         }
     }
 }
