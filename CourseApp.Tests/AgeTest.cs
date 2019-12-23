@@ -44,25 +44,11 @@ namespace CourseApp.Tests
             Assert.Equal(st, AgeClass.Age(new DateTime(2000, 11, 20), new DateTime(2014, 11, 11)));
         }
 
-        [Fact]
-        public void TodayBirthdayTest()
-        {
-            try
-            {
-                Assert.Equal(0, DateTime.Compare(DateTime.Now, AgeClass.DateCompare(DateTime.Now, DateTime.Now)));
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Birthday == Today");
-            }
-        }
-
-        [Fact]
         public void BirthdayAboveToday()
         {
             try
             {
-                Assert.Equal(0, DateTime.Compare(DateTime.Now, AgeClass.DateCompare(DateTime.Now, new DateTime(2048, 8, 16))));
+                Assert.Equal(0, DateTime.Compare(DateTime.Now, AgeClass.DateCompare(new DateTime(2019, 12, 21), new DateTime(2048, 8, 16))));
             }
             catch (Exception)
             {
