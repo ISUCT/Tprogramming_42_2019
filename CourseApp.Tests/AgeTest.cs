@@ -44,6 +44,7 @@ namespace CourseApp.Tests
             Assert.Equal(st, AgeClass.Age(new DateTime(2000, 11, 20), new DateTime(2014, 11, 11)));
         }
 
+        [Fact]
         public void BirthdayAboveToday()
         {
             try
