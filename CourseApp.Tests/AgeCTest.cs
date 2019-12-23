@@ -19,8 +19,8 @@ namespace CourseApp.Tests
         [Fact]
         public void TestAgeVchera()
         {
-            string str = $"Тебе 9 лет, 0 месяцев и 1 дней";
-            Assert.Equal(str, AgeC.Age(new DateTime(2010, 12, 20), new DateTime(2019, 12, 21)));
+            string str = $"Тебе 8 лет, 0 месяцев и 1 дней";
+            Assert.Equal(str, AgeC.Age(new DateTime(2011, 12, 20), new DateTime(2019, 12, 21)));
         }
 
         [Fact]
@@ -33,20 +33,15 @@ namespace CourseApp.Tests
         [Fact]
         public void TestAgeTommorow()
         {
-            string str = $"Вам 10 лет, 0 месяцев и 0 дня";
-            Assert.Equal(str, AgeC.Age(new DateTime(2009, 12, 21), new DateTime(2019, 12, 21)));
+            string str = $"Тебе 11 лет, 0 месяцев и 0 дней";
+            Assert.Equal(str, AgeC.Age(new DateTime(2000, 11, 20), new DateTime(2014, 11, 19)));
         }
 
         [Fact]
-        public void TodayBirthdayTest()
+        public void TestAge()
         {
-            try
-            {
-                Assert.Equal(0, DateTime.Compare(DateTime.Now, AgeC.DatComp(DateTime.Now, DateTime.Now)));
-            }
-            catch (Exception)
-            {
-            }
+            string st = $"Вам 13 лет, 11 месяцев и 22 дня";
+            Assert.Equal(st, AgeClass.Age(new DateTime(2000, 11, 20), new DateTime(2014, 11, 11)));
         }
 
         [Fact]
@@ -54,7 +49,7 @@ namespace CourseApp.Tests
         {
             try
             {
-                Assert.Equal(0, DateTime.Compare(DateTime.Now, AgeC.DatComp(DateTime.Now, new DateTime(2024, 4, 8))));
+                Assert.Equal(0, DateTime.Compare(DateTime.Now, AgeClass.DateCompare(new DateTime(2019, 12, 21), new DateTime(2048, 8, 16))));
             }
             catch (Exception)
             {

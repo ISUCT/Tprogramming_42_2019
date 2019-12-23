@@ -53,5 +53,10 @@ namespace CourseApp
         {
             Console.WriteLine("ШФРУХХТТТ!");
         }
+
+        public void polet()
+        {
+            Console.WriteLine("Лечу!");
+        }
     }
 }
