@@ -7,13 +7,13 @@ namespace RPG_autoBattler
     {
         public static void BaseAttackFunc(Char caster, Char victim, float[] specVal)
         {
-            victim.TakeDamage(caster, caster.Agi);
+            victim.TakeDamage(caster, caster.Agility);
         }
 
         public static void HammerStrikeFunc(Char caster, Char victim, float[] specVal)
         {
             Logger.StunM(victim, (int)specVal[1]);
-            victim.TakeDamage(caster, caster.Agi);
+            victim.TakeDamage(caster, caster.Agility);
             victim.StunTimer += (int)specVal[1];
         }
 
@@ -27,13 +27,13 @@ namespace RPG_autoBattler
 
         public static void PierceFunc(Char caster, Char victim, float[] specVal)
         {
-            victim.CurHP -= caster.Agi + specVal[0];
-            Logger.TakeDamageM(victim, caster.Agi + specVal[0]);
+            victim.CurHP -= caster.Agility + specVal[0];
+            Logger.TakeDamageM(victim, caster.Agility + specVal[0]);
         }
 
         public static void FireballFunc(Char caster, Char victim, float[] specVal)
         {
-            victim.TakeDamage(caster, caster.Int);
+            victim.TakeDamage(caster, caster.Intelligence);
             specVal[3] = specVal[2];
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire for {specVal[3]} turns!");
         }
@@ -41,7 +41,7 @@ namespace RPG_autoBattler
         public static void IceBlastFunc(Char caster, Char victim, float[] specVal)
         {
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is frozen for {(int)specVal[1]} turn(s)!");
-            victim.TakeDamage(caster, caster.Int - specVal[0]);
+            victim.TakeDamage(caster, caster.Intelligence - specVal[0]);
             victim.StunTimer += (int)specVal[1];
         }
 

@@ -170,9 +170,9 @@ namespace RPG_autoBattler
                             a.GainSpell(item);
                         }
 
-                        a.Str = rnd.Next(15, 25);
-                        a.Agi = rnd.Next(5, 15);
-                        a.Int = rnd.Next(1, 5);
+                        a.Strength = rnd.Next(15, 25);
+                        a.Agility = rnd.Next(5, 15);
+                        a.Intelligence = rnd.Next(1, 5);
 
                         break;
                     case 2:
@@ -182,9 +182,9 @@ namespace RPG_autoBattler
                             a.GainSpell(item);
                         }
 
-                        a.Str = rnd.Next(5, 15);
-                        a.Agi = rnd.Next(15, 25);
-                        a.Int = rnd.Next(1, 5);
+                        a.Strength = rnd.Next(5, 15);
+                        a.Agility = rnd.Next(15, 25);
+                        a.Intelligence = rnd.Next(1, 5);
                         break;
                     case 3:
                         a.Class = "Mage";
@@ -193,15 +193,15 @@ namespace RPG_autoBattler
                             a.GainSpell(item);
                         }
 
-                        a.Str = rnd.Next(5, 15);
-                        a.Agi = rnd.Next(1, 5);
-                        a.Int = rnd.Next(20, 30);
+                        a.Strength = rnd.Next(5, 15);
+                        a.Agility = rnd.Next(1, 5);
+                        a.Intelligence = rnd.Next(20, 30);
                         break;
                 }
 
                 a.Name = RetNames()[rnd.Next(0, RetNames().Count)];
                 a.Surname = RetSurnames()[rnd.Next(0, RetSurnames().Count)];
-                a.MaxHP = a.Str * 10;
+                a.MaxHP = a.Strength * 10;
                 a.CurHP = a.MaxHP;
                 fighters.Add(a);
             }

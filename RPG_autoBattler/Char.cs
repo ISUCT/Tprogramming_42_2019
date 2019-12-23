@@ -23,11 +23,11 @@ namespace RPG_autoBattler
 
         public string Surname { get; set; }
 
-        public int Str { get; set; }
+        public int Strength { get; set; }
 
-        public int Agi { get; set; }
+        public int Agility { get; set; }
 
-        public int Int { get; set; }
+        public int Intelligence { get; set; }
 
         public int Lvl { get; set; }
 
