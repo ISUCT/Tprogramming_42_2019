@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace RPG_autoBattler
 {
@@ -11,11 +12,14 @@ namespace RPG_autoBattler
                 StunTimer = 0;
             ActSpells = new List<Spell>();
             PasSpells = new List<Spell>();
+            Effects = new ArrayList();
             }
 
         public List<Spell> ActSpells { get; set; }
 
         public List<Spell> PasSpells { get; set; }
+
+        public ArrayList Effects { get; set; }
 
         public string Name { get; set; }
 
