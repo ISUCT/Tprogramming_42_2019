@@ -1,5 +1,6 @@
 using System;
 using Xunit;
+using System.Collections.Generic;
 
 namespace CourseApp.Tests
 {
@@ -10,7 +11,7 @@ namespace CourseApp.Tests
         public void TestTaskA(double a, double xn, double xk, double dx)
         {
             var res = Program.TaskA(a, xn, xk, dx);
-            Assert.Equal(res, new double[5]);
+            Assert.Equal(res, new double[0]);
         }
 
         [Fact]
@@ -44,17 +45,17 @@ namespace CourseApp.Tests
         public void IsTaskAWork(double a, double xn, double xk, double dx)
         {
             var resA = Program.TaskA(a, xn, xk, dx);
-            var result = new double[resA.Length];
+            List<double> result = new List<double>();
             int j = 0;
 
             foreach (var item in resA)
             {
-                result[j] = Math.Round(resA[j], 3);
+                result.Add(Math.Round(resA[j], 3));
                 j++;
             }
                 
             var exp = new double[] { 0.025, 0.023, 0.021, 0.02, 0.018 };
-            Assert.Equal(result, exp);
+            Assert.Equal(result.ToArray(), exp);
         }
     }
 }

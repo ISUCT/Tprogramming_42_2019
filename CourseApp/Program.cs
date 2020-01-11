@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CourseApp
 {
@@ -7,15 +8,15 @@ namespace CourseApp
         public static double[] TaskA(double a, double xn, double xk, double dx)
         {
             int j = 0;
-            var y = new double[5];
+            List<double> y = new List<double>();
 
             for (var i = xn; i < xk; i += dx)
             {
-                y[j] = Math.Pow(Math.Log10(a + i), 2) / Math.Pow(a + i, 2);
+                y.Add(Math.Pow(Math.Log10(a + i), 2) / Math.Pow(a + i, 2));
                 j++;
             }
 
-            return y;
+            return y.ToArray();
         }
 
         public static double[] TaskB(double a, double[] x)
@@ -50,9 +51,14 @@ namespace CourseApp
                 Console.WriteLine($"y1 = {item}");
             }
 
-            // Mouse instance
-            var mouse = new Mouse(2, "Rat", true);
-            Console.WriteLine($"{mouse.Age}");
+            Animal[] array = new Animal[2];
+            array[0] = new Mouse(2, "Rat", true);
+            array[1] = new Dog(2, "Pyos Dog", true);
+
+            for (int i = 0; i < 2; i++)
+            {
+                array[i].SayAnything();
+            }
 
             Console.ReadLine();
         }
