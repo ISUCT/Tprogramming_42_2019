@@ -33,46 +33,33 @@ namespace RPG_autoBattler
             return palSpells;
         }
 
-        public static List<Spell> RetNinjaSpells()
+        public static List<ISpell> RetNinjaSpells()
         {
-            List<Spell> ninjSpells = new List<Spell>();
-            Spell ninjaBaseAttack = new Spell(1);
-            ninjaBaseAttack.IsRanged = false;
-            ninjaBaseAttack.Lvl = 1;
-            ninjaBaseAttack.IsPassive = 0;
-            ninjaBaseAttack.Name = "Katana Slash";
-            ninjaBaseAttack.Castt = CastTriggerFuncs.BaseAttackFunc;
-            ninjaBaseAttack.Triggerr = CastTriggerFuncs.TrigEmpty;
-            ninjaBaseAttack.SpecVal[0] = 20;
-            ninjSpells.Add(ninjaBaseAttack);
-            Spell ninjaShurikens = new Spell(2);
+            List<ISpell> ninjSpells = new List<ISpell>();
+            BaseAttack baseAttack = new BaseAttack();
+            baseAttack.IsRanged = false;
+            baseAttack.Lvl = 1;
+            baseAttack.Name = "Katana Slash";
+            ninjSpells.Add(baseAttack);
+            NinjaShurikens ninjaShurikens = new NinjaShurikens();
             ninjaShurikens.IsRanged = true;
             ninjaShurikens.Lvl = 1;
-            ninjaShurikens.IsPassive = 0;
             ninjaShurikens.Name = "Shurikens Throw";
-            ninjaShurikens.Castt = CastTriggerFuncs.ShurikensFunc;
-            ninjaShurikens.Triggerr = CastTriggerFuncs.TrigEmpty;
-            ninjaShurikens.SpecVal[0] = 10;
-            ninjaShurikens.SpecVal[1] = 3;
+            ninjaShurikens.Damage = 10;
+            ninjaShurikens.Count = 3;
             ninjSpells.Add(ninjaShurikens);
-            Spell ninjaFog = new Spell(3);
+            NinjaFog ninjaFog = new NinjaFog();
             ninjaFog.IsRanged = false;
             ninjaFog.Lvl = 1;
-            ninjaFog.IsPassive = 2;
             ninjaFog.Name = "Smoke Screen";
-            ninjaFog.Castt = CastTriggerFuncs.FogFunc;
-            ninjaFog.Triggerr = CastTriggerFuncs.FogTrig;
-            ninjaFog.SpecVal[0] = 0;
-            ninjaFog.SpecVal[1] = 26;
-            ninjaFog.SpecVal[2] = 3;
+            ninjaFog.DodgeChance = 26;
+            ninjaFog.Duration = 3;
             ninjSpells.Add(ninjaFog);
-            Spell ninjaPierce = new Spell(1);
+            NinjaPierce ninjaPierce = new NinjaPierce();
             ninjaPierce.IsRanged = false;
             ninjaPierce.Lvl = 1;
             ninjaPierce.Name = "Piercing Slash";
-            ninjaPierce.Castt = CastTriggerFuncs.PierceFunc;
-            ninjaPierce.Triggerr = CastTriggerFuncs.TrigEmpty;
-            ninjaPierce.SpecVal[0] = 5;
+            ninjaPierce.Damage = 5;
             ninjSpells.Add(ninjaPierce);
             return ninjSpells;
         }
