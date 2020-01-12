@@ -5,6 +5,42 @@ namespace RPG_autoBattler
 {
     public static class TournamentBattle
     {
+        public static void MakeTurn(Char attacker, Char victim)
+        {
+            Random rnd = new Random();
+            if (attacker.StunTimer == 0)
+            {
+                if (rnd.Next(0, 100) > 65)
+                {
+                    int ran = rnd.Next(1, attacker.ActSpells.Count);
+
+                    // Console.WriteLine($"Random = {ran}");
+                    victim.HitBySpell(attacker, attacker.ActSpells[ran]);
+                }
+                else
+                {
+                    victim.HitBySpell(attacker, attacker.ActSpells[0]);
+                }
+            }
+            else
+            {
+                attacker.StunTimer--;
+                Console.WriteLine($"{attacker} is stunned! {attacker.StunTimer} turn(s) left.");
+            }
+
+            foreach (IPassiveSpell item in attacker.Effects)
+            {
+                float[] f = new float[1] { 0 };
+                item.Trigger("TurnEnd", attacker, victim, f);
+            }
+
+            foreach (IPassiveSpell item in victim.Effects)
+            {
+                float[] f = new float[1] { 1 };
+                item.Trigger("TurnEnd", victim, attacker, f);
+            }
+        }
+
         public static int Battle(Char a, Char b)
         {
             Random rnd = new Random();
@@ -25,71 +61,11 @@ namespace RPG_autoBattler
                 Console.WriteLine($"Turn {turn}: ");
                 if ((turn % 2) == 0)
                 {
-                    if (a.StunTimer == 0)
-                    {
-                        if (rnd.Next(0, 100) > 65)
-                        {
-                            int ran = rnd.Next(1, a.ActSpells.Count);
-
-                            // Console.WriteLine($"Random = {ran}");
-                            b.HitBySpell(a, a.ActSpells[ran]);
-                        }
-                        else
-                        {
-                            b.HitBySpell(a, a.ActSpells[0]);
-                        }
-                    }
-                    else
-                    {
-                        a.StunTimer--;
-                        Console.WriteLine($"{a} is stunned! {a.StunTimer} turn(s) left.");
-                    }
-
-                    foreach (IPassiveSpell item in a.Effects)
-                    {
-                        float[] f = new float[1] { 0 };
-                        item.Trigger("TurnEnd", a, b, f);
-                    }
-
-                    foreach (IPassiveSpell item in b.Effects)
-                    {
-                        float[] f = new float[1] { 1 };
-                        item.Trigger("TurnEnd", b, a, f);
-                    }
+                    MakeTurn(a, b);
                 }
                 else
                 {
-                    if (b.StunTimer == 0)
-                    {
-                        if (rnd.Next(0, 100) > 65)
-                        {
-                            int ran = rnd.Next(1, b.ActSpells.Count);
-
-                            // Console.WriteLine($"Random = {ran}");
-                            a.HitBySpell(b, b.ActSpells[ran]);
-                        }
-                        else
-                        {
-                            a.HitBySpell(b, b.ActSpells[0]);
-                        }
-                    }
-                    else
-                    {
-                        b.StunTimer--;
-                        Console.WriteLine($"{b} is stunned! {b.StunTimer} turn(s) left.");
-                    }
-
-                    foreach (IPassiveSpell item in b.Effects)
-                    {
-                        float[] f = new float[1] { 0 };
-                        item.Trigger("TurnEnd", b, a, f);
-                    }
-
-                    foreach (IPassiveSpell item in a.Effects)
-                    {
-                        float[] f = new float[1] { 1 };
-                        item.Trigger("TurnEnd", a, b, f);
-                    }
+                    MakeTurn(b, a);
                 }
 
                 turn++;
@@ -127,7 +103,7 @@ namespace RPG_autoBattler
                 int i = 0;
                 while (i < chars.Count)
                 {
-                    Console.WriteLine($"Let the battle between {chars[i].Name} {chars[i].Surname} ({chars[i].Class}) and {chars[i + 1].Name} {chars[i + 1].Surname} ({chars[i + 1].Class}) begin!");
+                    Console.WriteLine($"Let the battle between {chars[i]} and {chars[i + 1]} begin!");
                     int r = Battle(chars[i], chars[i + 1]);
                     chars.RemoveAt(r + i);
                     i++;
