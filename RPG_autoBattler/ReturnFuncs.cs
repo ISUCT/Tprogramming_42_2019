@@ -9,37 +9,26 @@ namespace RPG_autoBattler
         {
             List<ISpell> palSpells = new List<ISpell>();
             BaseAttack baseAttack = new BaseAttack();
-            baseAttack.
+            baseAttack.IsRanged = false;
             baseAttack.Lvl = 1;
             baseAttack.Name = "Shield Bash";
             palSpells.Add(baseAttack);
-            Spell palHammerStrike = new Spell(2);
-            palHammerStrike.IsRanged = false;
-            palHammerStrike.Lvl = 1;
-            palHammerStrike.IsPassive = 0;
-            palHammerStrike.Name = "Hammer Strike";
-            palHammerStrike.Castt = CastTriggerFuncs.HammerStrikeFunc;
-            palHammerStrike.Triggerr = CastTriggerFuncs.TrigEmpty;
-            palHammerStrike.SpecVal[0] = 10;
-            palHammerStrike.SpecVal[1] = 1;
-            palSpells.Add(palHammerStrike);
-            Spell palDef = new Spell(1);
-            palDef.IsRanged = false;
+            HammerStrike hammer = new HammerStrike();
+            hammer.IsRanged = false;
+            hammer.Lvl = 1;
+            hammer.Name = "Hammer Strike";
+            hammer.StunDuration = 1;
+            palSpells.Add(hammer);
+            PalBlockSpell palDef = new PalBlockSpell();
             palDef.Lvl = 1;
-            palDef.IsPassive = 1;
             palDef.Name = "Shield";
-            palDef.Castt = CastTriggerFuncs.CastEmpty;
-            palDef.Triggerr = CastTriggerFuncs.PalBlockTrig;
-            palDef.SpecVal[0] = (float)0.75;
+            palDef.DamageBlockPercent = (float)75;
             palSpells.Add(palDef);
-            Spell palHeal = new Spell(1);
+            PalHeal palHeal = new PalHeal();
             palHeal.IsRanged = false;
             palHeal.Lvl = 1;
-            palHeal.IsPassive = 0;
             palHeal.Name = "Faith in the Light";
-            palHeal.Castt = CastTriggerFuncs.HealFunc;
-            palHeal.Triggerr = CastTriggerFuncs.TrigEmpty;
-            palHeal.SpecVal[0] = 12;
+            palHeal.HP = 12;
             palSpells.Add(palHeal);
             return palSpells;
         }
