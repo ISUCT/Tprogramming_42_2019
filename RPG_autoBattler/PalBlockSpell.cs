@@ -10,6 +10,8 @@ namespace RPG_autoBattler
 
         public int TurnsLeft { get; set; }
 
+        public float DamageBlockPercent { get; set; }
+
         public int StunDuration { get; set; }
 
         void IPassiveSpell.Trigger(string triggerType, Char attacker, Char victim, float[] specValue)
@@ -17,7 +19,7 @@ namespace RPG_autoBattler
             if (triggerType == "StartBattle")
             {
                 PalBlock palBlock = new PalBlock();
-                palBlock.DamageBlockPercent = 25;
+                palBlock.DamageBlockPercent = DamageBlockPercent;
                 palBlock.TurnsLeft = 1;
                 attacker.Effects.Add(palBlock);
             }

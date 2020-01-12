@@ -2,7 +2,7 @@
 
 namespace RPG_autoBattler
 {
-    public class NinjaFog : ISpell, IActiveSpell
+    public class MageShield : ISpell, IActiveSpell
     {
         string ISpell.Name { get; set; }
 
@@ -10,16 +10,13 @@ namespace RPG_autoBattler
 
         bool IActiveSpell.IsRanged { get; set; }
 
-        public int DodgeChance { get; set; }
-
         public int Duration { get; set; }
 
         void IActiveSpell.Cast(Char caster, Char victim)
         {
-            FogHide fogHide = new FogHide();
-            fogHide.DodgeChance = DodgeChance;
-            fogHide.TurnsLeft = Duration;
-            caster.Effects.Add(fogHide);
+            MageShielded mageShielded = new MageShielded();
+            mageShielded.TurnsLeft = Duration;
+            caster.Effects.Add(mageShielded);
         }
     }
 }
