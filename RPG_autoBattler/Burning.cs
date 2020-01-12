@@ -6,6 +6,8 @@ namespace RPG_autoBattler
     {
         public float Damage { get; set; }
 
+        public int TurnsLeft { get; set; }
+
         void IPassiveSpell.Trigger(string triggerType, Char attacker, Char victim, float[] specVal)
         {
             if ((triggerType == "EndTurn") && (specVal[0] == 0))

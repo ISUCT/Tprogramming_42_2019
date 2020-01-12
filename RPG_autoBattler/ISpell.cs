@@ -18,6 +18,8 @@ namespace RPG_autoBattler
 
     public interface IPassiveSpell
     {
+        int TurnsLeft { get; set; }
+
         void Trigger(string triggerType, Char attacker, Char victim, float[] specValue);
     }
 }
