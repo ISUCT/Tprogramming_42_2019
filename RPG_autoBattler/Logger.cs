@@ -5,7 +5,7 @@ namespace RPG_autoBattler
 {
     public static class Logger
     {
-        public static void SpellCastM(Char caster, Spell spell)
+        public static void SpellCastM(Char caster, ISpell spell)
         {
             Console.WriteLine($"{caster.ToString()} uses {spell.Name}!");
         }

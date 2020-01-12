@@ -8,6 +8,8 @@ namespace RPG_autoBattler
 
         public int Lvl { get; set; }
 
+        public bool IsPassive { get; set; }
+
         public int StunDuration { get; set; }
 
         public bool IsRanged { get; set; }

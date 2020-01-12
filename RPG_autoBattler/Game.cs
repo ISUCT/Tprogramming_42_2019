@@ -11,9 +11,9 @@ namespace RPG_autoBattler
 
         public static void Main()
         {
-            palaSpells = ReturnFuncs.RetPalSpells();
+            /*palaSpells = ReturnFuncs.RetPalSpells();
             ninjaSpells = ReturnFuncs.RetNinjaSpells();
-            mageSpells = ReturnFuncs.RetMageSpells();
+            mageSpells = ReturnFuncs.RetMageSpells();*/
             List<string> names = ReturnFuncs.RetNames();
             List<string> surnames = ReturnFuncs.RetSurnames();
             List<Char> fighters = new List<Char>();

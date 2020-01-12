@@ -10,14 +10,14 @@ namespace RPG_autoBattler
             {
                 Lvl = 1;
                 StunTimer = 0;
-            ActSpells = new List<IActiveSpell>();
-            PasSpells = new List<IPassiveSpell>();
+            ActSpells = new ArrayList();
+            PasSpells = new ArrayList();
             Effects = new List<IPassiveSpell>();
             }
 
-        public List<IActiveSpell> ActSpells { get; set; }
+        public ArrayList ActSpells { get; set; }
 
-        public List<IPassiveSpell> PasSpells { get; set; }
+        public ArrayList PasSpells { get; set; }
 
         public List<IPassiveSpell> Effects { get; set; }
 
@@ -41,7 +41,7 @@ namespace RPG_autoBattler
 
         public float CurHP { get; set; }
 
-        public void HitBySpell(Char caster, IActiveSpell spell)
+        public void HitBySpell(Char caster, object spell)
         {
             try
             {
@@ -50,7 +50,8 @@ namespace RPG_autoBattler
                     item.Trigger("HitBySpell", caster, this, null);
                 }
 
-                spell.Cast(caster, this);
+                Logger.SpellCastM(caster, (ISpell)spell);
+                ((IActiveSpell)spell).Cast(caster, this);
             }
             catch (ProtectException ex)
             {
@@ -89,14 +90,17 @@ namespace RPG_autoBattler
             }
         }
 
-        public void GainSpell(IActiveSpell spell)
+        public void GainSpell(object spell)
         {
+            ISpell spelll = (ISpell)spell;
+                if (spelll.IsPassive == false)
+            {
                 ActSpells.Add(spell);
-        }
-
-        public void GainSpell(IPassiveSpell spell)
-        {
-            PasSpells.Add(spell);
+            }
+            else
+            {
+                PasSpells.Add(spell);
+            }
         }
 
         public override string ToString()

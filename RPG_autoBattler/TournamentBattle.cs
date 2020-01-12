@@ -42,7 +42,7 @@ namespace RPG_autoBattler
                     else
                     {
                         a.StunTimer--;
-                        Console.WriteLine($"{a.Name} {a.Surname} ({a.Class}) is stunned! {a.StunTimer} turn(s) left.");
+                        Console.WriteLine($"{a} is stunned! {a.StunTimer} turn(s) left.");
                     }
 
                     foreach (IPassiveSpell item in a.Effects)

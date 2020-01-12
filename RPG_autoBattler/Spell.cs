@@ -45,10 +45,10 @@ namespace RPG_autoBattler
             Triggerr(triggerType, attacker, victim, specValue, specVal);
         }
 
-        public void Cast(Char caster, Char victim)
+       /* public void Cast(Char caster, Char victim)
         {
             Logger.SpellCastM(caster, this);
             Castt(caster, victim, specVal);
-        }
+        }*/
     }
 }
