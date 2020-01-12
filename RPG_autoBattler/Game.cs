@@ -5,10 +5,6 @@ namespace RPG_autoBattler
 {
     public class Game
     {
-        private static List<Spell> palaSpells = new List<Spell>();
-        private static List<Spell> ninjaSpells = new List<Spell>();
-        private static List<Spell> mageSpells = new List<Spell>();
-
         public static void Main()
         {
             /*palaSpells = ReturnFuncs.RetPalSpells();
