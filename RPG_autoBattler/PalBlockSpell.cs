@@ -12,6 +12,8 @@ namespace RPG_autoBattler
 
         public float DamageBlockPercent { get; set; }
 
+        public bool IsPassive { get; set; }
+
         public int StunDuration { get; set; }
 
         public void Trigger(string triggerType, Char attacker, Char victim, float[] specValue)

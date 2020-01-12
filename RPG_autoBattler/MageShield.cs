@@ -10,6 +10,8 @@ namespace RPG_autoBattler
 
         public bool IsRanged { get; set; }
 
+        public bool IsPassive { get; set; }
+
         public int Duration { get; set; }
 
         public void Cast(Char caster, Char victim)

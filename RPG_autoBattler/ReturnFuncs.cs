@@ -122,7 +122,7 @@ namespace RPG_autoBattler
                         a.Class = "Paladin";
 
                         // потом в каждом кейзе создавать нью лист и рандомно из него добавлять спеллы, а добавленные удалять. Так как создаётся новый на основе возвращения функции, то ничего не перезапишется
-                        foreach (Spell item in RetPalSpells())
+                        foreach (ISpell item in RetPalSpells())
                         {
                             a.GainSpell(item);
                         }
@@ -134,7 +134,7 @@ namespace RPG_autoBattler
                         break;
                     case 2:
                         a.Class = "Ninja";
-                        foreach (Spell item in RetNinjaSpells())
+                        foreach (ISpell item in RetNinjaSpells())
                         {
                             a.GainSpell(item);
                         }
@@ -145,7 +145,7 @@ namespace RPG_autoBattler
                         break;
                     case 3:
                         a.Class = "Mage";
-                        foreach (Spell item in RetMageSpells())
+                        foreach (ISpell item in RetMageSpells())
                         {
                             a.GainSpell(item);
                         }

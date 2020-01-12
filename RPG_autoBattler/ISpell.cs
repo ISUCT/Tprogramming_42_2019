@@ -7,6 +7,8 @@ namespace RPG_autoBattler
         string Name { get; set; }
 
         int Lvl { get; set; }
+
+        bool IsPassive { get; set; }
     }
 
     public interface IActiveSpell
