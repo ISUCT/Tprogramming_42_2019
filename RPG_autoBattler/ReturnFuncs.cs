@@ -5,18 +5,14 @@ namespace RPG_autoBattler
 {
     public static class ReturnFuncs
     {
-        public static List<Spell> RetPalSpells()
+        public static List<ISpell> RetPalSpells()
         {
-            List<Spell> palSpells = new List<Spell>();
-            Spell palBaseAttack = new Spell(1);
-            palBaseAttack.IsRanged = false;
-            palBaseAttack.Lvl = 1;
-            palBaseAttack.IsPassive = 0;
-            palBaseAttack.Name = "Shield Bash";
-            palBaseAttack.Castt = CastTriggerFuncs.BaseAttackFunc;
-            palBaseAttack.Triggerr = CastTriggerFuncs.TrigEmpty;
-            palBaseAttack.SpecVal[0] = 10;
-            palSpells.Add(palBaseAttack);
+            List<ISpell> palSpells = new List<ISpell>();
+            BaseAttack baseAttack = new BaseAttack();
+            baseAttack.
+            baseAttack.Lvl = 1;
+            baseAttack.Name = "Shield Bash";
+            palSpells.Add(baseAttack);
             Spell palHammerStrike = new Spell(2);
             palHammerStrike.IsRanged = false;
             palHammerStrike.Lvl = 1;

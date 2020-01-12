@@ -4,9 +4,9 @@ namespace RPG_autoBattler
 {
     public class PalBlockSpell : ISpell, IPassiveSpell
     {
-        string ISpell.Name { get; set; }
+        public string Name { get; set; }
 
-        int ISpell.Lvl { get; set; }
+        public int Lvl { get; set; }
 
         public int TurnsLeft { get; set; }
 
@@ -14,7 +14,7 @@ namespace RPG_autoBattler
 
         public int StunDuration { get; set; }
 
-        void IPassiveSpell.Trigger(string triggerType, Char attacker, Char victim, float[] specValue)
+        public void Trigger(string triggerType, Char attacker, Char victim, float[] specValue)
         {
             if (triggerType == "StartBattle")
             {

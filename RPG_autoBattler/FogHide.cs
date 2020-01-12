@@ -8,7 +8,7 @@ namespace RPG_autoBattler
 
         public int DodgeChance { get; set; }
 
-        void IPassiveSpell.Trigger(string triggerType, Char attacker, Char victim, float[] specValue)
+        public void Trigger(string triggerType, Char attacker, Char victim, float[] specValue)
         {
             if (triggerType == "HitBySpell")
             {

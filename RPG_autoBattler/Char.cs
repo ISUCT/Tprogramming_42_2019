@@ -10,16 +10,16 @@ namespace RPG_autoBattler
             {
                 Lvl = 1;
                 StunTimer = 0;
-            ActSpells = new List<Spell>();
-            PasSpells = new List<Spell>();
-            Effects = new ArrayList();
+            ActSpells = new List<IActiveSpell>();
+            PasSpells = new List<IPassiveSpell>();
+            Effects = new List<IPassiveSpell>();
             }
 
-        public List<Spell> ActSpells { get; set; }
+        public List<IActiveSpell> ActSpells { get; set; }
 
-        public List<Spell> PasSpells { get; set; }
+        public List<IPassiveSpell> PasSpells { get; set; }
 
-        public ArrayList Effects { get; set; }
+        public List<IPassiveSpell> Effects { get; set; }
 
         public string Name { get; set; }
 
@@ -41,13 +41,13 @@ namespace RPG_autoBattler
 
         public float CurHP { get; set; }
 
-        public void HitBySpell(Char caster, Spell spell)
+        public void HitBySpell(Char caster, IActiveSpell spell)
         {
             try
             {
-                foreach (var item in PasSpells)
+                foreach (var item in Effects)
                 {
-                    item.Trigger("HitBySpell", caster, this, spell.SpecVal);
+                    item.Trigger("HitBySpell", caster, this, null);
                 }
 
                 spell.Cast(caster, this);
@@ -62,7 +62,7 @@ namespace RPG_autoBattler
         {
             try
             {
-                foreach (var item in PasSpells)
+                foreach (var item in Effects)
                 {
                     var mass = new float[1] { dmg };
                     item.Trigger("TakeDamage", attacker, this, mass);
@@ -89,14 +89,14 @@ namespace RPG_autoBattler
             }
         }
 
-        public void GainSpell(Spell spell)
+        public void GainSpell(IActiveSpell spell)
         {
-            switch (spell.IsPassive)
-            {
-                case 0: ActSpells.Add(spell); break;
-                case 1: PasSpells.Add(spell); break;
-                case 2: ActSpells.Add(spell); PasSpells.Add(spell); break;
-            }
+                ActSpells.Add(spell);
+        }
+
+        public void GainSpell(IPassiveSpell spell)
+        {
+            PasSpells.Add(spell);
         }
 
         public override string ToString()

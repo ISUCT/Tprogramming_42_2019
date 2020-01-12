@@ -4,9 +4,9 @@ namespace RPG_autoBattler
 {
     public class MageFireball : ISpell, IActiveSpell
     {
-        string ISpell.Name { get; set; }
+        public string Name { get; set; }
 
-        int ISpell.Lvl { get; set; }
+        public int Lvl { get; set; }
 
         public float Damage { get; set; }
 
@@ -14,9 +14,9 @@ namespace RPG_autoBattler
 
         public int TickDuration { get; set; }
 
-        bool IActiveSpell.IsRanged { get; set; }
+        public bool IsRanged { get; set; }
 
-        void IActiveSpell.Cast(Char caster, Char victim)
+        public void Cast(Char caster, Char victim)
         {
             victim.TakeDamage(caster, caster.Intelligence);
             Burning burning = new Burning();

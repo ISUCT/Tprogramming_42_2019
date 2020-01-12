@@ -9,6 +9,17 @@ namespace RPG_autoBattler
         {
             Random rnd = new Random();
             int turn = 1;
+            a.Effects = new List<IPassiveSpell>();
+            foreach (IPassiveSpell item in b.Effects)
+            {
+                item.Trigger("BattleStart", b, a, null);
+            }
+
+            foreach (IPassiveSpell item in a.Effects)
+            {
+                item.Trigger("BattleStart", a, b, null);
+            }
+
             while ((a.CurHP > 0) && (b.CurHP > 0))
             {
                 Console.WriteLine($"Turn {turn}: ");
@@ -34,13 +45,13 @@ namespace RPG_autoBattler
                         Console.WriteLine($"{a.Name} {a.Surname} ({a.Class}) is stunned! {a.StunTimer} turn(s) left.");
                     }
 
-                    foreach (Spell item in a.PasSpells)
+                    foreach (IPassiveSpell item in a.Effects)
                     {
                         float[] f = new float[1] { 0 };
                         item.Trigger("TurnEnd", a, b, f);
                     }
 
-                    foreach (Spell item in b.PasSpells)
+                    foreach (IPassiveSpell item in b.Effects)
                     {
                         float[] f = new float[1] { 1 };
                         item.Trigger("TurnEnd", b, a, f);
@@ -65,16 +76,16 @@ namespace RPG_autoBattler
                     else
                     {
                         b.StunTimer--;
-                        Console.WriteLine($"{b.Name} {b.Surname} ({b.Class}) is stunned! {b.StunTimer} turn(s) left.");
+                        Console.WriteLine($"{b} is stunned! {b.StunTimer} turn(s) left.");
                     }
 
-                    foreach (Spell item in b.PasSpells)
+                    foreach (IPassiveSpell item in b.Effects)
                     {
                         float[] f = new float[1] { 0 };
                         item.Trigger("TurnEnd", b, a, f);
                     }
 
-                    foreach (Spell item in a.PasSpells)
+                    foreach (IPassiveSpell item in a.Effects)
                     {
                         float[] f = new float[1] { 1 };
                         item.Trigger("TurnEnd", a, b, f);
@@ -86,9 +97,9 @@ namespace RPG_autoBattler
 
             if (a.CurHP > 0)
             {
-                Console.WriteLine($"{a.Name} {a.Surname} ({a.Class}) wins!");
+                Console.WriteLine($"{a} wins!");
                 a.Heal(a.MaxHP);
-                foreach (Spell item in a.PasSpells)
+                foreach (IPassiveSpell item in a.Effects)
                 {
                     item.Trigger("EndBattle", a, b, null);
                 }
@@ -97,9 +108,9 @@ namespace RPG_autoBattler
             }
             else
             {
-                Console.WriteLine($"{b.Name} {b.Surname} ({b.Class}) wins!");
+                Console.WriteLine($"{b} wins!");
                 b.Heal(b.MaxHP);
-                foreach (Spell item in a.PasSpells)
+                foreach (IPassiveSpell item in b.Effects)
                 {
                     item.Trigger("EndBattle", a, b, null);
                 }
