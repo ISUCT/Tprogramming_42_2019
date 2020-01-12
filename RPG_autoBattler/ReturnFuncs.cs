@@ -64,49 +64,34 @@ namespace RPG_autoBattler
             return ninjSpells;
         }
 
-        public static List<Spell> RetMageSpells()
+        public static List<ISpell> RetMageSpells()
         {
-            List<Spell> magSpells = new List<Spell>();
-            Spell mageBaseAttack = new Spell(1);
+            List<ISpell> magSpells = new List<ISpell>();
+            BaseAttack mageBaseAttack = new BaseAttack();
             mageBaseAttack.IsRanged = false;
             mageBaseAttack.Lvl = 1;
-            mageBaseAttack.IsPassive = 0;
             mageBaseAttack.Name = "Staff Strike";
-            mageBaseAttack.Castt = CastTriggerFuncs.BaseAttackFunc;
-            mageBaseAttack.Triggerr = CastTriggerFuncs.TrigEmpty;
-            mageBaseAttack.SpecVal[0] = 5;
             magSpells.Add(mageBaseAttack);
-            Spell mageFireball = new Spell(4);
+            MageFireball mageFireball = new MageFireball();
             mageFireball.IsRanged = true;
             mageFireball.Lvl = 1;
-            mageFireball.IsPassive = 2;
             mageFireball.Name = "Fireball Toss";
-            mageFireball.Castt = CastTriggerFuncs.FireballFunc;
-            mageFireball.Triggerr = CastTriggerFuncs.FireTrig;
-            mageFireball.SpecVal[0] = 30;
-            mageFireball.SpecVal[1] = 10;
-            mageFireball.SpecVal[2] = 3;
-            mageFireball.SpecVal[3] = 0;
+            mageFireball.Damage = 30;
+            mageFireball.TickDamage = 10;
+            mageFireball.TickDuration = 3;
             magSpells.Add(mageFireball);
-            Spell mageIceBlast = new Spell(2);
+            MageIceBlast mageIceBlast = new MageIceBlast();
             mageIceBlast.IsRanged = true;
             mageIceBlast.Lvl = 1;
-            mageIceBlast.IsPassive = 0;
             mageIceBlast.Name = "Ice Blast";
-            mageIceBlast.Castt = CastTriggerFuncs.IceBlastFunc;
-            mageIceBlast.Triggerr = CastTriggerFuncs.TrigEmpty;
-            mageIceBlast.SpecVal[0] = 7;
-            mageIceBlast.SpecVal[1] = 2;
+            mageIceBlast.DamageReducted = 7;
+            mageIceBlast.StunDuration = 2;
             magSpells.Add(mageIceBlast);
-            Spell mageShield = new Spell(2);
+            MageShield mageShield = new MageShield();
             mageShield.IsRanged = false;
             mageShield.Lvl = 1;
-            mageShield.IsPassive = 3;
             mageShield.Name = "Magic Shield";
-            mageShield.Castt = CastTriggerFuncs.MagicShieldFunc;
-            mageShield.Triggerr = CastTriggerFuncs.MageShieldTrig;
-            mageShield.SpecVal[0] = 2;
-            mageShield.SpecVal[1] = 0;
+            mageShield.Duration = 2;
             magSpells.Add(mageShield);
             return magSpells;
         }
