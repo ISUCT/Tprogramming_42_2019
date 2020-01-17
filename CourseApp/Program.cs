@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CourseApp
 {
@@ -6,21 +7,30 @@ namespace CourseApp
     {
         public static double MyFunction(double a, double b, double x)
         {
-            var y = (a * Math.Pow(x, 2)) + (b * x);
+            var y = Math.Acos(Math.Pow(x, 2) - Math.Pow(b, 2)) / Math.Asin(Math.Pow(x, 2) - Math.Pow(a, 2));
             return y;
         }
 
-        public static double[] TaskA(double a, double b, double xn, double xk, double dx)
+        public static List<double> TaskA(double a, double b, double xn, double xk, double dx)
         {
-            return new double[0];
+            int i = 0;
+            var y = new List<double>();
+            for (double x = xn; x <= xk; x += dx)
+            {
+                y.Add(MyFunction(a, b, x));
+                Console.WriteLine(i);
+                i++;
+            }
+
+            return y;
         }
 
-        public static double[] TaskB(double a, double b, double[] x)
+        public static List<double> TaskB(double a, double b, List<double> x)
         {
-            var y = new double[x.Length];
-            for (var i = 0; i < x.Length; i++)
+            List<double> y = new List<double>();
+            for (var i = 0; i < x.Count; i++)
             {
-                y[i] = MyFunction(a, b, x[i]);
+                y.Add(MyFunction(a, b, x[i]));
             }
 
             return y;
@@ -28,19 +38,23 @@ namespace CourseApp
 
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            const double a = 2.2;
-            const double b = 3.8;
-            var resSingle = MyFunction(a, b, 4);
-            Console.WriteLine(resSingle);
-            var x = new double[] { 1, 2, 3, 4, 5 };
-            var taskBRes = TaskB(a, b, x);
-            foreach (var item in taskBRes)
+            double xn = 0.2;
+            double xk = 0.95;
+            double dx = 0.15;
+            double b = 0.06;
+            double a = 0.05;
+            Console.WriteLine("Задание А:");
+            foreach (var item in TaskA(a, b, xn, xk, dx))
             {
                 Console.WriteLine($"y = {item}");
             }
 
-            Console.ReadLine();
+            List<double> x = new List<double> { 0.15, 0.26, 0.37, 0.48, 0.56 };
+            Console.WriteLine("Задание B:");
+            foreach (var item in TaskB(a, b, x))
+            {
+                Console.WriteLine($"y = {item}");
+            }
         }
     }
 }
