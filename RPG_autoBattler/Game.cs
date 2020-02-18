@@ -28,7 +28,7 @@ namespace RPG_autoBattler
             }*/
 
             Char winner = TournamentBattle.Tournament(ReturnFuncs.RetFighters(4));
-            Console.WriteLine($"{winner.ToString()} won the tournament!");
+            Console.WriteLine($"{winner} won the tournament!");
             Console.ReadKey();
         }
     }
