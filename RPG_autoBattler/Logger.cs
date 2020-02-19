@@ -19,5 +19,10 @@ namespace RPG_autoBattler
         {
             Console.WriteLine($"{victim.ToString()} is stunned for {turns} turn(s)!");
         }
+
+        public static void HealM(Char target, float value)
+        {
+            Console.WriteLine($"{target} is healed by {value} HP! {target.CurHP} HP left!");
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace RPG_autoBattler
         public void Cast(Char caster, Char victim)
         {
             caster.Heal(HP);
+            Logger.HealM(caster, HP);
         }
     }
 }
