@@ -43,11 +43,7 @@ padding: 3px;
 font-size: 20px;
 }
 
-.contdiv {
-border: 5px dashed orange;
-margin: 10px;
-background-color: #87cefa;
-}
+
 main {
 display: flex;
 align-items:baseline;
