@@ -2,7 +2,7 @@
 
 namespace RPG_autoBattler
 {
-    public class MageIceBlast : ISpell, IActiveSpell
+    public class MageIceBlast : ISpell
     {
         public string Name { get; set; }
 
@@ -21,6 +21,10 @@ namespace RPG_autoBattler
             Console.WriteLine($"{victim} is frozen for {StunDuration} turn(s)!");
             victim.TakeDamage(caster, caster.Intelligence - DamageReducted);
             victim.StunTimer += StunDuration;
+        }
+
+        public void Trigger(string s, Char a, Char b, float[] f)
+        {
         }
     }
 }

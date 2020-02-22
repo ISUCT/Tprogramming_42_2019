@@ -13,7 +13,7 @@ namespace RPG_autoBattler
             if (triggerType == "TakeDamage")
             {
                 victim.CurHP -= specValue[0] * (DamageBlockPercent / 100);
-                throw new ProtectException($"{victim.Name} {victim.Surname} ({victim.Class}) takes {specValue[0] * (DamageBlockPercent / 100)} damage! {victim.CurHP} HP left!");
+                throw new ProtectException($"{victim.Name} {victim.Surname} ({victim.Class}) takes only {specValue[0] * (DamageBlockPercent / 100)} damage! {victim.CurHP} HP left!");
             }
         }
     }

@@ -5,9 +5,9 @@ namespace RPG_autoBattler
 {
     public static class ReturnFuncs
     {
-        public static List<object> RetPalSpells()
+        public static List<ISpell> RetPalSpells()
         {
-            List<object> palSpells = new List<object>();
+            List<ISpell> palSpells = new List<ISpell>();
             BaseAttack baseAttack = new BaseAttack();
             baseAttack.IsPassive = false;
             baseAttack.IsRanged = false;
@@ -37,9 +37,9 @@ namespace RPG_autoBattler
             return palSpells;
         }
 
-        public static List<object> RetNinjaSpells()
+        public static List<ISpell> RetNinjaSpells()
         {
-            List<object> ninjSpells = new List<object>();
+            List<ISpell> ninjSpells = new List<ISpell>();
             BaseAttack baseAttack = new BaseAttack();
             baseAttack.IsPassive = false;
             baseAttack.IsRanged = false;
@@ -72,9 +72,9 @@ namespace RPG_autoBattler
             return ninjSpells;
         }
 
-        public static List<object> RetMageSpells()
+        public static List<ISpell> RetMageSpells()
         {
-            List<object> magSpells = new List<object>();
+            List<ISpell> magSpells = new List<ISpell>();
             BaseAttack mageBaseAttack = new BaseAttack();
             mageBaseAttack.IsPassive = false;
             mageBaseAttack.IsRanged = false;
@@ -127,14 +127,14 @@ namespace RPG_autoBattler
             {
                 Char a = new Char();
                 Random rnd = new Random();
-                int clas = rnd.Next(1, 3);
+                int clas = rnd.Next(1, 4);
                 switch (clas)
                 {
                     case 1:
                         a.Class = "Paladin";
 
                         // потом в каждом кейзе создавать нью лист и рандомно из него добавлять спеллы, а добавленные удалять. Так как создаётся новый на основе возвращения функции, то ничего не перезапишется
-                        foreach (object item in RetPalSpells())
+                        foreach (ISpell item in RetPalSpells())
                         {
                             a.GainSpell(item);
                         }
@@ -146,7 +146,7 @@ namespace RPG_autoBattler
                         break;
                     case 2:
                         a.Class = "Ninja";
-                        foreach (object item in RetNinjaSpells())
+                        foreach (ISpell item in RetNinjaSpells())
                         {
                             a.GainSpell(item);
                         }
@@ -157,7 +157,18 @@ namespace RPG_autoBattler
                         break;
                     case 3:
                         a.Class = "Mage";
-                        foreach (object item in RetMageSpells())
+                        foreach (ISpell item in RetMageSpells())
+                        {
+                            a.GainSpell(item);
+                        }
+
+                        a.Strength = rnd.Next(5, 15);
+                        a.Agility = rnd.Next(1, 5);
+                        a.Intelligence = rnd.Next(20, 30);
+                        break;
+                    case 4:
+                        a.Class = "Mage";
+                        foreach (ISpell item in RetMageSpells())
                         {
                             a.GainSpell(item);
                         }

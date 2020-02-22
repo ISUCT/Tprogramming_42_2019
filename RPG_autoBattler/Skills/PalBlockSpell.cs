@@ -16,6 +16,8 @@ namespace RPG_autoBattler
 
         public int StunDuration { get; set; }
 
+        public bool IsRanged { get; set; }
+
         public void Trigger(string triggerType, Char attacker, Char victim, float[] specValue)
         {
             if (triggerType == "StartBattle")
@@ -25,6 +27,10 @@ namespace RPG_autoBattler
                 palBlock.TurnsLeft = 1;
                 attacker.Effects.Add(palBlock);
             }
+        }
+
+        public void Cast(Char caster, Char victim)
+        {
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace RPG_autoBattler
 {
-    public class HammerStrike : ISpell, IActiveSpell
+    public class HammerStrike : ISpell
     {
         public string Name { get; set; }
 
@@ -19,6 +19,10 @@ namespace RPG_autoBattler
             Logger.StunM(victim, StunDuration);
             victim.TakeDamage(caster, caster.Agility);
             victim.StunTimer += StunDuration;
+        }
+
+        public void Trigger(string s, Char a, Char b, float[] f)
+        {
         }
     }
 }

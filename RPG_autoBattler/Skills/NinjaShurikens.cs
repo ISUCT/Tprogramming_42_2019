@@ -2,7 +2,7 @@
 
 namespace RPG_autoBattler
 {
-    public class NinjaShurikens : ISpell, IActiveSpell
+    public class NinjaShurikens : ISpell
     {
         public string Name { get; set; }
 
@@ -22,6 +22,10 @@ namespace RPG_autoBattler
             {
                 victim.TakeDamage(caster, Damage);
             }
+        }
+
+        public void Trigger(string s, Char a, Char b, float[] f)
+        {
         }
     }
 }

@@ -31,13 +31,13 @@ namespace RPG_autoBattler
             foreach (IPassiveSpell item in attacker.Effects)
             {
                 float[] f = new float[1] { 0 };
-                item.Trigger("TurnEnd", attacker, victim, f);
+                item.Trigger("EndTurn", attacker, victim, f);
             }
 
             foreach (IPassiveSpell item in victim.Effects)
             {
                 float[] f = new float[1] { 1 };
-                item.Trigger("TurnEnd", victim, attacker, f);
+                item.Trigger("EndTurn", victim, attacker, f);
             }
         }
 
@@ -46,14 +46,15 @@ namespace RPG_autoBattler
             Random rnd = new Random();
             int turn = 1;
             a.Effects = new List<IPassiveSpell>();
-            foreach (IPassiveSpell item in b.Effects)
+            b.Effects = new List<IPassiveSpell>();
+            foreach (IPassiveSpell item in b.PasSpells)
             {
-                item.Trigger("BattleStart", b, a, null);
+                item.Trigger("StartBattle", b, a, null);
             }
 
-            foreach (IPassiveSpell item in a.Effects)
+            foreach (IPassiveSpell item in a.PasSpells)
             {
-                item.Trigger("BattleStart", a, b, null);
+                item.Trigger("StartBattle", a, b, null);
             }
 
             while ((a.CurHP > 0) && (b.CurHP > 0))

@@ -2,7 +2,7 @@
 
 namespace RPG_autoBattler
 {
-    public class MageFireball : ISpell, IActiveSpell
+    public class MageFireball : ISpell
     {
         public string Name { get; set; }
 
@@ -26,6 +26,10 @@ namespace RPG_autoBattler
             burning.Damage = TickDamage;
             victim.Effects.Add(burning);
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire for {TickDuration} turns!");
+        }
+
+        public void Trigger(string s, Char a, Char b, float[] f)
+        {
         }
     }
 }

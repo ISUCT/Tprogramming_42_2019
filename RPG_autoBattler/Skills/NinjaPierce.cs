@@ -2,7 +2,7 @@
 
 namespace RPG_autoBattler
 {
-    public class NinjaPierce : ISpell, IActiveSpell
+    public class NinjaPierce : ISpell
     {
         public string Name { get; set; }
 
@@ -18,6 +18,10 @@ namespace RPG_autoBattler
         {
             victim.CurHP -= caster.Agility + Damage;
             Logger.TakeDamageM(victim, caster.Agility + Damage);
+        }
+
+        public void Trigger(string s, Char a, Char b, float[] f)
+        {
         }
     }
 }

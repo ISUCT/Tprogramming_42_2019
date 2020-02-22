@@ -2,7 +2,7 @@
 
 namespace RPG_autoBattler
 {
-    public class MageShield : ISpell, IActiveSpell
+    public class MageShield : ISpell
     {
         public string Name { get; set; }
 
@@ -19,6 +19,10 @@ namespace RPG_autoBattler
             MageShielded mageShielded = new MageShielded();
             mageShielded.TurnsLeft = Duration;
             caster.Effects.Add(mageShielded);
+        }
+
+        public void Trigger(string s, Char a, Char b, float[] f)
+        {
         }
     }
 }

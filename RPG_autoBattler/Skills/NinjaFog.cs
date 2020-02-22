@@ -2,7 +2,7 @@
 
 namespace RPG_autoBattler
 {
-    public class NinjaFog : ISpell, IActiveSpell
+    public class NinjaFog : ISpell
     {
         public string Name { get; set; }
 
@@ -22,6 +22,10 @@ namespace RPG_autoBattler
             fogHide.DodgeChance = DodgeChance;
             fogHide.TurnsLeft = Duration;
             caster.Effects.Add(fogHide);
+        }
+
+        public void Trigger(string s, Char a, Char b, float[] f)
+        {
         }
     }
 }

@@ -9,14 +9,20 @@ namespace RPG_autoBattler
         int Lvl { get; set; }
 
         bool IsPassive { get; set; }
+
+        bool IsRanged { get; set; }
+
+        void Cast(Char caster, Char victim);
+
+        void Trigger(string triggerType, Char attacker, Char victim, float[] specValue);
     }
 
-    public interface IActiveSpell
+    /*public interface IActiveSpell
     {
         bool IsRanged { get; set; }
 
         void Cast(Char caster, Char victim);
-    }
+    }*/
 
     public interface IPassiveSpell
     {

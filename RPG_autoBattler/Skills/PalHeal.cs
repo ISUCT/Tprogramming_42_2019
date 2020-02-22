@@ -2,7 +2,7 @@
 
 namespace RPG_autoBattler
 {
-    public class PalHeal : ISpell, IActiveSpell
+    public class PalHeal : ISpell
     {
         public string Name { get; set; }
 
@@ -18,6 +18,10 @@ namespace RPG_autoBattler
         {
             caster.Heal(HP);
             Logger.HealM(caster, HP);
+        }
+
+        public void Trigger(string s, Char a, Char b, float[] f)
+        {
         }
     }
 }

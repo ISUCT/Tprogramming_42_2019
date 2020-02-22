@@ -10,9 +10,11 @@ namespace RPG_autoBattler
 
         public void Trigger(string triggerType, Char attacker, Char victim, float[] specVal)
         {
-            if ((triggerType == "EndTurn") && (specVal[0] == 0))
+            if ((triggerType == "EndTurn") && (specVal[0] == 0) && (TurnsLeft > 0))
             {
-                victim.TakeDamage(attacker, Damage);
+                Console.WriteLine($"{attacker} is on fire! {TurnsLeft - 1} turns left!");
+                TurnsLeft--;
+                attacker.TakeDamage(victim, Damage);
             }
         }
     }

@@ -2,7 +2,7 @@
 
 namespace RPG_autoBattler
 {
-    public class BaseAttack : ISpell, IActiveSpell
+    public class BaseAttack : ISpell
     {
         public string Name { get; set; }
 
@@ -15,6 +15,10 @@ namespace RPG_autoBattler
         public void Cast(Char caster, Char victim)
         {
             victim.TakeDamage(caster, caster.Agility);
+        }
+
+        public void Trigger(string s, Char a, Char b, float[] f)
+        {
         }
     }
 }
