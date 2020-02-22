@@ -14,10 +14,10 @@ namespace CourseApp
         public static List<double> TaskA(double b, double xn, double xk, double dx)
         {
             int i = 0;
-            var y = new List<double>();
+            List<double> y = new List<double>();
             for (double x = xn; x < xk; x += dx)
             {
-                y[i] = Matem(b, x);
+                y.Add(Matem(b, x));
                 i++;
             }
 
@@ -27,9 +27,9 @@ namespace CourseApp
         public static List<double> TaskB(double b, List<double> x)
         {
             List<double> y = new List<double>();
-            for (var i = 0; i < y.Count; i++)
+            for (var i = 0; i < x.Count; i++)
             {
-                y[i] = Matem(b, x[i]);
+                y.Add(Matem(b, x[i]));
             }
 
             return y;
@@ -53,6 +53,15 @@ namespace CourseApp
             foreach (var item in taskBRes)
             {
                 Console.WriteLine($"y = {item}");
+            }
+
+            Animal[] array = new Animal[2];
+            array[0] = new Cat("Barsik", 5, "male");
+            array[1] = new Dog("Sharik", 3, "male");
+
+            for (int i = 0; i < 2; i++)
+            {
+                array[i].SayAnything();
             }
         }
     }

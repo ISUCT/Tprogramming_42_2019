@@ -3,26 +3,26 @@ using System.Collections.Generic;
 
 namespace CourseApp
 {
-    public class Cat : Animal
+    public class Dog : Animal
     {
-        public Cat()
+        public Dog()
         : this("Unnamed")
         {
         }
 
-        public Cat(string name)
+        public Dog(string name)
         : this(name, 0, "male")
         {
         }
 
-        public Cat(string name, int age, string gender)
+        public Dog(string name, int age, string gender)
         {
             Name = name;
             Age = age;
             Gender = gender;
         }
 
-        public Cat(string name, string breed)
+        public Dog(string name, string breed)
         : base(name)
         {
             Breed = breed;
@@ -32,7 +32,7 @@ namespace CourseApp
 
         public override void SayAnything()
         {
-            Console.WriteLine($"{Name}: Мяу");
+            Console.WriteLine($"{Name}: Гав");
         }
 
         public override string ToString()

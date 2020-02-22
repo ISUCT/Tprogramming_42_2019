@@ -7,5 +7,7 @@
 			"path": "CourseApp.Tests"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.autoSave": "onFocusChange"
+	}
 }
