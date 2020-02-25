@@ -131,51 +131,18 @@ namespace RPG_autoBattler
                 switch (clas)
                 {
                     case 1:
-                        a.Class = "Paladin";
-
-                        // потом в каждом кейзе создавать нью лист и рандомно из него добавлять спеллы, а добавленные удалять. Так как создаётся новый на основе возвращения функции, то ничего не перезапишется
-                        foreach (ISpell item in RetPalSpells())
-                        {
-                            a.GainSpell(item);
-                        }
-
-                        a.Strength = rnd.Next(15, 25);
-                        a.Agility = rnd.Next(5, 15);
-                        a.Intelligence = rnd.Next(1, 5);
-
+                        a = ReturnRandomChar();
                         break;
                     case 2:
-                        a.Class = "Ninja";
-                        foreach (ISpell item in RetNinjaSpells())
-                        {
-                            a.GainSpell(item);
-                        }
-
-                        a.Strength = rnd.Next(5, 15);
-                        a.Agility = rnd.Next(15, 25);
-                        a.Intelligence = rnd.Next(1, 5);
+                        a = ReturnRandomChar("Ninja", 5, 15, 15, 25, 1, 5);
                         break;
                     case 3:
-                        a.Class = "Mage";
-                        foreach (ISpell item in RetMageSpells())
-                        {
-                            a.GainSpell(item);
-                        }
-
-                        a.Strength = rnd.Next(5, 15);
-                        a.Agility = rnd.Next(1, 5);
-                        a.Intelligence = rnd.Next(20, 30);
+                        a = ReturnRandomChar("Mage", 5, 15, 1, 5, 20, 30);
                         break;
-                    case 4:
-                        a.Class = "Mage";
-                        foreach (ISpell item in RetMageSpells())
-                        {
-                            a.GainSpell(item);
-                        }
 
-                        a.Strength = rnd.Next(5, 15);
-                        a.Agility = rnd.Next(1, 5);
-                        a.Intelligence = rnd.Next(20, 30);
+                        // Как показывает практика последний вариант рандомится намного реже остальных, поэтому добавлен дополнительный 4ый кейс
+                    case 4:
+                        a = ReturnRandomChar("Mage", 5, 15, 1, 5, 20, 30);
                         break;
                 }
 
