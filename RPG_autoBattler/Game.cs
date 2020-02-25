@@ -63,7 +63,7 @@ namespace RPG_autoBattler
                 }
             }
 
-            Console.WriteLine($"Pal: {palWin} Ninja: {ninjaWin} Mage: {mageWin}");
+            Console.WriteLine($"Pal:  {palWin} Ninja: {ninjaWin} Mage: {mageWin}");
             Console.ReadKey();
         }
     }
