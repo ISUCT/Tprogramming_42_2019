@@ -27,9 +27,9 @@ namespace RPG_autoBattler
                 playerClass = Console.ReadLine();
             }*/
 
-            // Char winner = TournamentBattle.Tournament(ReturnFuncs.RetFighters(4));
-            // Console.WriteLine($"{winner} won the tournament!");
-            Char pal = ReturnFuncs.ReturnRandomChar();
+            Char winner = TournamentBattle.Tournament(ReturnFuncs.RetFighters(4));
+            Console.WriteLine($"{winner} won the tournament!");
+            /*Char pal = ReturnFuncs.ReturnRandomChar();
             Char pal2 = ReturnFuncs.ReturnRandomChar();
             Char ninja = ReturnFuncs.ReturnRandomChar("Ninja", 5, 15, 15, 25, 1, 5);
             Char ninja2 = ReturnFuncs.ReturnRandomChar("Ninja", 5, 15, 15, 25, 1, 5);
@@ -63,7 +63,7 @@ namespace RPG_autoBattler
                 }
             }
 
-            Console.WriteLine($"Pal:  {palWin} Ninja: {ninjaWin} Mage: {mageWin}");
+            Console.WriteLine($"Pal:  {palWin} Ninja: {ninjaWin} Mage: {mageWin}");*/
             Console.ReadKey();
         }
     }
