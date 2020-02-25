@@ -17,12 +17,12 @@ namespace RPG_autoBattler
                 }
             }
 
-            if ((triggerType == "TurnEnd") && ((int)specValue[0] == 1))
+            if ((triggerType == "EndTurn") && ((int)specValue[0] == 1))
             {
                 TurnsLeft--;
             }
 
-            if (triggerType == "BattleEnd")
+            if (triggerType == "EndBattle")
             {
                 TurnsLeft = 0;
             }

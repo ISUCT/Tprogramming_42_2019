@@ -188,5 +188,53 @@ namespace RPG_autoBattler
 
             return fighters;
         }
+
+        public static Char ReturnRandomChar(string className = "Paladin", int minStrength = 15, int maxStrength = 25, int minAgility = 5, int maxAgility = 15, int minIntelligence = 1, int maxIntelligence = 5)
+        {
+            Char a = new Char();
+            a.Class = className;
+            if (className == "Paladin")
+            {
+                // потом в каждом кейзе создавать нью лист и рандомно из него добавлять спеллы, а добавленные удалять. Так как создаётся новый на основе возвращения функции, то ничего не перезапишется
+                foreach (ISpell item in RetPalSpells())
+                {
+                    a.GainSpell(item);
+                }
+            }
+            else
+            {
+                if (className == "Ninja")
+                {
+                    foreach (ISpell item in RetNinjaSpells())
+                    {
+                        a.GainSpell(item);
+                    }
+                }
+                else
+                {
+                    if (className == "Mage")
+                    {
+                        foreach (ISpell item in RetMageSpells())
+                        {
+                            a.GainSpell(item);
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Class not found");
+                    }
+                }
+            }
+
+            Random rnd = new Random();
+            a.Strength = rnd.Next(minStrength, maxStrength);
+            a.Agility = rnd.Next(minAgility, maxAgility);
+            a.Intelligence = rnd.Next(minIntelligence, maxIntelligence);
+            a.Name = RetNames()[rnd.Next(0, RetNames().Count)];
+            a.Surname = RetSurnames()[rnd.Next(0, RetSurnames().Count)];
+            a.MaxHP = a.Strength * 10;
+            a.CurHP = a.MaxHP;
+            return a;
+        }
     }
 }

@@ -47,6 +47,8 @@ namespace RPG_autoBattler
             int turn = 1;
             a.Effects = new List<IPassiveSpell>();
             b.Effects = new List<IPassiveSpell>();
+            a.Heal(a.MaxHP);
+            b.Heal(b.MaxHP);
             foreach (IPassiveSpell item in b.PasSpells)
             {
                 item.Trigger("StartBattle", b, a, null);
@@ -102,7 +104,7 @@ namespace RPG_autoBattler
             while (chars.Count > 1)
             {
                 int i = 0;
-                while (i < chars.Count)
+                while (i < chars.Count - 1)
                 {
                     Console.WriteLine($"Let the battle between {chars[i]} and {chars[i + 1]} begin!");
                     int r = Battle(chars[i], chars[i + 1]);
