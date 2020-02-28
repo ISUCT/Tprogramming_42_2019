@@ -18,7 +18,7 @@ body {
 	background-color: rgba(0,0,255, 0.5);
 	margin: 0;
 }
-.just h2{
+h2{
 	border: 7px groove orange;
 	padding: 10px;
 	margin: 0;
@@ -27,17 +27,31 @@ body {
 	text-align: center;
 }
 
-.just h3{
+.butn {
+	align-self: center;
+}
+
+.g {
+	display: flex;
+	flex-direction: column;
+}
+.ricardo {
+	display: flex;
+}
+
+}
+ h3{
 	font-size: 50px;
+}
+.just{
+	margin-left: 30px
+}
+.just p{
+	font-size: larger;
 	margin-left: 30px;
 }
 
-.just p{
-	margin-left: 25px;
-	font-size: larger;
-}
-
-.just img{
+ img{
 	border: 7px dashed #ffff00;
 }
 
