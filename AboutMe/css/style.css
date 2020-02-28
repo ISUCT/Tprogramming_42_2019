@@ -6,11 +6,19 @@
 	color: orange;
 	text-decoration: none;
 }
-
+@keyframes just2animation{
+	0%{
+		opacity: 0;
+		margin-left: 1000px
+	}
+	100%{
+		opacity: 1;
+		margin-left: 0px
+	}
+}
 .just2{
 	width: 700px;
 }
-
 .centr {
 	text-align: center;
 }
@@ -29,14 +37,18 @@ h2{
 
 .butn {
 	align-self: center;
+	margin-top: 10px
 }
 
 .g {
 	display: flex;
 	flex-direction: column;
+	animation: 1s just2animation;
 }
 .ricardo {
 	display: flex;
+	height: 300px;
+	
 }
 
 }
