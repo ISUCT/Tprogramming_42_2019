@@ -11,6 +11,13 @@
 	width: 700px;
 }
 
+.centr {
+	text-align: center;
+}
+body {
+	background-color: rgba(0,0,255, 0.5);
+	margin: 0;
+}
 .just h2{
 	border: 7px groove orange;
 	padding: 10px;
@@ -50,9 +57,6 @@ main {
 	color: orange;
 }
 
-html {
-	background-color: rgba(0,0,255, 0.5);
-}
 a {
 	text-decoration: none;
 	color: orange;
