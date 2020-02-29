@@ -142,14 +142,12 @@ namespace RPG_autoBattler
 
                         // Как показывает практика последний вариант рандомится намного реже остальных, поэтому добавлен дополнительный 4ый кейс
                     case 4:
-                        a = ReturnRandomChar("Mage", 5, 15, 1, 5, 20, 30);
-                        break;
+                        // a = ReturnRandomChar("Mage", 5, 15, 1, 5, 20, 30);
+                        throw new Exception("AAAA");
+
+                        // break;
                 }
 
-                a.Name = RetNames()[rnd.Next(0, RetNames().Count)];
-                a.Surname = RetSurnames()[rnd.Next(0, RetSurnames().Count)];
-                a.MaxHP = a.Strength * 10;
-                a.CurHP = a.MaxHP;
                 fighters.Add(a);
             }
 
@@ -194,9 +192,9 @@ namespace RPG_autoBattler
             }
 
             Random rnd = new Random();
-            a.Strength = rnd.Next(minStrength, maxStrength);
-            a.Agility = rnd.Next(minAgility, maxAgility);
-            a.Intelligence = rnd.Next(minIntelligence, maxIntelligence);
+            a.Strength = rnd.Next(minStrength, maxStrength + 1);
+            a.Agility = rnd.Next(minAgility, maxAgility + 1);
+            a.Intelligence = rnd.Next(minIntelligence, maxIntelligence + 1);
             a.Name = RetNames()[rnd.Next(0, RetNames().Count)];
             a.Surname = RetSurnames()[rnd.Next(0, RetSurnames().Count)];
             a.MaxHP = a.Strength * 10;
