@@ -115,5 +115,44 @@ namespace RPG_autoBattler
 
             return chars[0];
         }
+
+        public static int[] BalanceTest()
+        {
+            Char pal = ReturnFuncs.ReturnRandomChar();
+            Char pal2 = ReturnFuncs.ReturnRandomChar();
+            Char ninja = ReturnFuncs.ReturnRandomChar("Ninja", 5, 15, 15, 25, 1, 5);
+            Char ninja2 = ReturnFuncs.ReturnRandomChar("Ninja", 5, 15, 15, 25, 1, 5);
+            Char mage = ReturnFuncs.ReturnRandomChar("Mage", 5, 15, 1, 5, 20, 30);
+            Char mage2 = ReturnFuncs.ReturnRandomChar("Mage", 5, 15, 1, 5, 20, 30);
+            int palWin = 0;
+            int ninjaWin = 0;
+            int mageWin = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                List<Char> tourTest = new List<Char>() { pal, ninja, mage, pal2, ninja2, mage2 };
+                Char winner = TournamentBattle.Tournament(tourTest);
+                if (winner.Class == "Paladin")
+                {
+                    palWin++;
+                }
+                else
+                {
+                    if (winner.Class == "Ninja")
+                    {
+                        ninjaWin++;
+                    }
+                    else if (winner.Class == "Mage")
+                    {
+                        mageWin++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("WTF");
+                    }
+                }
+            }
+
+            return new int[] { palWin, ninjaWin, mageWin };
+        }
     }
 }

@@ -139,13 +139,6 @@ namespace RPG_autoBattler
                     case 3:
                         a = ReturnRandomChar("Mage", 5, 15, 1, 5, 20, 30);
                         break;
-
-                        // Как показывает практика последний вариант рандомится намного реже остальных, поэтому добавлен дополнительный 4ый кейс
-                    case 4:
-                        // a = ReturnRandomChar("Mage", 5, 15, 1, 5, 20, 30);
-                        throw new Exception("AAAA");
-
-                        // break;
                 }
 
                 fighters.Add(a);
