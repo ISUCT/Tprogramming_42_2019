@@ -151,30 +151,42 @@ namespace RPG_autoBattler
         {
             Character a = new Character();
             a.Class = className;
+            Random rnd = new Random();
             if (className == "Paladin")
             {
-                // потом в каждом кейзе создавать нью лист и рандомно из него добавлять спеллы, а добавленные удалять. Так как создаётся новый на основе возвращения функции, то ничего не перезапишется
-                foreach (ISpell item in RetPalSpells())
+                List<ISpell> list = RetPalSpells();
+                a.GainSpell(list[0]);
+                for (int i = 0; i < 3; i++)
                 {
-                    a.GainSpell(item);
+                    int tempInt = rnd.Next(1, list.Count);
+                    a.GainSpell(list[tempInt]);
+                    list.RemoveAt(tempInt);
                 }
             }
             else
             {
                 if (className == "Ninja")
                 {
-                    foreach (ISpell item in RetNinjaSpells())
+                    List<ISpell> list = RetNinjaSpells();
+                    a.GainSpell(list[0]);
+                    for (int i = 0; i < 3; i++)
                     {
-                        a.GainSpell(item);
+                        int tempInt = rnd.Next(1, list.Count);
+                        a.GainSpell(list[tempInt]);
+                        list.RemoveAt(tempInt);
                     }
                 }
                 else
                 {
                     if (className == "Mage")
                     {
-                        foreach (ISpell item in RetMageSpells())
+                        List<ISpell> list = RetMageSpells();
+                        a.GainSpell(list[0]);
+                        for (int i = 0; i < 3; i++)
                         {
-                            a.GainSpell(item);
+                            int tempInt = rnd.Next(1, list.Count);
+                            a.GainSpell(list[tempInt]);
+                            list.RemoveAt(tempInt);
                         }
                     }
                     else
@@ -184,7 +196,6 @@ namespace RPG_autoBattler
                 }
             }
 
-            Random rnd = new Random();
             a.Strength = rnd.Next(minStrength, maxStrength + 1);
             a.Agility = rnd.Next(minAgility, maxAgility + 1);
             a.Intelligence = rnd.Next(minIntelligence, maxIntelligence + 1);

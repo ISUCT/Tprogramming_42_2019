@@ -28,7 +28,7 @@ namespace RPG_autoBattler
             }*/
 
             Character winner = TournamentBattle.Tournament(ReturnFuncs.RetFighters(4));
-            Console.WriteLine($"{winner} won the tournament!");
+
             /*int[] a = new int[3];
             a = TournamentBattle.BalanceTest();
             Console.WriteLine($"Pal:  {a[0]} Ninja: {a[1]} Mage: {a[2]}");*/
