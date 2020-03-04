@@ -18,7 +18,7 @@ namespace RPG_autoBattler
 
         public bool IsRanged { get; set; }
 
-        public void Cast(Char caster, Char victim)
+        public void Cast(Character caster, Character victim)
         {
             victim.TakeDamage(caster, caster.Intelligence);
             Burning burning = new Burning();
@@ -28,7 +28,7 @@ namespace RPG_autoBattler
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire for {TickDuration} turns!");
         }
 
-        public void Trigger(string s, Char a, Char b, float[] f)
+        public void Trigger(string s, Character a, Character b, float[] f)
         {
         }
     }

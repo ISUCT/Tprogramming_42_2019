@@ -8,7 +8,7 @@ namespace RPG_autoBattler
 
         public int TurnsLeft { get; set; }
 
-        public void Trigger(string triggerType, Char attacker, Char victim, float[] specVal)
+        public void Trigger(string triggerType, Character attacker, Character victim, float[] specVal)
         {
             if ((triggerType == "EndTurn") && (specVal[0] == 0) && (TurnsLeft > 0))
             {

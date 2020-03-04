@@ -8,7 +8,7 @@ namespace RPG_autoBattler
 
         public float DamageBlockPercent { get; set; }
 
-        public void Trigger(string triggerType, Char attacker, Char victim, float[] specValue)
+        public void Trigger(string triggerType, Character attacker, Character victim, float[] specValue)
         {
             if (triggerType == "TakeDamage")
             {

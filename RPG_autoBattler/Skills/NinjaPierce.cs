@@ -14,13 +14,13 @@ namespace RPG_autoBattler
 
         public bool IsRanged { get; set; }
 
-        public void Cast(Char caster, Char victim)
+        public void Cast(Character caster, Character victim)
         {
             victim.CurHP -= caster.Agility + Damage;
             Logger.TakeDamageM(victim, caster.Agility + Damage);
         }
 
-        public void Trigger(string s, Char a, Char b, float[] f)
+        public void Trigger(string s, Character a, Character b, float[] f)
         {
         }
     }

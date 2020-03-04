@@ -14,14 +14,14 @@ namespace RPG_autoBattler
 
         public int Duration { get; set; }
 
-        public void Cast(Char caster, Char victim)
+        public void Cast(Character caster, Character victim)
         {
             MageShielded mageShielded = new MageShielded();
             mageShielded.TurnsLeft = Duration;
             caster.Effects.Add(mageShielded);
         }
 
-        public void Trigger(string s, Char a, Char b, float[] f)
+        public void Trigger(string s, Character a, Character b, float[] f)
         {
         }
     }

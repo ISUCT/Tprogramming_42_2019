@@ -18,7 +18,7 @@ namespace RPG_autoBattler
 
         public bool IsRanged { get; set; }
 
-        public void Trigger(string triggerType, Char attacker, Char victim, float[] specValue)
+        public void Trigger(string triggerType, Character attacker, Character victim, float[] specValue)
         {
             if (triggerType == "StartBattle")
             {
@@ -29,7 +29,7 @@ namespace RPG_autoBattler
             }
         }
 
-        public void Cast(Char caster, Char victim)
+        public void Cast(Character caster, Character victim)
         {
         }
     }

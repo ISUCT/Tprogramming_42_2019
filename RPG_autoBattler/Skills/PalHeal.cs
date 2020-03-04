@@ -14,13 +14,13 @@ namespace RPG_autoBattler
 
         public float HP { get; set; }
 
-        public void Cast(Char caster, Char victim)
+        public void Cast(Character caster, Character victim)
         {
             caster.Heal(HP);
             Logger.HealM(caster, HP);
         }
 
-        public void Trigger(string s, Char a, Char b, float[] f)
+        public void Trigger(string s, Character a, Character b, float[] f)
         {
         }
     }

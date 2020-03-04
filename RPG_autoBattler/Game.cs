@@ -12,7 +12,7 @@ namespace RPG_autoBattler
             mageSpells = ReturnFuncs.RetMageSpells();*/
             List<string> names = ReturnFuncs.RetNames();
             List<string> surnames = ReturnFuncs.RetSurnames();
-            List<Char> fighters = new List<Char>();
+            List<Character> fighters = new List<Character>();
 
             // List<string> names;
             // RetNames().CopyTo(names);
@@ -27,7 +27,7 @@ namespace RPG_autoBattler
                 playerClass = Console.ReadLine();
             }*/
 
-            Char winner = TournamentBattle.Tournament(ReturnFuncs.RetFighters(4));
+            Character winner = TournamentBattle.Tournament(ReturnFuncs.RetFighters(4));
             Console.WriteLine($"{winner} won the tournament!");
             /*int[] a = new int[3];
             a = TournamentBattle.BalanceTest();

@@ -5,7 +5,7 @@ namespace RPG_autoBattler
 {
     public static class TournamentBattle
     {
-        public static void MakeTurn(Char attacker, Char victim)
+        public static void MakeTurn(Character attacker, Character victim)
         {
             Random rnd = new Random();
             if (attacker.StunTimer == 0)
@@ -41,7 +41,7 @@ namespace RPG_autoBattler
             }
         }
 
-        public static int Battle(Char a, Char b)
+        public static int Battle(Character a, Character b)
         {
             Random rnd = new Random();
             int turn = 1;
@@ -98,9 +98,9 @@ namespace RPG_autoBattler
             }
         }
 
-        public static Char Tournament(List<Char> charss)
+        public static Character Tournament(List<Character> charss)
         {
-            List<Char> chars = charss;
+            List<Character> chars = charss;
             while (chars.Count > 1)
             {
                 int i = 0;
@@ -118,19 +118,19 @@ namespace RPG_autoBattler
 
         public static int[] BalanceTest()
         {
-            Char pal = ReturnFuncs.ReturnRandomChar();
-            Char pal2 = ReturnFuncs.ReturnRandomChar();
-            Char ninja = ReturnFuncs.ReturnRandomChar("Ninja", 5, 15, 15, 25, 1, 5);
-            Char ninja2 = ReturnFuncs.ReturnRandomChar("Ninja", 5, 15, 15, 25, 1, 5);
-            Char mage = ReturnFuncs.ReturnRandomChar("Mage", 5, 15, 1, 5, 20, 30);
-            Char mage2 = ReturnFuncs.ReturnRandomChar("Mage", 5, 15, 1, 5, 20, 30);
+            Character pal = ReturnFuncs.ReturnRandomCharacter();
+            Character pal2 = ReturnFuncs.ReturnRandomCharacter();
+            Character ninja = ReturnFuncs.ReturnRandomCharacter("Ninja", 5, 15, 15, 25, 1, 5);
+            Character ninja2 = ReturnFuncs.ReturnRandomCharacter("Ninja", 5, 15, 15, 25, 1, 5);
+            Character mage = ReturnFuncs.ReturnRandomCharacter("Mage", 5, 15, 1, 5, 20, 30);
+            Character mage2 = ReturnFuncs.ReturnRandomCharacter("Mage", 5, 15, 1, 5, 20, 30);
             int palWin = 0;
             int ninjaWin = 0;
             int mageWin = 0;
             for (int i = 0; i < 10; i++)
             {
-                List<Char> tourTest = new List<Char>() { pal, ninja, mage, pal2, ninja2, mage2 };
-                Char winner = TournamentBattle.Tournament(tourTest);
+                List<Character> tourTest = new List<Character>() { pal, ninja, mage, pal2, ninja2, mage2 };
+                Character winner = TournamentBattle.Tournament(tourTest);
                 if (winner.Class == "Paladin")
                 {
                     palWin++;

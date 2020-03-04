@@ -4,9 +4,9 @@ using System.Collections;
 
 namespace RPG_autoBattler
 {
-    public class Char
+    public class Character
     {
-        public Char()
+        public Character()
             {
                 Lvl = 1;
                 StunTimer = 0;
@@ -41,7 +41,7 @@ namespace RPG_autoBattler
 
         public float CurHP { get; set; }
 
-        public void HitBySpell(Char caster, ISpell spell)
+        public void HitBySpell(Character caster, ISpell spell)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace RPG_autoBattler
             }
         }
 
-        public void TakeDamage(Char attacker, float dmg)
+        public void TakeDamage(Character attacker, float dmg)
         {
             try
             {

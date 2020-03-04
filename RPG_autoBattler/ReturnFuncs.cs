@@ -120,24 +120,24 @@ namespace RPG_autoBattler
             return s;
         }
 
-        public static List<Char> RetFighters(int count)
+        public static List<Character> RetFighters(int count)
         {
-            List<Char> fighters = new List<Char>();
+            List<Character> fighters = new List<Character>();
             for (int i = 0; i < count; i++)
             {
-                Char a = new Char();
+                Character a = new Character();
                 Random rnd = new Random();
                 int clas = rnd.Next(1, 4);
                 switch (clas)
                 {
                     case 1:
-                        a = ReturnRandomChar();
+                        a = ReturnRandomCharacter();
                         break;
                     case 2:
-                        a = ReturnRandomChar("Ninja", 5, 15, 15, 25, 1, 5);
+                        a = ReturnRandomCharacter("Ninja", 5, 15, 15, 25, 1, 5);
                         break;
                     case 3:
-                        a = ReturnRandomChar("Mage", 5, 15, 1, 5, 20, 30);
+                        a = ReturnRandomCharacter("Mage", 5, 15, 1, 5, 20, 30);
                         break;
                 }
 
@@ -147,9 +147,9 @@ namespace RPG_autoBattler
             return fighters;
         }
 
-        public static Char ReturnRandomChar(string className = "Paladin", int minStrength = 15, int maxStrength = 25, int minAgility = 5, int maxAgility = 15, int minIntelligence = 1, int maxIntelligence = 5)
+        public static Character ReturnRandomCharacter(string className = "Paladin", int minStrength = 15, int maxStrength = 25, int minAgility = 5, int maxAgility = 15, int minIntelligence = 1, int maxIntelligence = 5)
         {
-            Char a = new Char();
+            Character a = new Character();
             a.Class = className;
             if (className == "Paladin")
             {

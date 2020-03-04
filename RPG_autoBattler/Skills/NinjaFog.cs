@@ -16,7 +16,7 @@ namespace RPG_autoBattler
 
         public int Duration { get; set; }
 
-        public void Cast(Char caster, Char victim)
+        public void Cast(Character caster, Character victim)
         {
             FogHide fogHide = new FogHide();
             fogHide.DodgeChance = DodgeChance;
@@ -24,7 +24,7 @@ namespace RPG_autoBattler
             caster.Effects.Add(fogHide);
         }
 
-        public void Trigger(string s, Char a, Char b, float[] f)
+        public void Trigger(string s, Character a, Character b, float[] f)
         {
         }
     }

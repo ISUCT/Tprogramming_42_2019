@@ -16,14 +16,14 @@ namespace RPG_autoBattler
 
         public bool IsRanged { get; set; }
 
-        public void Cast(Char caster, Char victim)
+        public void Cast(Character caster, Character victim)
         {
             Console.WriteLine($"{victim} is frozen for {StunDuration} turn(s)!");
             victim.TakeDamage(caster, caster.Intelligence - DamageReducted);
             victim.StunTimer += StunDuration;
         }
 
-        public void Trigger(string s, Char a, Char b, float[] f)
+        public void Trigger(string s, Character a, Character b, float[] f)
         {
         }
     }

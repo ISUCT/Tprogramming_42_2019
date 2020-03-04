@@ -12,22 +12,22 @@ namespace RPG_autoBattler
 
         bool IsRanged { get; set; }
 
-        void Cast(Char caster, Char victim);
+        void Cast(Character caster, Character victim);
 
-        void Trigger(string triggerType, Char attacker, Char victim, float[] specValue);
+        void Trigger(string triggerType, Character attacker, Character victim, float[] specValue);
     }
 
     /*public interface IActiveSpell
     {
         bool IsRanged { get; set; }
 
-        void Cast(Char caster, Char victim);
+        void Cast(Character caster, Character victim);
     }*/
 
     public interface IPassiveSpell
     {
         int TurnsLeft { get; set; }
 
-        void Trigger(string triggerType, Char attacker, Char victim, float[] specValue);
+        void Trigger(string triggerType, Character attacker, Character victim, float[] specValue);
     }
 }
