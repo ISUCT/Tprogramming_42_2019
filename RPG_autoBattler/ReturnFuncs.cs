@@ -34,6 +34,13 @@ namespace RPG_autoBattler
             palHeal.HP = 12;
             palHeal.IsPassive = false;
             palSpells.Add(palHeal);
+            PunishLight punishLight = new PunishLight();
+            punishLight.IsPassive = false;
+            punishLight.IsRanged = false;
+            punishLight.Lvl = 1;
+            punishLight.Damage = 30;
+            punishLight.Name = "Punishing Light";
+            palSpells.Add(punishLight);
             return palSpells;
         }
 
