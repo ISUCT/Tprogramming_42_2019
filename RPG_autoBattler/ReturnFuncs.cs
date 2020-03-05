@@ -76,6 +76,13 @@ namespace RPG_autoBattler
             ninjaPierce.Name = "Piercing Slash";
             ninjaPierce.Damage = 5;
             ninjSpells.Add(ninjaPierce);
+            NinjaBleed ninjaBleed = new NinjaBleed();
+            ninjaBleed.IsPassive = true;
+            ninjaBleed.Lvl = 1;
+            ninjaBleed.Name = "Sharp blades";
+            ninjaBleed.DamagePercent = (float)0.05;
+            ninjaBleed.TurnsLeft = 2;
+            ninjSpells.Add(ninjaBleed);
             return ninjSpells;
         }
 

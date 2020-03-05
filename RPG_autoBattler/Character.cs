@@ -69,6 +69,12 @@ namespace RPG_autoBattler
                     item.Trigger("TakeDamage", attacker, this, mass);
                 }
 
+                foreach (var item in attacker.PasSpells)
+                {
+                    var mass = new float[1] { dmg };
+                    item.Trigger("DealDamage", attacker, this, mass);
+                }
+
                 CurHP -= dmg;
                 Logger.TakeDamageM(this, dmg);
             }
