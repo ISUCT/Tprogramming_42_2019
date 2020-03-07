@@ -5,16 +5,16 @@ namespace RPG_autoBattler
 {
     public class CharGenConfig
     {
-        public int MinStrength { get; set; }
+        public int MinStrength { get; set; } = 15;
 
-        public int MaxStrength { get; set; }
+        public int MaxStrength { get; set; } = 25;
 
-        public int minAgility { get; set; }
+        public int MinAgility { get; set; } = 5;
 
-        public int maxAgility { get; set; }
+        public int MaxAgility { get; set; } = 15;
 
-        public int minIntelligence { get; set; }
+        public int MinIntelligence { get; set; } = 1;
 
-        public int maxIntelligence { get; set; }
+        public int MaxIntelligence { get; set; } = 5;
     }
 }

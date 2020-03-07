@@ -145,13 +145,13 @@ namespace RPG_autoBattler
                 switch (clas)
                 {
                     case 1:
-                        a = ReturnRandomCharacter();
+                        a = ReturnRandomCharacter(new CharGenConfig());
                         break;
                     case 2:
-                        a = ReturnRandomCharacter("Ninja", 5, 15, 15, 25, 1, 5);
+                        a = ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 15, MaxAgility = 25, MinIntelligence = 1, MaxIntelligence = 5 }, "Ninja");
                         break;
                     case 3:
-                        a = ReturnRandomCharacter("Mage", 5, 15, 1, 5, 20, 30);
+                        a = ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 1, MaxAgility = 5, MinIntelligence = 20, MaxIntelligence = 30 },  "Mage");
                         break;
                 }
 
@@ -161,7 +161,7 @@ namespace RPG_autoBattler
             return fighters;
         }
 
-        public static Character ReturnRandomCharacter(string className = "Paladin", int minStrength = 15, int maxStrength = 25, int minAgility = 5, int maxAgility = 15, int minIntelligence = 1, int maxIntelligence = 5)
+        public static Character ReturnRandomCharacter(CharGenConfig conf, string className = "Paladin")
         {
             Character a = new Character();
             a.Class = className;
@@ -210,9 +210,9 @@ namespace RPG_autoBattler
                 }
             }
 
-            a.Strength = rnd.Next(minStrength, maxStrength + 1);
-            a.Agility = rnd.Next(minAgility, maxAgility + 1);
-            a.Intelligence = rnd.Next(minIntelligence, maxIntelligence + 1);
+            a.Strength = rnd.Next(conf.MinStrength, conf.MaxStrength + 1);
+            a.Agility = rnd.Next(conf.MinAgility, conf.MaxAgility + 1);
+            a.Intelligence = rnd.Next(conf.MinIntelligence, conf.MaxIntelligence + 1);
             a.Name = RetNames()[rnd.Next(0, RetNames().Count)];
             a.Surname = RetSurnames()[rnd.Next(0, RetSurnames().Count)];
             a.MaxHP = a.Strength * 10;

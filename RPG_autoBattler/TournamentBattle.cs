@@ -129,12 +129,12 @@ namespace RPG_autoBattler
 
         public static int[] BalanceTest()
         {
-            Character pal = ReturnFuncs.ReturnRandomCharacter();
-            Character pal2 = ReturnFuncs.ReturnRandomCharacter();
-            Character ninja = ReturnFuncs.ReturnRandomCharacter("Ninja", 5, 15, 15, 25, 1, 5);
-            Character ninja2 = ReturnFuncs.ReturnRandomCharacter("Ninja", 5, 15, 15, 25, 1, 5);
-            Character mage = ReturnFuncs.ReturnRandomCharacter("Mage", 5, 15, 1, 5, 20, 30);
-            Character mage2 = ReturnFuncs.ReturnRandomCharacter("Mage", 5, 15, 1, 5, 20, 30);
+            Character pal = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig());
+            Character pal2 = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig());
+            Character ninja = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 15, MaxAgility = 25, MinIntelligence = 1, MaxIntelligence = 5 }, "Ninja");
+            Character ninja2 = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 15, MaxAgility = 25, MinIntelligence = 1, MaxIntelligence = 5 }, "Ninja");
+            Character mage = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 1, MaxAgility = 5, MinIntelligence = 20, MaxIntelligence = 30 },  "Mage");
+            Character mage2 = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 1, MaxAgility = 5, MinIntelligence = 20, MaxIntelligence = 30 }, "Mage");
             int palWin = 0;
             int ninjaWin = 0;
             int mageWin = 0;
