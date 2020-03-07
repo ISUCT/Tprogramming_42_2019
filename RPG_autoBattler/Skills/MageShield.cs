@@ -16,8 +16,10 @@ namespace RPG_autoBattler
 
         public void Cast(Character caster, Character victim)
         {
-            MageShielded mageShielded = new MageShielded();
-            mageShielded.TurnsLeft = Duration;
+            MageShielded mageShielded = new MageShielded
+            {
+                TurnsLeft = Duration
+            };
             caster.Effects.Add(mageShielded);
         }
 

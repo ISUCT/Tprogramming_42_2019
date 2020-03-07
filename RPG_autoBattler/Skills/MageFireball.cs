@@ -21,9 +21,11 @@ namespace RPG_autoBattler
         public void Cast(Character caster, Character victim)
         {
             victim.TakeDamage(caster, caster.Intelligence);
-            Burning burning = new Burning();
-            burning.TurnsLeft = TickDuration;
-            burning.Damage = TickDamage;
+            Burning burning = new Burning
+            {
+                TurnsLeft = TickDuration,
+                Damage = TickDamage
+            };
             victim.Effects.Add(burning);
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire for {TickDuration} turns!");
         }

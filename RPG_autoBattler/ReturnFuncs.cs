@@ -8,25 +8,35 @@ namespace RPG_autoBattler
         public static List<ISpell> RetPalSpells()
         {
             List<ISpell> palSpells = new List<ISpell>();
-            BaseAttack baseAttack = new BaseAttack();
-            baseAttack.Lvl = 1;
-            baseAttack.Name = "Shield Bash";
+            BaseAttack baseAttack = new BaseAttack
+            {
+                Lvl = 1,
+                Name = "Shield Bash"
+            };
             palSpells.Add(baseAttack);
-            HammerStrike hammer = new HammerStrike();
-            hammer.Lvl = 1;
-            hammer.StunDuration = 1;
+            HammerStrike hammer = new HammerStrike
+            {
+                Lvl = 1,
+                StunDuration = 1
+            };
             palSpells.Add(hammer);
-            PalBlockSpell palDef = new PalBlockSpell();
-            palDef.Lvl = 1;
-            palDef.DamageBlockPercent = (float)75;
+            PalBlockSpell palDef = new PalBlockSpell
+            {
+                Lvl = 1,
+                DamageBlockPercent = (float)75
+            };
             palSpells.Add(palDef);
-            PalHeal palHeal = new PalHeal();
-            palHeal.Lvl = 1;
-            palHeal.HP = 12;
+            PalHeal palHeal = new PalHeal
+            {
+                Lvl = 1,
+                HP = 12
+            };
             palSpells.Add(palHeal);
-            PunishLight punishLight = new PunishLight();
-            punishLight.Lvl = 1;
-            punishLight.Damage = 30;
+            PunishLight punishLight = new PunishLight
+            {
+                Lvl = 1,
+                Damage = 30
+            };
             palSpells.Add(punishLight);
             return palSpells;
         }
@@ -34,28 +44,38 @@ namespace RPG_autoBattler
         public static List<ISpell> RetNinjaSpells()
         {
             List<ISpell> ninjSpells = new List<ISpell>();
-            BaseAttack baseAttack = new BaseAttack();
-            baseAttack.Lvl = 1;
-            baseAttack.Name = "Katana Slash";
+            BaseAttack baseAttack = new BaseAttack
+            {
+                Lvl = 1,
+                Name = "Katana Slash"
+            };
             ninjSpells.Add(baseAttack);
-            NinjaShurikens ninjaShurikens = new NinjaShurikens();
-            ninjaShurikens.Lvl = 1;
-            ninjaShurikens.Damage = 10;
-            ninjaShurikens.Count = 3;
+            NinjaShurikens ninjaShurikens = new NinjaShurikens
+            {
+                Lvl = 1,
+                Damage = 10,
+                Count = 3
+            };
             ninjSpells.Add(ninjaShurikens);
-            NinjaFog ninjaFog = new NinjaFog();
-            ninjaFog.Lvl = 1;
-            ninjaFog.DodgeChance = 26;
-            ninjaFog.Duration = 3;
+            NinjaFog ninjaFog = new NinjaFog
+            {
+                Lvl = 1,
+                DodgeChance = 26,
+                Duration = 3
+            };
             ninjSpells.Add(ninjaFog);
-            NinjaPierce ninjaPierce = new NinjaPierce();
-            ninjaPierce.Lvl = 1;
-            ninjaPierce.Damage = 5;
+            NinjaPierce ninjaPierce = new NinjaPierce
+            {
+                Lvl = 1,
+                Damage = 5
+            };
             ninjSpells.Add(ninjaPierce);
-            NinjaBleed ninjaBleed = new NinjaBleed();
-            ninjaBleed.Lvl = 1;
-            ninjaBleed.DamagePercent = (float)0.05;
-            ninjaBleed.TurnsLeft = 2;
+            NinjaBleed ninjaBleed = new NinjaBleed
+            {
+                Lvl = 1,
+                DamagePercent = (float)0.05,
+                TurnsLeft = 2
+            };
             ninjSpells.Add(ninjaBleed);
             return ninjSpells;
         }
@@ -63,24 +83,32 @@ namespace RPG_autoBattler
         public static List<ISpell> RetMageSpells()
         {
             List<ISpell> magSpells = new List<ISpell>();
-            BaseAttack mageBaseAttack = new BaseAttack();
-            mageBaseAttack.Lvl = 1;
-            mageBaseAttack.Name = "Staff Strike";
+            BaseAttack mageBaseAttack = new BaseAttack
+            {
+                Lvl = 1,
+                Name = "Staff Strike"
+            };
             magSpells.Add(mageBaseAttack);
-            MageFireball mageFireball = new MageFireball();
-            mageFireball.Lvl = 1;
-            mageFireball.Damage = 30;
-            mageFireball.TickDamage = 10;
-            mageFireball.TickDuration = 3;
+            MageFireball mageFireball = new MageFireball
+            {
+                Lvl = 1,
+                Damage = 30,
+                TickDamage = 10,
+                TickDuration = 3
+            };
             magSpells.Add(mageFireball);
-            MageIceBlast mageIceBlast = new MageIceBlast();
-            mageIceBlast.Lvl = 1;
-            mageIceBlast.DamageReducted = 7;
-            mageIceBlast.StunDuration = 2;
+            MageIceBlast mageIceBlast = new MageIceBlast
+            {
+                Lvl = 1,
+                DamageReducted = 7,
+                StunDuration = 2
+            };
             magSpells.Add(mageIceBlast);
-            MageShield mageShield = new MageShield();
-            mageShield.Lvl = 1;
-            mageShield.Duration = 2;
+            MageShield mageShield = new MageShield
+            {
+                Lvl = 1,
+                Duration = 2
+            };
             magSpells.Add(mageShield);
             return magSpells;
         }
@@ -126,8 +154,10 @@ namespace RPG_autoBattler
 
         public static Character ReturnRandomCharacter(CharGenConfig conf, string className = "Paladin")
         {
-            Character a = new Character();
-            a.Class = className;
+            Character a = new Character
+            {
+                Class = className
+            };
             Random rnd = new Random();
             if (className == "Paladin")
             {

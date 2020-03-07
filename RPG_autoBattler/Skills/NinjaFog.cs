@@ -18,9 +18,11 @@ namespace RPG_autoBattler
 
         public void Cast(Character caster, Character victim)
         {
-            FogHide fogHide = new FogHide();
-            fogHide.DodgeChance = DodgeChance;
-            fogHide.TurnsLeft = Duration;
+            FogHide fogHide = new FogHide
+            {
+                DodgeChance = DodgeChance,
+                TurnsLeft = Duration
+            };
             caster.Effects.Add(fogHide);
         }
 

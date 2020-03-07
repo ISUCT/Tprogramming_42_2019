@@ -22,9 +22,11 @@ namespace RPG_autoBattler
         {
             if (triggerType == TriggerType.DealDamage)
             {
-                NinjaBleedEffect bleed = new NinjaBleedEffect();
-                bleed.TurnsLeft = TurnsLeft;
-                bleed.DamagePercent = DamagePercent;
+                NinjaBleedEffect bleed = new NinjaBleedEffect
+                {
+                    TurnsLeft = TurnsLeft,
+                    DamagePercent = DamagePercent
+                };
                 bool isFoundAlready = false;
                 for (int i = 0; i < victim.Effects.Count; i++)
                 {

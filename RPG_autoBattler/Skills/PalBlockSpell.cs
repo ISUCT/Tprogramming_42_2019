@@ -22,9 +22,11 @@ namespace RPG_autoBattler
         {
             if (triggerType == TriggerType.StartBattle)
             {
-                PalBlock palBlock = new PalBlock();
-                palBlock.DamageBlockPercent = DamageBlockPercent;
-                palBlock.TurnsLeft = 1;
+                PalBlock palBlock = new PalBlock
+                {
+                    DamageBlockPercent = DamageBlockPercent,
+                    TurnsLeft = 1
+                };
                 attacker.Effects.Add(palBlock);
             }
         }
