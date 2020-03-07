@@ -8,7 +8,7 @@ namespace RPG_autoBattler
 
         public int Lvl { get; set; }
 
-        public bool IsPassive { get; set; }
+        public bool IsPassive { get; set; } = false;
 
         public bool IsRanged { get; set; }
 

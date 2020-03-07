@@ -54,7 +54,6 @@ namespace RPG_autoBattler
 
         public static int Battle(Character a, Character b)
         {
-            Random rnd = new Random();
             int turn = 1;
             a.Effects = new List<IPassiveSpell>();
             b.Effects = new List<IPassiveSpell>();

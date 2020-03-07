@@ -4,13 +4,13 @@ namespace RPG_autoBattler
 {
     public class MageShield : ISpell
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = "Magic Shield";
 
         public int Lvl { get; set; }
 
-        public bool IsRanged { get; set; }
+        public bool IsRanged { get; set; } = false;
 
-        public bool IsPassive { get; set; }
+        public bool IsPassive { get; set; } = false;
 
         public int Duration { get; set; }
 

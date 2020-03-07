@@ -4,15 +4,15 @@ namespace RPG_autoBattler
 {
     public class NinjaPierce : ISpell
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = "Piercing Slash";
 
         public int Lvl { get; set; }
 
         public float Damage { get; set; }
 
-        public bool IsPassive { get; set; }
+        public bool IsPassive { get; set; } = false;
 
-        public bool IsRanged { get; set; }
+        public bool IsRanged { get; set; } = false;
 
         public void Cast(Character caster, Character victim)
         {

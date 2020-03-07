@@ -4,7 +4,7 @@ namespace RPG_autoBattler
 {
     public class MageFireball : ISpell
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = "Fireball Toss";
 
         public int Lvl { get; set; }
 
@@ -14,9 +14,9 @@ namespace RPG_autoBattler
 
         public int TickDuration { get; set; }
 
-        public bool IsPassive { get; set; }
+        public bool IsPassive { get; set; } = false;
 
-        public bool IsRanged { get; set; }
+        public bool IsRanged { get; set; } = true;
 
         public void Cast(Character caster, Character victim)
         {

@@ -4,7 +4,7 @@ namespace RPG_autoBattler
 {
     public class NinjaBleed : ISpell, IPassiveSpell
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = "Sharp blades";
 
         public int Lvl { get; set; }
 
@@ -12,11 +12,11 @@ namespace RPG_autoBattler
 
         public float DamagePercent { get; set; }
 
-        public bool IsPassive { get; set; }
+        public bool IsPassive { get; set; } = true;
 
         public int StunDuration { get; set; }
 
-        public bool IsRanged { get; set; }
+        public bool IsRanged { get; set; } = false;
 
         public void Trigger(TriggerType triggerType, Character attacker, Character victim, float[] specValue)
         {
