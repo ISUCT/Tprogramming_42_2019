@@ -23,19 +23,19 @@ namespace RPG_autoBattler
             PalBlockSpell palDef = new PalBlockSpell
             {
                 Lvl = 1,
-                DamageBlockPercent = (float)75
+                DamageBlockPercent = (float)85
             };
             palSpells.Add(palDef);
             PalHeal palHeal = new PalHeal
             {
                 Lvl = 1,
-                HP = 12
+                HP = 10
             };
             palSpells.Add(palHeal);
             PunishLight punishLight = new PunishLight
             {
                 Lvl = 1,
-                Damage = 30
+                Damage = 17
             };
             palSpells.Add(punishLight);
             return palSpells;
@@ -53,27 +53,27 @@ namespace RPG_autoBattler
             NinjaShurikens ninjaShurikens = new NinjaShurikens
             {
                 Lvl = 1,
-                Damage = 10,
+                Damage = 12,
                 Count = 3
             };
             ninjSpells.Add(ninjaShurikens);
             NinjaFog ninjaFog = new NinjaFog
             {
                 Lvl = 1,
-                DodgeChance = 26,
+                DodgeChance = 45,
                 Duration = 3
             };
             ninjSpells.Add(ninjaFog);
             NinjaPierce ninjaPierce = new NinjaPierce
             {
                 Lvl = 1,
-                Damage = 5
+                Damage = 15
             };
             ninjSpells.Add(ninjaPierce);
             NinjaBleed ninjaBleed = new NinjaBleed
             {
                 Lvl = 1,
-                DamagePercent = (float)0.05,
+                DamagePercent = (float)0.1,
                 TurnsLeft = 2
             };
             ninjSpells.Add(ninjaBleed);
@@ -92,8 +92,8 @@ namespace RPG_autoBattler
             MageFireball mageFireball = new MageFireball
             {
                 Lvl = 1,
-                Damage = 30,
-                TickDamage = 10,
+                Damage = 15,
+                TickDamage = 20,
                 TickDuration = 3
             };
             magSpells.Add(mageFireball);
@@ -110,6 +110,12 @@ namespace RPG_autoBattler
                 Duration = 2
             };
             magSpells.Add(mageShield);
+            MageLightning mageLightning = new MageLightning
+            {
+                Lvl = 1,
+                DamageMultiplier = 3
+            };
+            magSpells.Add(mageLightning);
             return magSpells;
         }
 

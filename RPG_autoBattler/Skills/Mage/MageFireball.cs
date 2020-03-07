@@ -20,7 +20,7 @@ namespace RPG_autoBattler
 
         public void Cast(Character caster, Character victim)
         {
-            victim.TakeDamage(caster, caster.Intelligence);
+            victim.TakeDamage(caster, caster.Intelligence + Damage);
             Burning burning = new Burning
             {
                 TurnsLeft = TickDuration,
