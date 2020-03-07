@@ -20,7 +20,7 @@ namespace RPG_autoBattler
             Logger.TakeDamageM(victim, caster.Agility + Damage);
         }
 
-        public void Trigger(string s, Character a, Character b, float[] f)
+        public void Trigger(TriggerType s, Character a, Character b, float[] f)
         {
         }
     }

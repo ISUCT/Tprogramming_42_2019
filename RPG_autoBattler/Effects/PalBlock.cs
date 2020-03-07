@@ -8,9 +8,9 @@ namespace RPG_autoBattler
 
         public float DamageBlockPercent { get; set; }
 
-        public void Trigger(string triggerType, Character attacker, Character victim, float[] specValue)
+        public void Trigger(TriggerType triggerType, Character attacker, Character victim, float[] specValue)
         {
-            if (triggerType == "TakeDamage")
+            if (triggerType == TriggerType.TakeDamage)
             {
                 victim.CurHP -= specValue[0] * (DamageBlockPercent / 100);
                 throw new ProtectException($"{victim.Name} {victim.Surname} ({victim.Class}) takes only {specValue[0] * (DamageBlockPercent / 100)} damage! {victim.CurHP} HP left!");

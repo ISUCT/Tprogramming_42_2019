@@ -3,6 +3,17 @@ using System.Collections.Generic;
 
 namespace RPG_autoBattler
 {
+    public enum TriggerType
+    {
+        StartBattle,
+        EndBattle,
+        StartTurn,
+        EndTurn,
+        DealDamage,
+        TakeDamage,
+        HitBySpell
+    }
+
     public static class TournamentBattle
     {
         public static void MakeTurn(Character attacker, Character victim)
@@ -31,13 +42,13 @@ namespace RPG_autoBattler
             foreach (IPassiveSpell item in attacker.Effects)
             {
                 float[] f = new float[1] { 0 };
-                item.Trigger("EndTurn", attacker, victim, f);
+                item.Trigger(TriggerType.EndTurn, attacker, victim, f);
             }
 
             foreach (IPassiveSpell item in victim.Effects)
             {
                 float[] f = new float[1] { 1 };
-                item.Trigger("EndTurn", victim, attacker, f);
+                item.Trigger(TriggerType.EndTurn, victim, attacker, f);
             }
         }
 
@@ -51,12 +62,12 @@ namespace RPG_autoBattler
             b.Heal(b.MaxHP);
             foreach (IPassiveSpell item in b.PasSpells)
             {
-                item.Trigger("StartBattle", b, a, null);
+                item.Trigger(TriggerType.StartBattle, b, a, null);
             }
 
             foreach (IPassiveSpell item in a.PasSpells)
             {
-                item.Trigger("StartBattle", a, b, null);
+                item.Trigger(TriggerType.StartBattle, a, b, null);
             }
 
             while ((a.CurHP > 0) && (b.CurHP > 0))
@@ -80,7 +91,7 @@ namespace RPG_autoBattler
                 a.Heal(a.MaxHP);
                 foreach (IPassiveSpell item in a.Effects)
                 {
-                    item.Trigger("EndBattle", a, b, null);
+                    item.Trigger(TriggerType.EndBattle, a, b, null);
                 }
 
                 return 1;
@@ -91,7 +102,7 @@ namespace RPG_autoBattler
                 b.Heal(b.MaxHP);
                 foreach (IPassiveSpell item in b.Effects)
                 {
-                    item.Trigger("EndBattle", a, b, null);
+                    item.Trigger(TriggerType.EndBattle, a, b, null);
                 }
 
                 return 0;

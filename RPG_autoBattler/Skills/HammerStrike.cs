@@ -21,7 +21,7 @@ namespace RPG_autoBattler
             victim.StunTimer += StunDuration;
         }
 
-        public void Trigger(string s, Character a, Character b, float[] f)
+        public void Trigger(TriggerType s, Character a, Character b, float[] f)
         {
         }
     }

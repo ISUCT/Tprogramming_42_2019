@@ -47,7 +47,7 @@ namespace RPG_autoBattler
             {
                 foreach (var item in Effects)
                 {
-                    item.Trigger("HitBySpell", caster, this, null);
+                    item.Trigger(TriggerType.HitBySpell, caster, this, null);
                 }
 
                 Logger.SpellCastM(caster, (ISpell)spell);
@@ -66,13 +66,13 @@ namespace RPG_autoBattler
                 foreach (var item in Effects)
                 {
                     var mass = new float[1] { dmg };
-                    item.Trigger("TakeDamage", attacker, this, mass);
+                    item.Trigger(TriggerType.TakeDamage, attacker, this, mass);
                 }
 
                 foreach (var item in attacker.PasSpells)
                 {
                     var mass = new float[1] { dmg };
-                    item.Trigger("DealDamage", attacker, this, mass);
+                    item.Trigger(TriggerType.DealDamage, attacker, this, mass);
                 }
 
                 CurHP -= dmg;

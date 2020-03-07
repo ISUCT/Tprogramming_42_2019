@@ -28,7 +28,7 @@ namespace RPG_autoBattler
             Console.WriteLine($"{victim.Name} {victim.Surname} ({victim.Class}) is on fire for {TickDuration} turns!");
         }
 
-        public void Trigger(string s, Character a, Character b, float[] f)
+        public void Trigger(TriggerType s, Character a, Character b, float[] f)
         {
         }
     }

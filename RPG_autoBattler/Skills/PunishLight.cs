@@ -19,7 +19,7 @@ namespace RPG_autoBattler
             victim.TakeDamage(caster, Damage);
         }
 
-        public void Trigger(string s, Character a, Character b, float[] f)
+        public void Trigger(TriggerType s, Character a, Character b, float[] f)
         {
         }
     }

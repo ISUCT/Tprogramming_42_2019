@@ -18,9 +18,9 @@ namespace RPG_autoBattler
 
         public bool IsRanged { get; set; }
 
-        public void Trigger(string triggerType, Character attacker, Character victim, float[] specValue)
+        public void Trigger(TriggerType triggerType, Character attacker, Character victim, float[] specValue)
         {
-            if (triggerType == "StartBattle")
+            if (triggerType == TriggerType.StartBattle)
             {
                 PalBlock palBlock = new PalBlock();
                 palBlock.DamageBlockPercent = DamageBlockPercent;

@@ -18,9 +18,9 @@ namespace RPG_autoBattler
 
         public bool IsRanged { get; set; }
 
-        public void Trigger(string triggerType, Character attacker, Character victim, float[] specValue)
+        public void Trigger(TriggerType triggerType, Character attacker, Character victim, float[] specValue)
         {
-            if (triggerType == "DealDamage")
+            if (triggerType == TriggerType.DealDamage)
             {
                 NinjaBleedEffect bleed = new NinjaBleedEffect();
                 bleed.TurnsLeft = TurnsLeft;

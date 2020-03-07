@@ -24,7 +24,7 @@ namespace RPG_autoBattler
             }
         }
 
-        public void Trigger(string s, Character a, Character b, float[] f)
+        public void Trigger(TriggerType s, Character a, Character b, float[] f)
         {
         }
     }

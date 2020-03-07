@@ -8,9 +8,9 @@ namespace RPG_autoBattler
 
         public float DamagePercent { get; set; }
 
-        public void Trigger(string triggerType, Character attacker, Character victim, float[] specValue)
+        public void Trigger(TriggerType triggerType, Character attacker, Character victim, float[] specValue)
         {
-            if ((triggerType == "EndTurn") && (specValue[0] == 0) && (TurnsLeft > 0))
+            if ((triggerType == TriggerType.EndTurn) && (specValue[0] == 0) && (TurnsLeft > 0))
             {
                 Console.WriteLine($"{attacker} is bleeding! {TurnsLeft} turns left!");
                 attacker.CurHP -= DamagePercent * attacker.MaxHP;

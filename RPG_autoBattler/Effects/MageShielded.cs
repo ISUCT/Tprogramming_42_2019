@@ -6,9 +6,9 @@ namespace RPG_autoBattler
     {
         public int TurnsLeft { get; set; }
 
-        public void Trigger(string triggerType, Character attacker, Character victim, float[] specValue)
+        public void Trigger(TriggerType triggerType, Character attacker, Character victim, float[] specValue)
         {
-            if (triggerType == "HitBySpell")
+            if (triggerType == TriggerType.HitBySpell)
             {
                 if (TurnsLeft > 0)
                 {
@@ -17,12 +17,12 @@ namespace RPG_autoBattler
                 }
             }
 
-            if ((triggerType == "EndTurn") && ((int)specValue[0] == 1))
+            if ((triggerType == TriggerType.EndTurn) && ((int)specValue[0] == 1))
             {
                 TurnsLeft--;
             }
 
-            if (triggerType == "EndBattle")
+            if (triggerType == TriggerType.EndBattle)
             {
                 TurnsLeft = 0;
             }
