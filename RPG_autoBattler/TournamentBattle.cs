@@ -24,8 +24,6 @@ namespace RPG_autoBattler
                 if (rnd.Next(0, 100) > 65)
                 {
                     int ran = rnd.Next(1, attacker.ActSpells.Count);
-
-                    // Console.WriteLine($"Random = {ran}");
                     victim.HitBySpell(attacker, attacker.ActSpells[ran]);
                 }
                 else
@@ -141,25 +139,6 @@ namespace RPG_autoBattler
                 Character mage2 = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 1, MaxAgility = 5, MinIntelligence = 20, MaxIntelligence = 30 }, "Mage");
                 List<Character> tourTest = new List<Character>() { pal, ninja, mage, pal2, ninja2, mage2 };
                 Character winner = TournamentBattle.Tournament(tourTest);
-                /*if (winner.Class == "Paladin")
-                {
-                    palWin++;
-                }
-                else
-                {
-                    if (winner.Class == "Ninja")
-                    {
-                        ninjaWin++;
-                    }
-                    else if (winner.Class == "Mage")
-                    {
-                        mageWin++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("WTF");
-                    }
-                }*/
                 switch (winner.Class)
                 {
                     case "Paladin": palWin++; break;

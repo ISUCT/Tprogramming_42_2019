@@ -7,16 +7,6 @@ namespace RPG_autoBattler
     {
         public static void Main()
         {
-            /*palaSpells = ReturnFuncs.RetPalSpells();
-            ninjaSpells = ReturnFuncs.RetNinjaSpells();
-            mageSpells = ReturnFuncs.RetMageSpells();*/
-            List<string> names = ReturnFuncs.RetNames();
-            List<string> surnames = ReturnFuncs.RetSurnames();
-            List<Character> fighters = new List<Character>();
-
-            // List<string> names;
-            // RetNames().CopyTo(names);
-            // palSpells.Add(palBaseAttack);
             Console.WriteLine("Welcome to the Battle for Glory Arena. Press any key to start");
             /*Console.ReadKey();
             Console.WriteLine("Choose your class, type 'Paladin', 'Ninja' or 'Mage' here: ");
