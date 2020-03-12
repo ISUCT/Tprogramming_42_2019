@@ -160,47 +160,23 @@ namespace RPG_autoBattler
 
         public static Character ReturnRandomCharacter(CharGenConfig conf, string className = "Paladin")
         {
-            Character a = new Character
-            {
-                Class = className
-            };
+            Character a;
             Random rnd = new Random();
             if (className == "Paladin")
             {
-                List<ISpell> list = RetPalSpells();
-                a.GainSpell(list[0]);
-                for (int i = 0; i < 3; i++)
-                {
-                    int tempInt = rnd.Next(1, list.Count);
-                    a.GainSpell(list[tempInt]);
-                    list.RemoveAt(tempInt);
-                }
+                a = CharacterFactory.CreatePaladin();
             }
             else
             {
                 if (className == "Ninja")
                 {
-                    List<ISpell> list = RetNinjaSpells();
-                    a.GainSpell(list[0]);
-                    for (int i = 0; i < 3; i++)
-                    {
-                        int tempInt = rnd.Next(1, list.Count);
-                        a.GainSpell(list[tempInt]);
-                        list.RemoveAt(tempInt);
-                    }
+                    a = CharacterFactory.CreateNinja();
                 }
                 else
                 {
                     if (className == "Mage")
                     {
-                        List<ISpell> list = RetMageSpells();
-                        a.GainSpell(list[0]);
-                        for (int i = 0; i < 3; i++)
-                        {
-                            int tempInt = rnd.Next(1, list.Count);
-                            a.GainSpell(list[tempInt]);
-                            list.RemoveAt(tempInt);
-                        }
+                        a = CharacterFactory.CreateMage();
                     }
                     else
                     {
@@ -212,8 +188,6 @@ namespace RPG_autoBattler
             a.Strength = rnd.Next(conf.MinStrength, conf.MaxStrength + 1);
             a.Agility = rnd.Next(conf.MinAgility, conf.MaxAgility + 1);
             a.Intelligence = rnd.Next(conf.MinIntelligence, conf.MaxIntelligence + 1);
-            a.Name = RetNames()[rnd.Next(0, RetNames().Count)];
-            a.Surname = RetSurnames()[rnd.Next(0, RetSurnames().Count)];
             a.MaxHP = a.Strength * 10;
             a.CurHP = a.MaxHP;
             return a;
