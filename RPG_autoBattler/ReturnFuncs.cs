@@ -7,7 +7,7 @@ namespace RPG_autoBattler
     {
         Paladin,
         Ninja,
-        Mage
+        Mae
     }
 
     public static class ReturnFuncs
