@@ -3,6 +3,13 @@ using System.Collections.Generic;
 
 namespace RPG_autoBattler
 {
+    public enum CharacterClass
+    {
+        Paladin,
+        Ninja,
+        Mage
+    }
+
     public static class ReturnFuncs
     {
         public static List<ISpell> RetPalSpells()
@@ -145,10 +152,10 @@ namespace RPG_autoBattler
                         a = ReturnRandomCharacter(new CharGenConfig());
                         break;
                     case 2:
-                        a = ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 15, MaxAgility = 25, MinIntelligence = 1, MaxIntelligence = 5 }, "Ninja");
+                        a = ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 15, MaxAgility = 25, MinIntelligence = 1, MaxIntelligence = 5 }, CharacterClass.Ninja);
                         break;
                     case 3:
-                        a = ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 1, MaxAgility = 5, MinIntelligence = 20, MaxIntelligence = 30 },  "Mage");
+                        a = ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 1, MaxAgility = 5, MinIntelligence = 20, MaxIntelligence = 30 },  CharacterClass.Mage);
                         break;
                 }
 
@@ -158,31 +165,21 @@ namespace RPG_autoBattler
             return fighters;
         }
 
-        public static Character ReturnRandomCharacter(CharGenConfig conf, string className = "Paladin")
+        public static Character ReturnRandomCharacter(CharGenConfig conf, CharacterClass className = CharacterClass.Paladin)
         {
-            Character a;
+            Character a = new Character();
             Random rnd = new Random();
-            if (className == "Paladin")
+            switch (className)
             {
-                a = CharacterFactory.CreatePaladin();
-            }
-            else
-            {
-                if (className == "Ninja")
-                {
+                case CharacterClass.Paladin:
+                    a = CharacterFactory.CreatePaladin();
+                    break;
+                case CharacterClass.Ninja:
                     a = CharacterFactory.CreateNinja();
-                }
-                else
-                {
-                    if (className == "Mage")
-                    {
-                        a = CharacterFactory.CreateMage();
-                    }
-                    else
-                    {
-                        throw new Exception("Class not found");
-                    }
-                }
+                    break;
+                case CharacterClass.Mage:
+                    a = CharacterFactory.CreateMage();
+                    break;
             }
 
             a.Strength = rnd.Next(conf.MinStrength, conf.MaxStrength + 1);

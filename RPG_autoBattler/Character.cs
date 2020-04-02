@@ -23,7 +23,7 @@ namespace RPG_autoBattler
 
         public string Name { get; set; }
 
-        public string Class { get; set; }
+        public CharacterClass Class { get; set; }
 
         public string Surname { get; set; }
 
@@ -111,6 +111,12 @@ namespace RPG_autoBattler
         public override string ToString()
         {
             return $"{Name} {Surname} ({Class})";
+        }
+
+        public void StartBattle()
+        {
+            CurHP = MaxHP;
+            Effects.Clear();
         }
     }
 }

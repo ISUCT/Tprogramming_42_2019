@@ -10,7 +10,7 @@ namespace RPG_autoBattler
             Random rnd = new Random();
             Character a = new Character
             {
-                Class = "Paladin",
+                Class = CharacterClass.Paladin,
                 Name = ReturnFuncs.RetNames()[rnd.Next(0, ReturnFuncs.RetNames().Count)],
                 Surname = ReturnFuncs.RetSurnames()[rnd.Next(0, ReturnFuncs.RetSurnames().Count)]
             };
@@ -31,7 +31,7 @@ namespace RPG_autoBattler
             Random rnd = new Random();
             Character a = new Character
             {
-                Class = "Ninja",
+                Class = CharacterClass.Ninja,
                 Name = ReturnFuncs.RetNames()[rnd.Next(0, ReturnFuncs.RetNames().Count)],
                 Surname = ReturnFuncs.RetSurnames()[rnd.Next(0, ReturnFuncs.RetSurnames().Count)]
             };
@@ -52,7 +52,7 @@ namespace RPG_autoBattler
             Random rnd = new Random();
             Character a = new Character
             {
-                Class = "Mage",
+                Class = CharacterClass.Mage,
                 Name = ReturnFuncs.RetNames()[rnd.Next(0, ReturnFuncs.RetNames().Count)],
                 Surname = ReturnFuncs.RetSurnames()[rnd.Next(0, ReturnFuncs.RetSurnames().Count)]
             };

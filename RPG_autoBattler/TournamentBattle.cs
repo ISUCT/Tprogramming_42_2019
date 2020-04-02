@@ -53,10 +53,8 @@ namespace RPG_autoBattler
         public static int Battle(Character a, Character b)
         {
             int turn = 1;
-            a.Effects = new List<IPassiveSpell>();
-            b.Effects = new List<IPassiveSpell>();
-            a.Heal(a.MaxHP);
-            b.Heal(b.MaxHP);
+            a.StartBattle();
+            b.StartBattle();
             foreach (IPassiveSpell item in b.PasSpells)
             {
                 item.Trigger(TriggerType.StartBattle, b, a, null);
@@ -133,17 +131,17 @@ namespace RPG_autoBattler
             {
                 Character pal = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig());
                 Character pal2 = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig());
-                Character ninja = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 15, MaxAgility = 25, MinIntelligence = 1, MaxIntelligence = 5 }, "Ninja");
-                Character ninja2 = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 15, MaxAgility = 25, MinIntelligence = 1, MaxIntelligence = 5 }, "Ninja");
-                Character mage = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 1, MaxAgility = 5, MinIntelligence = 20, MaxIntelligence = 30 }, "Mage");
-                Character mage2 = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 1, MaxAgility = 5, MinIntelligence = 20, MaxIntelligence = 30 }, "Mage");
+                Character ninja = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 15, MaxAgility = 25, MinIntelligence = 1, MaxIntelligence = 5 }, CharacterClass.Ninja);
+                Character ninja2 = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 15, MaxAgility = 25, MinIntelligence = 1, MaxIntelligence = 5 }, CharacterClass.Ninja);
+                Character mage = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 1, MaxAgility = 5, MinIntelligence = 20, MaxIntelligence = 30 }, CharacterClass.Mage);
+                Character mage2 = ReturnFuncs.ReturnRandomCharacter(new CharGenConfig() { MinStrength = 5, MaxStrength = 15, MinAgility = 1, MaxAgility = 5, MinIntelligence = 20, MaxIntelligence = 30 }, CharacterClass.Mage);
                 List<Character> tourTest = new List<Character>() { pal, ninja, mage, pal2, ninja2, mage2 };
                 Character winner = TournamentBattle.Tournament(tourTest);
                 switch (winner.Class)
                 {
-                    case "Paladin": palWin++; break;
-                    case "Ninja": ninjaWin++; break;
-                    case "Mage": mageWin++; break;
+                    case CharacterClass.Paladin: palWin++; break;
+                    case CharacterClass.Ninja: ninjaWin++; break;
+                    case CharacterClass.Mage: mageWin++; break;
                 }
             }
 
