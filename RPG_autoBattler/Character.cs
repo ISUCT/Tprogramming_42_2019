@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections;
 
-namespace RPG_autoBattler
+namespace RpgAutoBattler
 {
     public class Character
     {

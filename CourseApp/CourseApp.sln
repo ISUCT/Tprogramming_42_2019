@@ -6,7 +6,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseApp", "CourseApp.cspr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseApp.Tests", "..\CourseApp.Tests\CourseApp.Tests.csproj", "{DE0C32E6-89EA-42DB-AD08-96336B8AE9CD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG_autoBattler", "..\RPG_autoBattler\RPG_autoBattler.csproj", "{6BB10B10-698A-4923-80D1-95DECB663D79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RpgAutoBattler", "..\RPG_autoBattler\RpgAutoBattler.csproj", "{6BB10B10-698A-4923-80D1-95DECB663D79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

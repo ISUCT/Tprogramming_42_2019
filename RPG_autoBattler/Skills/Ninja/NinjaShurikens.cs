@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RPG_autoBattler
+namespace RpgAutoBattler
 {
     public class NinjaShurikens : ISpell
     {
