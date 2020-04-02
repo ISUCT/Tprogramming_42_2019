@@ -17,6 +17,8 @@ jobs:
       run: |
         cd CourseApp 
         dotnet build --configuration Release
+        cd RPG_autoBattler 
+        dotnet build --configuration Release
     - name: Run tests
       run: |
         cd CourseApp.Tests
