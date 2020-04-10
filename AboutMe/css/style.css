@@ -1,0 +1,89 @@
+.top-panel {
+	border: 10px groove orange;
+	background-color: #ffff00;
+	text-align: left;
+	text-transform: uppercase;
+	color: orange;
+	text-decoration: none;
+}
+@keyframes just2animation{
+	0%{
+		opacity: 0;
+		margin-left: 1000px
+	}
+	100%{
+		opacity: 1;
+		margin-left: 0px
+	}
+}
+.just2{
+	width: 700px;
+}
+.centr {
+	text-align: center;
+}
+body {
+	background-color: rgba(0,0,255, 0.5);
+	margin: 0;
+}
+h2{
+	border: 7px groove orange;
+	padding: 10px;
+	margin: 0;
+	font-size: 60px;
+	background-color: #ffff00;
+	text-align: center;
+}
+
+.butn {
+	align-self: center;
+	margin-top: 10px
+}
+
+.g {
+	display: flex;
+	flex-direction: column;
+	animation: 1s just2animation;
+}
+.ricardo {
+	display: flex;
+	height: 300px;
+	
+}
+
+}
+ h3{
+	font-size: 50px;
+}
+.just{
+	margin-left: 30px
+}
+.just p{
+	font-size: larger;
+	margin-left: 30px;
+}
+
+ img{
+	border: 7px dashed #ffff00;
+}
+
+
+.skills ul li {
+	color: orange;
+	text-align: left;
+	list-style-type: none;
+	padding: 3px;
+	font-size: 20px;
+}
+
+
+main {
+	display: flex;
+	align-items:baseline;
+	color: orange;
+}
+
+a {
+	text-decoration: none;
+	color: orange;
+}
