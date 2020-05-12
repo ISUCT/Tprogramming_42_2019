@@ -60,6 +60,11 @@ namespace CourseApp
 
         public bool IsMale { get; set; }
 
+        public int CompareTo(Person p)
+        {
+            return this.Age.CompareTo(p.Age);
+        }
+
         public void Marry(string surname, bool change = false)
         {
             if (Age > 15)

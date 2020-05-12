@@ -2,7 +2,7 @@
 
 namespace CourseApp
 {
-    public class Student : Person
+    public class Student : Person, IComparable
     {
         public Student()
         : this(0)
@@ -40,6 +40,12 @@ namespace CourseApp
         public override string Relax()
         {
             return "Kawabunga!";
+        }
+
+        public int CompareTo(object o)
+        {
+            Student s = o as Student;
+            return this.Age.CompareTo(s.Age);
         }
     }
 }

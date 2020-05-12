@@ -6,6 +6,28 @@ namespace CourseApp.Tests
     public class PersonTest
     {
         [Fact]
+        public void IComparableStudentSortTest()
+        {
+            Student[] people = new Student[5];
+            for (int i = 0; i < 5; i++)
+            {
+                people[i] = new Student();
+                people[i].Age = 30 - i;
+            }
+
+            Array.Sort(people);
+            for (int i = 0; i < people.Length - 1; i++)
+            {
+                if (people[i].Age > people[i + 1].Age)
+                {
+                    Assert.True(false);
+                }
+            }
+
+            Assert.True(true);
+        }
+
+        [Fact]
         public void TestEmptyConstructorStud()
         {
             var item = new Student();
