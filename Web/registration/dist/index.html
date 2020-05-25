@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - A Pen by  Max Arclight</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html>
+  <div class="container">
+  <h2>Регистрация</h2>
+    <div class="input-section">
+        <div class="input">
+          <p>Имя :</p>
+          <input type="text" id="input-name" value="">
+      </div> 
+        <div class="input" >
+          <p>Фамилия :</p>
+          <input id="input-surname" type="text">
+      </div>
+        <div class="input" >
+          <p>Email :</p>
+          <input type="email" id="input-email">
+      </div>
+        <div class="input" >
+          <p>Пароль :</p>
+          <input type="password" id="input-password">
+      </div>
+              <div class="input">
+          <p>Повторите :</p>
+          <input type="password" id="input-repassword">
+      </div>
+        <p class="error" id="error"></p>    
+        <span class="button" id="signIn" onclick="signIn()">Зарегистрироваться</span>   
+    </div>
+  </div>
+  
+  <div class="container">
+    <lu id="list"></lu>
+  </div>
+  
+  
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

@@ -1,101 +1,115 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace CourseApp
 {
     public class Program
     {
-        public static double MyFunction(double a, double b, double x)
+        public static void Combat(List<Player> fighters)
         {
-            if (a == 0 && b == 0 && x == 0)
+            Random rnd = new Random();
+            int val = rnd.Next(1, fighters.Count);
+
+            foreach (Player fighter in fighters)
             {
-                return 0;
+                fighter.SetFullHp();
             }
 
-            double upper = a - (b * x);
-            upper = Math.Abs(upper);
-
-            double lower = Math.Log10(x);
-            lower = Math.Pow(lower, 3);
-
-            double y;
-            y = upper / lower;
-            y = Math.Pow(y, -2);
-            return y;
-        }
-
-        public static ArrayList TaskA(double a, double b, double xn, double xk, double dx)
-        {
-            double mas = (xk - xn) / dx;
-
-            ArrayList y = new ArrayList((int)mas);
-
-            // double[] y = new double[(int)mas];
-            ArrayList preExitY = new ArrayList();
-
-            if ((xk - xn) < dx)
+            while (fighters.Count > 1)
             {
-                preExitY.Add(MyFunction(a, b, xn));
+                Player a = fighters[rnd.Next(0, fighters.Count)];
+                fighters.Remove(a);
 
-                foreach (double obj in preExitY)
+                Player b = fighters[rnd.Next(0, fighters.Count)];
+                fighters.Remove(b);
+
+                a.SetFullHp();
+                b.SetFullHp();
+                while (a == b)
                 {
-                    if (obj < 0)
+                    a = fighters[rnd.Next(0, fighters.Count)];
+                    b = fighters[rnd.Next(0, fighters.Count)];
+                }
+
+                while ((a.CurrentHp != 0) || (b.CurrentHp != 0))
+                {
+                    Console.WriteLine(a.Name);
+                    Console.WriteLine(a.CurrentHp);
+                    a.Attack(b);
+                    Console.WriteLine(b.Name);
+                    Console.WriteLine(b.CurrentHp);
+                    b.Attack(a);
+                    if (a.CurrentHp <= 0)
                     {
-                    throw new ArgumentOutOfRangeException("y");
+                        fighters.Add(b);
+                        break;
+                    }
+                    else if (b.CurrentHp <= 0)
+                    {
+                        fighters.Add(a);
+                        break;
                     }
                 }
-
-                return preExitY;
             }
 
-            for (double x = xn; x <= xk; x += dx)
-            {
-                y.Add(MyFunction(a, b, x));
-            }
-
-            if ((xk - xn) / dx != y.Count)
-            {
-                throw new IndexOutOfRangeException("y");
-            }
-
-            foreach (double obj in y)
-            {
-                if (obj < 0)
-                {
-                    throw new ArgumentOutOfRangeException("y");
-                }
-            }
-
-            return y;
+            Console.WriteLine();
+            Console.ReadKey();
         }
 
-        public static double[] TaskB(double a, double b, double[] x)
+        public static List<Player> FighterGenerator(int count)
         {
-            var y = new double[x.Length];
-            for (var i = 0; i < x.Length; i++)
+            List<Player> fighters = new List<Player>();
+
+            for (int i = 0; i < count; i++)
             {
-                y[i] = MyFunction(a, b, x[i]);
+                Player fighter = new Player();
+
+                Random rnd = new Random();
+                int val = rnd.Next(1, 3);
+
+                switch (val)
+                {
+                    case 1:
+                        fighter.SetClassName("Hunter");
+                        fighter.Active = ReturnFuncs.GetHunterSpells();
+                        break;
+                    case 2:
+                        fighter.SetClassName("Titan");
+                        fighter.Active = ReturnFuncs.GetTitanSpells();
+                        break;
+                    case 3:
+                        fighter.SetClassName("Warlock");
+                        fighter.Active = ReturnFuncs.GetWarlockSpells();
+                        break;
+                }
+
+                fighter.Strength = rnd.Next(10, 100);
+                fighter.Agility = rnd.Next(10, 100);
+                fighter.Intelligence = rnd.Next(10, 100);
+
+                fighter.SetName();
+                fighters.Add(fighter);
             }
 
-            return y;
+            return fighters;
         }
 
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Player sample = new Player();
+            Random rnd = new Random();
+            int val = rnd.Next(2, 10);
 
-            TaskA(7.2, 4.2, 1.81, 5.31, 0.7);
+            List<Player> fighters = new List<Player>();
+            fighters = FighterGenerator(val);
 
-            const double a = 2.2;
-            const double b = 3.8;
-            var resSingle = MyFunction(a, b, 4);
-            Console.WriteLine(resSingle);
-            var x = new double[] { 1, 2, 3, 4, 5 };
-            var taskBRes = TaskB(a, b, x);
-            foreach (var item in taskBRes)
+            Combat(fighters);
+
+            Console.WriteLine(fighters[0]);
+
+            foreach (Player fighter in fighters)
             {
-                Console.WriteLine($"y = {item}");
+                Console.WriteLine(fighter.Name);
             }
 
             Console.ReadLine();
